@@ -1,3 +1,4 @@
+
 services:
   shaymin:
     build:
@@ -14,8 +15,12 @@ services:
           action: rebuild
         - path: ./composer.lock
           action: rebuild
+    volumes:
+      - .:/var/www/html
+      - ./.env:/var/www/html/.env
     depends_on:
       - mongodb
+      - postgresql
 
   mongodb:
     image: mongo:latest
@@ -27,7 +32,7 @@ services:
     ports:
       - "27111:27017"
     volumes:
-      - shaymin-mongodb:/data/db/mongodb
+      - shaymin-mongodb:/data/db
 
   postgresql:
     image: postgres:15
@@ -40,10 +45,8 @@ services:
     ports:
       - "5112:5432"
     volumes:
-      - shaymin-postgresql:/data/db/postgresql
+      - shaymin-postgresql:/var/lib/postgresql/data
 
 volumes:
   shaymin-mongodb:
-    driver: local
   shaymin-postgresql:
-    driver: local
