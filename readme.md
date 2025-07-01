@@ -20,6 +20,13 @@
 
 [![wakatime](https://wakatime.com/badge/user/65f5d1d3-0933-4b6c-b6df-d8bf043e70be/project/9072e330-ba90-4d0f-8f33-5f9a0cdb57b0.svg)](https://wakatime.com/badge/user/65f5d1d3-0933-4b6c-b6df-d8bf043e70be/project/9072e330-ba90-4d0f-8f33-5f9a0cdb57b0)
 
+[![wakatime](https://wakatime.com/badge/user/50d53971-71c4-47c9-a5ac-6d633c759326/project/773143f7-908b-4f91-a8a0-1566d88f8e25.svg)](https://wakatime.com/badge/user/50d53971-71c4-47c9-a5ac-6d633c759326/project/773143f7-908b-4f91-a8a0-1566d88f8e25)
+
+[![wakatime](https://wakatime.com/badge/user/443593d2-a49b-4deb-9e6c-bfa25506f1aa/project/d8ed5cda-cafb-47c5-908e-4ec4dffc1750.svg)](https://wakatime.com/badge/user/443593d2-a49b-4deb-9e6c-bfa25506f1aa/project/d8ed5cda-cafb-47c5-908e-4ec4dffc1750)
+
+[![wakatime](https://wakatime.com/badge/user/92714f91-5bd0-4e5f-ad0e-ceb54c8406d2/project/41ef207f-725d-4863-8046-bfb3f133a597.svg)](https://wakatime.com/badge/user/92714f91-5bd0-4e5f-ad0e-ceb54c8406d2/project/41ef207f-725d-4863-8046-bfb3f133a597)
+
+[![wakatime](https://wakatime.com/badge/user/3347b15e-226a-471b-9f86-f04cdf705140/project/6e9fa798-b3cf-4fac-a6c4-0cfae883878d.svg)](https://wakatime.com/badge/user/3347b15e-226a-471b-9f86-f04cdf705140/project/6e9fa798-b3cf-4fac-a6c4-0cfae883878d)
 ---
 
 <br />
