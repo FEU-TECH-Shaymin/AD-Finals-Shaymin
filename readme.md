@@ -4,33 +4,34 @@
 
 <br />
 <div align="center">
-  <a href="https://github.com/zyx-0314/">
+  <a href="https://github.com/FEU-TECH-Shaymin/AD-Finals-Shaymin">
   <!-- TODO: If you want to add logo or banner you can add it here -->
     <img src="./assets/img/nyebe_white.png" alt="Nyebe" width="130" height="100">
   </a>
-<!-- TODO: Change Title to the name of the title of your Project -->
-  <h3 align="center">Title</h3>
+  <h3 align="center">Outlast</h3>
 </div>
-<!-- TODO: Make a short description -->
 <div align="center">
-  Short Description. (Optional)
+  Outlast is your ultimate survival companion in a post-apocalyptic world. Our website offers a curated selection of essential gear, tools, and supplies to help you thrive—not just survive—during a zombie apocalypse. From fortified shelters to anti-zombie weapons, Outlast has everything you need to stay one step ahead.
 </div>
 
 <br />
 
-<!-- TODO: Change the zyx-0314 into your github username  -->
-<!-- TODO: Change the WD-Template-Project into the same name of your folder -->
+![](https://visit-counter.vercel.app/counter.png?page=FEU-TECH-Shaymin/AD-Finals-Shaymin)
 
-![](https://visit-counter.vercel.app/counter.png?page=zyx-0314/AD-CI4-Template-Project)
+[![wakatime](https://wakatime.com/badge/user/65f5d1d3-0933-4b6c-b6df-d8bf043e70be/project/9072e330-ba90-4d0f-8f33-5f9a0cdb57b0.svg)](https://wakatime.com/badge/user/65f5d1d3-0933-4b6c-b6df-d8bf043e70be/project/9072e330-ba90-4d0f-8f33-5f9a0cdb57b0)
 
-[![wakatime](https://wakatime.com/badge/user/018dd99a-4985-4f98-8216-6ca6fe2ce0f8/project/63501637-9a31-42f0-960d-4d0ab47977f8.svg)](https://wakatime.com/badge/user/018dd99a-4985-4f98-8216-6ca6fe2ce0f8/project/63501637-9a31-42f0-960d-4d0ab47977f8)
+[![wakatime](https://wakatime.com/badge/user/50d53971-71c4-47c9-a5ac-6d633c759326/project/773143f7-908b-4f91-a8a0-1566d88f8e25.svg)](https://wakatime.com/badge/user/50d53971-71c4-47c9-a5ac-6d633c759326/project/773143f7-908b-4f91-a8a0-1566d88f8e25)
 
+[![wakatime](https://wakatime.com/badge/user/443593d2-a49b-4deb-9e6c-bfa25506f1aa/project/d8ed5cda-cafb-47c5-908e-4ec4dffc1750.svg)](https://wakatime.com/badge/user/443593d2-a49b-4deb-9e6c-bfa25506f1aa/project/d8ed5cda-cafb-47c5-908e-4ec4dffc1750)
+
+[![wakatime](https://wakatime.com/badge/user/92714f91-5bd0-4e5f-ad0e-ceb54c8406d2/project/41ef207f-725d-4863-8046-bfb3f133a597.svg)](https://wakatime.com/badge/user/92714f91-5bd0-4e5f-ad0e-ceb54c8406d2/project/41ef207f-725d-4863-8046-bfb3f133a597)
+
+[![wakatime](https://wakatime.com/badge/user/3347b15e-226a-471b-9f86-f04cdf705140/project/6e9fa798-b3cf-4fac-a6c4-0cfae883878d.svg)](https://wakatime.com/badge/user/3347b15e-226a-471b-9f86-f04cdf705140/project/6e9fa798-b3cf-4fac-a6c4-0cfae883878d)
 ---
 
 <br />
 <br />
 
-<!-- TODO: If you want to add more layers for your readme -->
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -46,7 +47,7 @@
       </ol>
     </li>
     <li>
-      <a href="#rule,-practices-and-principles">Rules, Practices and Principles</a>
+      <a href="#rules,-practices-and-principles">Rules, Practices and Principles</a>
     </li>
     <li>
       <a href="#resources">Resources</a>
@@ -73,7 +74,6 @@ Description of the project in details.
 
 ### Technology
 
-<!-- TODO: List of Technology Used -->
 #### Language
 ![HTML](https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)
@@ -81,7 +81,6 @@ Description of the project in details.
 ![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
 
 #### Framework/Library
-![CodeIgniter](https://img.shields.io/badge/CodeIgniter-EF4223?style=for-the-badge&logo=codeigniter&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
 
@@ -90,8 +89,8 @@ Description of the project in details.
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)
 
-#### Deployment
-![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+<!-- #### Deployment
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white) -->
 
 ## Rules, Practices and Principles
 
