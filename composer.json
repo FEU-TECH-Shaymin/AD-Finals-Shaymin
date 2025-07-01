@@ -1,0 +1,32 @@
+{
+    "name": "63947/ad-finals-shaymin-1",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "63947\\AdFinalsShaymin1\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "papilooz",
+            "email": "manriquequervie@gmail.com"
+        },
+         {
+            "name": "papilooz",
+            "email": "manriquequervie@gmail.com"
+        },
+         {
+            "name": "papilooz",
+            "email": "manriquequervie@gmail.com"
+        },
+         {
+            "name": "papilooz",
+            "email": "manriquequervie@gmail.com"
+        },
+         {
+            "name": "papilooz",
+            "email": "manriquequervie@gmail.com"
+        }
+    ],
+    "require": {}
+}
