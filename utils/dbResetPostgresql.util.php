@@ -8,7 +8,7 @@ require 'vendor/autoload.php';
 require 'bootstrap.php';
 
 // 3) envSetter
-$typeConfig = require_once __DIR__ . '/envSetter.util.php';
+$typeConfig = require_once UTILS_PATH . 'envSetter.util.php';
 
 // Prepare config array
 $pgConfig = [
@@ -35,37 +35,3 @@ try {
     exit(1);
 }
 
-// ——— Apply schemas ———
-$modelFiles = [
-    'user.model.sql',
-    'meeting.model.sql',
-    'meeting_users.model.sql',
-    'tasks.model.sql',
-];
-
-foreach ($modelFiles as $modelFile) {
-$path = __DIR__ . "/../database/{$modelFile}";
-    echo "Applying schema from {$path}…\n";
-
-    $sql = file_get_contents($path);
-
-    if ($sql === false) {
-        throw new RuntimeException("Could not read {$path}");
-    } else {
-        echo "✅ Creation Success from {$path}\n";
-    }
-
-    $pdo->exec($sql);
-}
-
-// ——— TRUNCATE tables ———
-echo "Truncating tables…\n";
-
-$tables = ['meeting_users', 'tasks', 'meetings', 'users'];
-
-foreach ($tables as $table) {
-    $pdo->exec("TRUNCATE TABLE {$table} RESTART IDENTITY CASCADE;");
-    echo "✅ Truncated table: {$table}\n";
-}
-
-echo "🎉 Reset Completed\n"; 
