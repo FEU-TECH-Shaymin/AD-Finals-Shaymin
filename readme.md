@@ -10,9 +10,8 @@
   </a>
   <h3 align="center">Outlast</h3>
 </div>
-<!-- TODO: Make a short description -->
 <div align="center">
-  Short Description. (Optional)
+  Outlast is your ultimate survival companion in a post-apocalyptic world. Our website offers a curated selection of essential gear, tools, and supplies to help you thrive—not just survive—during a zombie apocalypse. From fortified shelters to anti-zombie weapons, Outlast has everything you need to stay one step ahead.
 </div>
 
 <br />
