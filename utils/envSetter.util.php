@@ -12,8 +12,6 @@ return [
     'pg_db'      => $_ENV['PG_DB'],
     'pg_user'    => $_ENV['PG_USER'],
     'pg_pass'    => $_ENV['PG_PASS'],
-    'mongo_uri'  => $isDocker
-        ? 'mongodb://root:rootPassword@mongodb:27017'
-        : 'mongodb://root:rootPassword@localhost:27111',
+    'mongo_uri'  => $_ENV['MONGO_URI'],
     'mongo_db'   => $_ENV['MONGO_DB'],
 ];
