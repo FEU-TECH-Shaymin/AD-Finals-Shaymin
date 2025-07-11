@@ -14,3 +14,4 @@ $pass   = $_POST['password']    ?? '';
 if (!$first || !$last || !$user || !$pass) {
     exit('Missing required fields.');
 }
+$hash = password_hash($pass, PASSWORD_BCRYPT);
