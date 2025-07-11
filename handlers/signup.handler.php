@@ -1,3 +1,4 @@
+<?php
 require_once __DIR__ . '/../utils/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -14,11 +15,14 @@ $pass   = $_POST['password']    ?? '';
 if (!$first || !$last || !$user || !$pass) {
     exit('Missing required fields.');
 }
+
 $hash = password_hash($pass, PASSWORD_BCRYPT);
+
 $sql = <<<SQL
 INSERT INTO users (first_name, middle_name, last_name, username, password)
 VALUES (:f, :m, :l, :u, :p)
 SQL;
+
 try {
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
@@ -29,7 +33,7 @@ try {
         ':p' => $hash,
     ]);
     header('Location: /login.html?registered=1');
-    } catch (PDOException $e) {
+} catch (PDOException $e) {
     if ($e->getCode() === '23505') {          // unique_violation
         exit('Username already taken.');
     }
