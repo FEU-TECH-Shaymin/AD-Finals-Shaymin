@@ -19,3 +19,13 @@ $sql = <<<SQL
 INSERT INTO users (first_name, middle_name, last_name, username, password)
 VALUES (:f, :m, :l, :u, :p)
 SQL;
+try {
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([
+        ':f' => $first,
+        ':m' => $middle,
+        ':l' => $last,
+        ':u' => $user,
+        ':p' => $hash,
+    ]);
+    header('Location: /login.html?registered=1');
