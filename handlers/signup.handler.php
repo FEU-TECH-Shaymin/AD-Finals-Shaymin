@@ -15,3 +15,7 @@ if (!$first || !$last || !$user || !$pass) {
     exit('Missing required fields.');
 }
 $hash = password_hash($pass, PASSWORD_BCRYPT);
+$sql = <<<SQL
+INSERT INTO users (first_name, middle_name, last_name, username, password)
+VALUES (:f, :m, :l, :u, :p)
+SQL;
