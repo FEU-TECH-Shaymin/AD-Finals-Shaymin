@@ -29,3 +29,9 @@ try {
         ':p' => $hash,
     ]);
     header('Location: /login.html?registered=1');
+    } catch (PDOException $e) {
+    if ($e->getCode() === '23505') {          // unique_violation
+        exit('Username already taken.');
+    }
+    exit('Registration failed.');
+}
