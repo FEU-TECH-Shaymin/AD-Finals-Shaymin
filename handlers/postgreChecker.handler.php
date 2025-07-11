@@ -2,9 +2,9 @@
 
 $host = "host.docker.internal"; 
 $port = "5112";
-$username = "user";
-$password = "password";
-$dbname = "mydatabase";
+$username = "shaymin";
+$password = "Password123_";
+$dbname = "shayminpostgredb";
 
 $conn_string = "host=$host port=$port dbname=$dbname user=$username password=$password";
 
