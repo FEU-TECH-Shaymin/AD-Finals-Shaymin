@@ -1,0 +1,30 @@
+{
+    "name": "mm-gonzales/ad-finals-shaymin",
+    "type": "project",
+    "authors": [
+                {
+            "name": "mm-gonzales",
+            "email": "michaela.v.gonzales@gmail.com"
+        },
+        {
+            "name": "papilooz",
+            "email": "manriquequervie@gmail.com"
+        },
+        {
+            "name": "sdoxina",
+            "email": "202311026@fit.edu.ph"
+        },
+        {
+            "name": "nriveraaa",
+            "email": "202310167@fit.edu.ph"
+        },
+        {
+            "name": "gaganalexa",
+            "email": "202310537@gmail.com"
+        }
+    ],
+    "scripts": {
+        "start": "php -S localhost:8000 router.php"
+    },
+    "require": {}
+}
