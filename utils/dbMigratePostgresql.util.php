@@ -31,3 +31,16 @@ try {
     exit(1);
 }
 
+// 5 ) Drop all existing tables
+echo "Dropping old tables…\n";
+foreach ([
+    'transactions',
+    'orders',
+    'products',
+    'users',
+    'projects'
+] as $table) {
+    $pdo->exec("DROP TABLE IF EXISTS {$table} CASCADE;");
+    echo "🗑️  Dropped table: {$table}\n";
+}
+
