@@ -9,17 +9,12 @@ $dotenv->load();
 $isDocker = file_exists('/.dockerenv');
 
 return [
-    'pg_host' => $_ENV['PG_HOST'] ?? ($isDocker ? 'shaymin-postgresql' : 'localhost'),
-    'pg_port' => $_ENV['PG_PORT'] ?? ($isDocker ? '5432' : '5112'),
+    'pgHost'     => $_ENV['PG_HOST'] ?? ($isDocker ? 'shaymin-postgresql' : 'localhost'),
+    'pgPort'     => $_ENV['PG_PORT'] ?? ($isDocker ? '5432' : '5112'),
+    'pgDb'       => $_ENV['PG_DB']   ?? 'shayminpostgredb',
+    'pgUser'     => $_ENV['PG_USER'] ?? 'shaymin',
+    'pgPassword' => $_ENV['PG_PASS'] ?? 'Password123_',
 
-    'pg_db'   => $_ENV['PG_DB']     ?? 'shayminpostgredb',
-    'pg_user' => $_ENV['PG_USER']   ?? 'shaymin',
-    'pg_pass' => $_ENV['PG_PASS']   ?? 'Password123_',
-
-    'mongo_uri' => $_ENV['MONGO_URI'] ?? (
-        $isDocker 
-        ? 'mongodb://shaymin:Password123_@shaymin-mongodb:27017'
-        : 'mongodb://shaymin:Password123_@localhost:27111'
-    ),
-    'mongo_db'  => $_ENV['MONGO_DB'] ?? 'shayminmongodb',
+    'mongo_uri'  => $_ENV['MONGO_URI'],
+    'mongo_db'   => $_ENV['MONGO_DB'] ?? 'shayminmongodb',
 ];
