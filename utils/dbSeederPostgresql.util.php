@@ -31,3 +31,11 @@ try {
     exit(1);
 }
 
+// 5) Dummy definitions: key = table, value = file
+$seedMap = [
+    'users' => '/users.staticData.php',
+    'products' => '/products.staticData.php',
+    'orders' => '/orders.staticData.php',
+    'transactions' => '/transactions.staticData.php',
+];
+
