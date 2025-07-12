@@ -80,8 +80,23 @@ foreach ($seedMap as $table => $file) {
             }
             break;
 
+        case 'orders':
+            $stmt = $pdo->prepare("
+                INSERT INTO orders (order_id,user_id, order_date, total_amount, status)
+                VALUES (:order_id, :user_id, :order_date, :total_amount, :status)
+            ");
+            foreach ($data as $o) {
+                $stmt->execute([
+                    ':order_id' => $o['order_id'],
+                    ':user_id' => $o['user_id'],
+                    ':order_date' => $o['order_date'],
+                    ':total_amount' => $o['total_amount'],
+                    ':status' => $o['status'],
+                ]);
+            }
+            break;
 
-    }
+
 
     echo "✅ Done seeding {$table}\n";
 }
