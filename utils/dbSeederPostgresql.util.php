@@ -39,3 +39,17 @@ $seedMap = [
     'transactions' => '/transactions.staticData.php',
 ];
 
+// 6) Seeding
+foreach ($seedMap as $table => $file) {
+    echo "🌱 Seeding {$table}…\n";
+
+    $data = require_once DUMMIES_PATH . $file;
+
+    switch ($table) {
+
+    }
+
+    echo "✅ Done seeding {$table}\n";
+}
+
+echo "🎉 PostgreSQL seeding complete!\n";
