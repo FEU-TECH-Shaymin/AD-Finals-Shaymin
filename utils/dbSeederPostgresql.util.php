@@ -64,6 +64,22 @@ foreach ($seedMap as $table => $file) {
             }
             break;
 
+        case 'products':
+            $stmt = $pdo->prepare("
+                INSERT INTO products (name, description, category, price, stock_quantity)
+                VALUES (:name, :description, :category, :price, :stock_quantity)
+            ");
+            foreach ($data as $p) {
+                $stmt->execute([
+                    ':name' => $p['name'],
+                    ':description' => $p['description'],
+                    ':category' => $p['category'],
+                    ':price' => $p['price'],
+                    ':stock_quantity' => $p['stock_quantity'],
+                ]);
+            }
+            break;
+
 
     }
 
