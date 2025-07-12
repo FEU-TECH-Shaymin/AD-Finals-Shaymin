@@ -19,3 +19,7 @@ $pdo = new PDO($dsn, $pgConfig['user'], $pgConfig['pass']);
 
 $username = $_POST['username'] ?? '';
 $password = $_POST['password'] ?? '';
+
+$stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username");
+$stmt->execute([':username' => $username]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
