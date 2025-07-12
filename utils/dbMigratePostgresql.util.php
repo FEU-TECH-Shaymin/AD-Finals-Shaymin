@@ -44,3 +44,11 @@ foreach ([
     echo "🗑️  Dropped table: {$table}\n";
 }
 
+// 6) Apply updated schema
+$models = [
+    DATABASE_PATH . '/users.model.sql',
+    DATABASE_PATH . '/products.model.sql',
+    DATABASE_PATH . '/orders.model.sql',
+    DATABASE_PATH . '/transactions.model.sql',
+];
+
