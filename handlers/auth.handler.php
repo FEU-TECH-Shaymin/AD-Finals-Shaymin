@@ -34,3 +34,6 @@ $_SESSION['user'] = [
     'username' => $user['username'],
     'role' => $user['role']
 ];
+
+header('Location: /index.php');
+exit;
