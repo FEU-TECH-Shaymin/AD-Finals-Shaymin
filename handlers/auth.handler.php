@@ -14,3 +14,5 @@ $pgConfig = [
     'pass' => $typeConfig['pg_pass'],
 ];
 
+$dsn = "pgsql:host={$pgConfig['host']};port={$pgConfig['port']};dbname={$pgConfig['db']}";
+$pdo = new PDO($dsn, $pgConfig['user'], $pgConfig['pass']);
