@@ -29,3 +29,8 @@ if (!$user || !password_verify($password, $user['password'])) {
     header('Location: /login.php');
     exit;
 }
+$_SESSION['user'] = [
+    'id' => $user['id'],
+    'username' => $user['username'],
+    'role' => $user['role']
+];
