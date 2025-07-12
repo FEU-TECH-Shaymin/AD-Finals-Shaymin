@@ -96,7 +96,28 @@ foreach ($seedMap as $table => $file) {
             }
             break;
 
+        case 'transactions':
+            $stmt = $pdo->prepare("
+                INSERT INTO transactions (transaction_id, user_id, order_id, transaction_date, currency, amount_paid, total_amount, status)
+                VALUES (:transaction_id, :user_id, :order_id, :transaction_date, :currency, :amount_paid, :total_amount, :status)
+            ");
+            foreach ($data as $t) {
+                $stmt->execute([
+                    'transaction_id' => $t['transaction_id'],
+                    ':user_id' => $t['user_id'],
+                    ':order_id' => $t['order_id'],
+                    ':transaction_date' => $t['transaction_date'],
+                    ':currency' => $t['currency'],
+                    ':amount_paid' => $t['amount_paid'],
+                    ':total_amount' => $t['total_amount'],
+                    ':status' => $t['status'],
+                ]);
+            }
+            break;
 
+        default:
+            echo "⚠️ Skipping unknown table: {$table}\n";
+    }
 
     echo "✅ Done seeding {$table}\n";
 }
