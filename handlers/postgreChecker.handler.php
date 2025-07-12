@@ -1,7 +1,7 @@
 <?php
 
-require_once BASE_PATH . '/bootstrap.php'; // Make sure path constants are loaded
-$typeConfig = require_once UTILS_PATH . '/envSetter.util.php';
+require_once BASE_PATH . '/bootstrap.php'; // defines paths
+$typeConfig = require UTILS_PATH . '/envSetter.util.php';
 
 $host     = $typeConfig['pg_host'];
 $port     = $typeConfig['pg_port'];
