@@ -52,3 +52,17 @@ $models = [
     DATABASE_PATH . '/transactions.model.sql',
 ];
 
+foreach ($models as $modelPath) {
+    echo "Applying schema from {$modelPath}…\n";
+
+    $sql = file_get_contents($modelPath);
+
+    if ($sql === false) {
+        throw new RuntimeException("❌ Could not read {$modelPath}");
+    }
+
+    $pdo->exec($sql);
+    echo "✅ Successfully applied: {$modelPath}\n";
+}
+
+echo "🎉 Migration complete!\n";
