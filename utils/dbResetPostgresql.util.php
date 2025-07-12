@@ -32,3 +32,37 @@ try {
     exit(1);
 }
 
+// ——— Apply schemas ———
+$modelFiles = [
+    'users.model.sql',
+    'orders.model.sql',
+    'products.model.sql',
+    'transactions.model.sql',
+];
+
+foreach ($modelFiles as $modelFile) {
+$path = BASE_PATH . "/database/{$modelFile}";
+    echo "Applying schema from {$path}…\n";
+
+    $sql = file_get_contents($path);
+
+    if ($sql === false) {
+        throw new RuntimeException("Could not read {$path}");
+    } else {
+        echo "✅ Creation Success from {$path}\n";
+    }
+
+    $pdo->exec($sql);
+}
+
+// ——— TRUNCATE tables ———
+echo "Truncating tables…\n";
+
+$tables = ['users', 'orders', 'products', 'transactions'];
+
+foreach ($tables as $table) {
+    $pdo->exec("TRUNCATE TABLE {$table} RESTART IDENTITY CASCADE;");
+    echo "✅ Truncated table: {$table}\n";
+}
+
+echo "🎉 Reset Completed\n"; 
