@@ -16,3 +16,5 @@ $pgConfig = [
 
 $dsn = "pgsql:host={$pgConfig['host']};port={$pgConfig['port']};dbname={$pgConfig['db']}";
 $pdo = new PDO($dsn, $pgConfig['user'], $pgConfig['pass']);
+
+$username = $_POST['username'] ?? '';
