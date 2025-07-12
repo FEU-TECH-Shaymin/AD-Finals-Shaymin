@@ -2,20 +2,9 @@
 declare(strict_types=1);
 session_start();
 
-// Bootstrap + DB config
+// Load bootstrap and database
 require_once '../bootstrap.php';
-require_once UTILS_PATH . 'envSetter.util.php';
-
-$pgConfig = [
-    'host' => $typeConfig['pg_host'],
-    'port' => $typeConfig['pg_port'],
-    'db'   => $typeConfig['pg_db'],
-    'user' => $typeConfig['pg_user'],
-    'pass' => $typeConfig['pg_pass'],
-];
-
-$dsn = "pgsql:host={$pgConfig['host']};port={$pgConfig['port']};dbname={$pgConfig['db']}";
-$pdo = new PDO($dsn, $pgConfig['user'], $pgConfig['pass']);
+$pdo = require_once UTILS_PATH . '/database.util.php';
 
 $username = $_POST['username'] ?? '';
 $password = $_POST['password'] ?? '';
@@ -29,10 +18,11 @@ if (!$user || !password_verify($password, $user['password'])) {
     header('Location: /login.php');
     exit;
 }
+
 $_SESSION['user'] = [
-    'id' => $user['id'],
+    'id'       => $user['user_id'],
     'username' => $user['username'],
-    'role' => $user['role']
+    'role'     => $user['role']
 ];
 
 header('Location: /index.php');
