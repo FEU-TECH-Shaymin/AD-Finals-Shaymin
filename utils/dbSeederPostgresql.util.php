@@ -46,6 +46,24 @@ foreach ($seedMap as $table => $file) {
     $data = require_once DUMMIES_PATH . $file;
 
     switch ($table) {
+        case 'users':
+            $stmt = $pdo->prepare("
+                INSERT INTO users (user_id, first_name, middle_name, last_name, password, username, role)
+                VALUES (:user_id, :first_name, :middle_name, :last_name, :password, :username, :role)
+            ");
+            foreach ($data as $u) {
+                $stmt->execute([
+                    ':user_id' => $u['user_id'],
+                    ':first_name' => $u['first_name'],
+                    ':middle_name' => $u['middle_name'],
+                    ':last_name' => $u['last_name'],
+                    ':password' => password_hash($u['password'], PASSWORD_DEFAULT),
+                    ':username' => $u['username'],
+                    ':role' => $u['role'],
+                ]);
+            }
+            break;
+
 
     }
 
