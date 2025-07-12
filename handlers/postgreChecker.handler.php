@@ -3,11 +3,11 @@
 require_once BASE_PATH . '/bootstrap.php'; // defines paths
 $typeConfig = require UTILS_PATH . '/envSetter.util.php';
 
-$host     = $typeConfig['pg_host'];
-$port     = $typeConfig['pg_port'];
-$username = $typeConfig['pg_user'];
-$password = $typeConfig['pg_pass'];
-$dbname   = $typeConfig['pg_db'];
+$host     = $typeConfig['pgHost'];
+$port     = $typeConfig['pgPort'];
+$username = $typeConfig['pgUser'];
+$password = $typeConfig['pgPassword'];
+$dbname   = $typeConfig['pgDb'];
 
 $conn_string = "host=$host port=$port dbname=$dbname user=$username password=$password";
 
