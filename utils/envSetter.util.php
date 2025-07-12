@@ -1,5 +1,5 @@
 <?php
-require_once VENDOR_PATH . 'autoload.php';
+require_once VENDOR_PATH . '/autoload.php';
 
 // Load .env variables from BASE_PATH (your project root)
 $dotenv = Dotenv\Dotenv::createImmutable(BASE_PATH);
