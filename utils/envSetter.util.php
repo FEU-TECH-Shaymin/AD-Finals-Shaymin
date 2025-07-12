@@ -18,3 +18,5 @@ $typeConfig = [
     'mongoUri'   => $_ENV['MONGO_URI'],
     'mongoDB'    => $_ENV['MONGO_DB'],
 ];
+
+return $typeConfig;
