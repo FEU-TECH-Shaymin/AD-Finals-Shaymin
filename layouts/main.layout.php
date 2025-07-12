@@ -12,3 +12,6 @@ require_once TEMPLATES_PATH . '/head.component.php';
 require_once TEMPLATES_PATH . '/nav.component.php';
 require_once TEMPLATES_PATH . '/foot.component.php';
 require_once UTILS_PATH . "/envSetter.util.php";
+
+// 3. Load nav data
+require_once STATICDATAS_PATH . '/navPages.staticData.php';
