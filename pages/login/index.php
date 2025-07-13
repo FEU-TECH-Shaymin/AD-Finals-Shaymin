@@ -18,8 +18,20 @@ renderMainLayout(
         ?>
         <section class="login-section d-flex align-items-center justify-content-center" style="min-height: 100vh;">
             <div class="card p-4 shadow-lg" style="max-width: 400px; width: 100%;">
-                <form action="/handlers/auth.handler.php" method="POST" ...>
-                    <input type="hidden" name="action" value="login">
+                <form action="/handlers/auth.handler.php" method="POST">
+                    <h2 class="text-center mb-4">Log In</h2>
+
+                    <?php if (!empty($message)): ?>
+                        <div class="alert alert-success" role="alert">
+                            <?= htmlspecialchars($message) ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if (!empty($error)): ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?= htmlspecialchars($error) ?>
+                        </div>
+                    <?php endif; ?>
                 </form>
             </div>
         </section>
