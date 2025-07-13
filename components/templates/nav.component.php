@@ -27,3 +27,7 @@ function navHeader(array $navList, ?array $user = null): void
                             <?php endforeach; ?>
                         </ul>
                 </div>
+                <button class="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
