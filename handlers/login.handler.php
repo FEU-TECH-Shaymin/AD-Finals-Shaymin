@@ -29,3 +29,12 @@ try {
         header('Location: /dashboard.php');
         exit;
     }
+      $error = urlencode("Invalid credentials.");
+    header("Location: /pages/login/index.php?error=$error");
+    exit;
+
+} catch (Exception $e) {
+    $error = urlencode("An error occurred. Please try again.");
+    header("Location: /pages/login/index.php?error=$error");
+    exit;
+}
