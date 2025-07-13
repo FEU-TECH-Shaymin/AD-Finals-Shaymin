@@ -231,3 +231,91 @@
     border-color: #bac6a3 !important;
 }
 
+/* ====== Hero Section ====== */
+.hero-section {
+  background: url(../img/foggyRedHorde.png) no-repeat center center/cover;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1rem;
+  text-align: center;
+  overflow: hidden;
+  position: relative; /* ensure stacking context */
+}
+
+.hero-txt{
+  position: relative;
+  z-index: 2;
+  color: #E8EDEA;
+  width: 75%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  margin-left: 20px;
+}
+
+.hero-img{
+  max-width: 600px;
+  margin-bottom: 25px;
+}
+
+.hero-heading {
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: left;
+  animation-delay: calc(2s + 4s * 0.2);
+  margin-left: 20px;
+}
+
+.hero-subheading {
+  font-size: 1.7rem;
+  font-weight: 700;
+  text-align: left;
+  margin-left: 20px;
+  animation-delay: calc(2s + 4s * 0.25);
+}
+
+.hero-body {
+  font-weight: 500;
+  font-size: 1.3rem;
+  max-width: 750px;
+  text-align: left;
+  margin-left: 20px;
+  margin-bottom: 25px;
+  animation-delay: calc(2s + 5s * 0.25);
+}
+
+.hero-cta {
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  margin-left: 20px;
+  text-transform: uppercase;
+  border-radius: 75px;
+  transition: background-color 0.3s;
+  background-color: #e8edeabb;
+  backdrop-filter: blur(3px);
+}
+
+.hero-cta:hover {
+  background-color: #e8edeabb;
+  backdrop-filter: blur(3px);
+  color: #6F020D;
+}
+
+.hero-cta i {
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.hero-heading,
+.hero-subheading, .hero-body {
+	animation-name: glitch-anim-text;
+	animation-duration: 4s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
