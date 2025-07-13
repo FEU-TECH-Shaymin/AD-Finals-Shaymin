@@ -25,6 +25,12 @@ renderMainLayout(
             <div id="image"></div>
             <div id="glitch"></div>
         </section>
+
+        <section class="about-section">
+         <div class="container-fluid">
+          <img src="./assets/img/chooseOutlast.png" alt="Why Choose Outlast" class="choose-img">
+         </div>
+      </section>
         <?php
     },
     [
