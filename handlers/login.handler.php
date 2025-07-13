@@ -1,40 +1,41 @@
 <?php
-require_once UTILS_PATH . '/database.util.php';
+declare(strict_types=1);
 session_start();
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    exit('Method Not Allowed');
-}
+require_once '../bootstrap.php';
+
+// Get PDO instance (make sure this returns a PDO object)
+$pdo = require_once UTILS_PATH . '/database.util.php'; // or use getPdoInstance()
+
 $username = trim($_POST['username'] ?? '');
 $password = trim($_POST['password'] ?? '');
 
-
+// Validate input
 if (empty($username) || empty($password)) {
-    $error = urlencode("Username and password are required.");
+    $error = urlencode('Username and password are required.');
     header("Location: /pages/login/index.php?error=$error");
     exit;
 }
-try {
-    $pdo = getPdoInstance(); // Make sure this returns a PDO object from database.util.php
 
-    $sql  = 'SELECT * FROM users WHERE username = :u LIMIT 1';
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([':u' => $username]);
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+// Look up user
+$stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username");
+$stmt->execute([':username' => $username]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($user && password_verify($password, $user['password'])) {
-        $_SESSION['user_id'] = $user['user_id'];
-        $_SESSION['role'] = $user['role'];
-        header('Location: /dashboard.php');
-        exit;
-    }
-      $error = urlencode("Invalid credentials.");
-    header("Location: /pages/login/index.php?error=$error");
-    exit;
-
-} catch (Exception $e) {
-    $error = urlencode("An error occurred. Please try again.");
+// Check password
+if (!$user || !password_verify($password, $user['password'])) {
+    $error = urlencode('Invalid username or password.');
     header("Location: /pages/login/index.php?error=$error");
     exit;
 }
+
+// Login success: store user in session
+$_SESSION['user'] = [
+    'id'       => $user['user_id'],
+    'username' => $user['username'],
+    'role'     => $user['role']
+];
+
+// Redirect to dashboard/home
+header('Location: /index.php');
+exit;
