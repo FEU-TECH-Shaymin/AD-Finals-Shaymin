@@ -14,11 +14,11 @@ $message = str_replace("%", " ", $message);
 
 // Call layout renderer
 renderMainLayout(
-    function () {
+    function () use ($error, $message) {
         ?>
-        <!-- Hero Section -->
-        <section class="section">
-            <div class="container-fluid">
+        <section class="login-section d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+            <div class="card p-4 shadow-lg" style="max-width: 400px; width: 100%;">
+                <form></form>
             </div>
         </section>
         <?php
