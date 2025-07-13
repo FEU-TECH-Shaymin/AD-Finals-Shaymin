@@ -32,6 +32,25 @@ renderMainLayout(
                             <?= htmlspecialchars($error) ?>
                         </div>
                     <?php endif; ?>
+
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" id="username" name="username" class="form-control" required>
+                        <div class="invalid-feedback">Please enter your username.</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" id="password" name="password" class="form-control" required>
+                        <div class="invalid-feedback">Please enter your password.</div>
+                    </div>
+
+                    <input type="hidden" name="action" value="login">
+
+                    <button type="submit" class="btn btn-primary w-100 mb-2">Log In</button>
+                    <p class="text-center small">
+                        Don't have an account? <a href="../signup/index.php">Sign Up</a>
+                    </p>
                 </form>
             </div>
         </section>
