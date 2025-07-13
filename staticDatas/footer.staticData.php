@@ -20,9 +20,4 @@ $footerLinks = [
         "url" => "/pages/contact/index.php",
         "for"  => "all",
     ],
-    [
-        "label" => "Login",
-        "url" => "/pages/login-signup/index.php",
-        "for"  => "all",
-    ],
 ];
