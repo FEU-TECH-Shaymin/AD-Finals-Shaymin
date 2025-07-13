@@ -1,4 +1,4 @@
 <?php
 // Simply forward to handler
-header('Location: /handlers/auth.handler.php?action=logout');
+header('Location: /handlers/logout.handler.php?action=logout');
 exit;
