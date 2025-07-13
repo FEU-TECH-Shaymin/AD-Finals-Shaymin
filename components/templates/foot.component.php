@@ -15,6 +15,15 @@ function footer(array $pageJs = []): void
     <!-- Site Main JS -->
     <script src="/assets/js/script.js"></script>
 
+    <!-- Custom page-level JS -->
+    <?php
+    if (!empty($pageJs)) {
+        foreach ($pageJs as $jsFile) {
+            echo "<script src=\"" . htmlspecialchars($jsFile) . "\"></script>\n";
+        }
+    }
+    ?>
+
     </body>
     </html>
     <?php
