@@ -6,5 +6,6 @@ define('DUMMIES_PATH', realpath(BASE_PATH . '/staticDatas/dummies'));
 define('DATABASE_PATH', realpath(BASE_PATH . '/database'));
 define('TEMPLATES_PATH', realpath(BASE_PATH . '/components/templates'));
 define('STATICDATAS_PATH', realpath(BASE_PATH . '/staticDatas'));
+define('LAYOUTS_PATH', realpath(BASE_PATH . '/layouts'));
 
 chdir(BASE_PATH);
