@@ -39,3 +39,25 @@ $_SESSION['user'] = [
 // Redirect to dashboard/home
 header('Location: /index.php');
 exit;
+if (empty($user) || empty($pass)) {
+    exit('Username and password are required.');
+}
+
+$sql  = 'SELECT * FROM users WHERE username = :u LIMIT 1';
+$stmt = $pdo->prepare($sql);
+$stmt->execute([':u' => $user]);
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if ($row && password_verify($pass, $row['password'])) {
+    $_SESSION['user_id'] = $row['user_id'];
+    $_SESSION['role']    = $row['role'];
+    
+    // ✅ Redirect with success message
+    $message = urlencode('Login successful!');
+    header("Location: /dashboard.php?message=$message");
+    exit;
+}
+
+$error = urlencode('Invalid credentials.');
+header("Location: /pages/login/index.php?error=$error");
+exit;
