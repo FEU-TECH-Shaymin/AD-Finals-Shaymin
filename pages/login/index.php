@@ -6,11 +6,8 @@ require_once LAYOUTS_PATH . "/main.layout.php";
 // $mongoCheckerResult = require_once HANDLERS_PATH . "/mongodbChecker.handler.php";
 // $postgresqlCheckerResult = require_once HANDLERS_PATH . "/postgreChecker.handler.php";
 
-$error = trim((string) ($_GET['error'] ?? ''));
-$error = str_replace("%", " ", $error);
-
-$message = trim((string) ($_GET['message'] ?? ''));
-$message = str_replace("%", " ", $message);
+$error = urldecode(trim((string) ($_GET['error'] ?? '')));
+$message = urldecode(trim((string) ($_GET['message'] ?? '')));
 
 // Call layout renderer
 renderMainLayout(
@@ -18,7 +15,7 @@ renderMainLayout(
         ?>
         <section class="login-section d-flex align-items-center" style="min-height: 100vh;">
             <div class="card p-4 shadow-lg" style="max-width: 400px; width: 100%;">
-                <form id="sign-in-form" action="/handlers/auth.handler.php" method="POST">
+                <form id="sign-in-form" action="/handlers/login.handler.php" method="POST">
                     <h2 class="text-center mb-4">Log In</h2>
 
                     <?php if (!empty($message)): ?>
