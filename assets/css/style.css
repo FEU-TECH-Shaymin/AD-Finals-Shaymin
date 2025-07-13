@@ -413,3 +413,21 @@
     transform: scale(1.21);
   }
 }
+
+/* ====== About Section ====== */
+.about-section {
+  background-color: #342222;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1rem;
+  text-align: center;
+  position: relative;
+}
+
+.choose-img{
+  width: 80%;
+  height: auto;
+}
