@@ -15,3 +15,10 @@ if (empty($username) || empty($password)) {
     header("Location: /pages/login/index.php?error=$error");
     exit;
 }
+try {
+    $pdo = getPdoInstance(); // Make sure this returns a PDO object from database.util.php
+
+    $sql  = 'SELECT * FROM users WHERE username = :u LIMIT 1';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':u' => $username]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
