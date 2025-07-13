@@ -18,7 +18,9 @@ renderMainLayout(
         ?>
         <section class="login-section d-flex align-items-center justify-content-center" style="min-height: 100vh;">
             <div class="card p-4 shadow-lg" style="max-width: 400px; width: 100%;">
-                <form></form>
+                <form action="/handlers/auth.handler.php" method="POST" ...>
+                    <input type="hidden" name="action" value="login">
+                </form>
             </div>
         </section>
         <?php
