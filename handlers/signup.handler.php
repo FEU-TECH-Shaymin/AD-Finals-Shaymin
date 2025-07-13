@@ -2,40 +2,48 @@
 require_once UTILS_PATH . '/database.util.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);   // Method Not Allowed
+    http_response_code(405); // Method Not Allowed
     exit;
 }
 
-$first  = $_POST['first_name']  ?? '';
-$middle = $_POST['middle_name'] ?? null;
-$last   = $_POST['last_name']   ?? '';
-$user   = $_POST['username']    ?? '';
-$pass   = $_POST['password']    ?? '';
+$first_name  = trim($_POST['first_name'] ?? '');
+$middle_name = trim($_POST['middle_name'] ?? '');
+$last_name   = trim($_POST['last_name'] ?? '');
+$username    = trim($_POST['username'] ?? '');
+$email       = trim($_POST['email'] ?? '');
+$password    = $_POST['password'] ?? '';
 
-if (!$first || !$last || !$user || !$pass) {
-    exit('Missing required fields.');
+if (!$first_name || !$last_name || !$username || !$email || !$password) {
+    header('Location: /pages/signup/index.php?error=' . urlencode('Please fill in all required fields.'));
+    exit;
 }
 
-$hash = password_hash($pass, PASSWORD_BCRYPT);
+$hash = password_hash($password, PASSWORD_BCRYPT);
 
 $sql = <<<SQL
-INSERT INTO users (first_name, middle_name, last_name, username, password)
-VALUES (:f, :m, :l, :u, :p)
+INSERT INTO users (first_name, middle_name, last_name, username, email, password)
+VALUES (:first_name, :middle_name, :last_name, :username, :email, :password)
 SQL;
 
 try {
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
-        ':f' => $first,
-        ':m' => $middle,
-        ':l' => $last,
-        ':u' => $user,
-        ':p' => $hash,
+        ':first_name'  => $first_name,
+        ':middle_name' => $middle_name ?: null,
+        ':last_name'   => $last_name,
+        ':username'    => $username,
+        ':email'       => $email,
+        ':password'    => $hash,
     ]);
-    header('Location: /login.html?registered=1');
+
+    header('Location: /pages/login/index.php?registered=1');
+    exit;
+
 } catch (PDOException $e) {
-    if ($e->getCode() === '23505') {          // unique_violation
-        exit('Username already taken.');
+    if ($e->getCode() === '23505') {
+        header('Location: /pages/signup/index.php?error=' . urlencode('Username or email already exists.'));
+    } else {
+        header('Location: /pages/signup/index.php?error=' . urlencode('Registration failed. Please try again.'));
     }
-    exit('Registration failed.');
+    exit;
 }
