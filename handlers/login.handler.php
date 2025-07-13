@@ -1,4 +1,4 @@
-<?php
+<?php 
 require_once UTILS_PATH . '/database.util.php';
 session_start();
 
@@ -7,23 +7,32 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-$user = $_POST['username'] ?? '';
-$pass = $_POST['password'] ?? '';
+$username = $_POST['username'] ?? '';
+$password = $_POST['password'] ?? '';
 
-if (empty($user) || empty($pass)) {
+if (empty($username) || empty($password)) {
     exit('Username and password are required.');
 }
 
 $sql  = 'SELECT * FROM users WHERE username = :u LIMIT 1';
 $stmt = $pdo->prepare($sql);
-$stmt->execute([':u' => $user]);
+$stmt->execute([':u' => $username]);
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if ($row && password_verify($pass, $row['password'])) {
+if ($row && password_verify($password, $row['password'])) {
     $_SESSION['user_id'] = $row['user_id'];
     $_SESSION['role']    = $row['role'];
-    header('Location: /dashboard.php');
+    $_SESSION['username'] = $row['username'];
+
+    // ✅ Redirect based on role
+    if ($row['role'] === 'admin') {
+        header('Location: /admin_dashboard.php');
+    } else {
+        header('Location: /customer_dashboard.php');
+    }
     exit;
 }
 
-exit('Invalid credentials.');
+// Optionally redirect back to login page with error
+header('Location: /pages/login/index.php?error=invalid');
+exit;
