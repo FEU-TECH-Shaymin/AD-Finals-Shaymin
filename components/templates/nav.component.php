@@ -16,3 +16,14 @@ function navHeader(array $navList, ?array $user = null): void
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav ms-auto pe-3">
+                        <?php foreach ($navList as $navItem): ?>
+                            <li class="nav-item">
+                                <a class="nav-link mx-lg-2 <?= $_SERVER['REQUEST_URI'] === $navItem['url'] ? 'active' : '' ?>" href="<?= htmlspecialchars($navItem['url']) ?>">
+                                    <?= htmlspecialchars($navItem['label']) ?>
+                                </a>
+                            </li>
+                            <?php endforeach; ?>
+                        </ul>
+                </div>
