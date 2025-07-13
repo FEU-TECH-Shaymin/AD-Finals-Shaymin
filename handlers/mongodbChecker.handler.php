@@ -1,12 +1,13 @@
 <?php
 
-require_once UTILS_PATH . '/envSetter.util.php';
+require_once BASE_PATH . '/bootstrap.php';
+$typeConfig = require_once UTILS_PATH . '/envSetter.util.php';
 
 try {
-    $mongo = new MongoDB\Driver\Manager($typeConfig['mongoUri']);
+    $mongo = new MongoDB\Driver\Manager($typeConfig['mongo_uri']);
 
     $command = new MongoDB\Driver\Command(["ping" => 1]);
-    $mongo->executeCommand("admin", $command);
+    $mongo->executeCommand($typeConfig['mongo_db'], $command);
 
     echo "✅ Connected to MongoDB successfully.  <br>";
 } catch (MongoDB\Driver\Exception\Exception $e) {

@@ -1,22 +1,22 @@
 <?php
+require_once VENDOR_PATH . '/autoload.php';
 
-require_once BASE_PATH . '/bootstrap.php';
-require_once BASE_PATH . '/vendor/autoload.php';
-
+// Load .env variables from BASE_PATH (your project root)
 $dotenv = Dotenv\Dotenv::createImmutable(BASE_PATH);
 $dotenv->load();
 
-$typeConfig = [
+// Check if running inside Docker
+$isDocker = file_exists('/.dockerenv');
+
+return [
     // PostgreSQL
-    'pgHost'     => $_ENV['PG_HOST'],
-    'pgPort'     => $_ENV['PG_PORT'],
-    'pgDb'       => $_ENV['PG_DB'],
-    'pgUser'     => $_ENV['PG_USER'],
-    'pgPassword' => $_ENV['PG_PASS'],
+    'pgHost'     => $isDocker ? 'shaymin-postgresql' : ($_ENV['PG_HOST'] ?? 'localhost'),
+    'pgPort'     => $isDocker ? '5432' : ($_ENV['PG_PORT'] ?? '5112'),
+    'pgDb'       => $_ENV['PG_DB']   ?? 'shayminpostgredb',
+    'pgUser'     => $_ENV['PG_USER'] ?? 'shaymin',
+    'pgPassword' => $_ENV['PG_PASS'] ?? 'Password123_',
 
-    // MongoDB
-    'mongoUri'   => $_ENV['MONGO_URI'],
-    'mongoDB'    => $_ENV['MONGO_DB'],
+    // MongoDB (still using .env for URI)
+    'mongo_uri'  => $_ENV['MONGO_URI'],
+    'mongo_db'   => $_ENV['MONGO_DB'] ?? 'shayminmongodb',
 ];
-
-return $typeConfig;
