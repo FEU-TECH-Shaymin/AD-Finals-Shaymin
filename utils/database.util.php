@@ -1,7 +1,7 @@
 <?php
-require_once BASE_PATH . '/utils/envsetter.util.php';
+require_once BASE_PATH . '/utils/envSetter.util.php';
 
-$config = require BASE_PATH . '/utils/envsetter.util.php';
+$config = require BASE_PATH . '/utils/envSetter.util.php';
 
 try {
     $pdo = new PDO(
