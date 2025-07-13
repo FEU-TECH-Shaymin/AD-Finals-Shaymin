@@ -6,5 +6,20 @@ require_once LAYOUTS_PATH . "/main.layout.php";
 $mongoCheckerResult = require_once HANDLERS_PATH . "/mongodbChecker.handler.php";
 $postgresqlCheckerResult = require_once HANDLERS_PATH . "/postgreChecker.handler.php";
 
-
+// Call layout renderer
+renderMainLayout(
+    function () {
+        ?>
+        
+        <?php
+    },
+    [
+        "css" => [
+            "./assets/css/style.css"
+        ],
+        "js" => [
+            "./assets/js/script.js"
+        ]
+    ]
+);
 ?>
