@@ -12,7 +12,7 @@ function navHeader(array $navList, ?array $user = null): void
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title d-flex align-items-center" id="offcanvasNavbarLabel">
-                        <img src="/assets/img/outlastLgRed.png" alt="Outlast Logo">
+                        <img src="/assets/img/outlastLogo.png" alt="Outlast Logo">
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
@@ -27,11 +27,11 @@ function navHeader(array $navList, ?array $user = null): void
                             <?php endforeach; ?>
                         </ul>
                 </div>
+                </div>
                 <button class="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
-        </div>
         </nav>
         <?php
         }
