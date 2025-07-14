@@ -51,6 +51,13 @@ return [
         'price'          => 25,
         'stock_quantity' => 100,
     ],
+    [
+        'name'           => 'Bow and Arrow',
+        'description'    => 'Silent ranged weapon useful for distance attacks and reuse of ammo.',
+        'category'       => 'Weapons',
+        'price'          => 25,
+        'stock_quantity' => 100,
+    ],
 
 
     [
