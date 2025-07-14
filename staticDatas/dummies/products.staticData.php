@@ -1,7 +1,7 @@
 <?php
 
 return [
-    // Weapons
+    // WEAPONS
     [
         'name'           => 'Baseball bat',
         'description'    => 'Sturdy blunt weapon effective for close combat and self-defense.',
@@ -12,6 +12,13 @@ return [
     [
         'name'           => 'Sword',
         'description'    => 'Sharp melee weapon ideal for silent and precise attacks.',
+        'category'       => 'Weapons',
+        'price'          => 10,
+        'stock_quantity' => 100,
+    ],
+    [
+        'name'           => 'Knife',
+        'description'    => 'Compact blade suitable for stealth and utility purposes.',
         'category'       => 'Weapons',
         'price'          => 10,
         'stock_quantity' => 100,
