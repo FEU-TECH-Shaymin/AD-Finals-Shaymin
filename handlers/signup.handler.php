@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 require_once BASE_PATH . '/bootstrap.php';
-require_once BASE_PATH . '/vendor/autoload.php';
+require_once VENDOR_PATH . '/autoload.php';
 require_once UTILS_PATH . '/envSetter.util.php';
 require_once UTILS_PATH . '/signup.util.php';
 require_once UTILS_PATH . '/auth.util.php';
