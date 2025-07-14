@@ -37,6 +37,13 @@ return [
         'price'          => 25,
         'stock_quantity' => 100,
     ],
+    [
+        'name'           => 'Chainsaw',
+        'description'    => 'Devastating close-range weapon with high damage output.',
+        'category'       => 'Weapons',
+        'price'          => 25,
+        'stock_quantity' => 100,
+    ],
 
 
     [
