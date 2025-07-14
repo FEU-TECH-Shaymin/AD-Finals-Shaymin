@@ -44,6 +44,13 @@ return [
         'price'          => 25,
         'stock_quantity' => 100,
     ],
+    [
+        'name'           => 'Gun',
+        'description'    => 'Reliable ranged weapon suitable for rapid elimination of threats.',
+        'category'       => 'Weapons',
+        'price'          => 25,
+        'stock_quantity' => 100,
+    ],
 
 
     [
