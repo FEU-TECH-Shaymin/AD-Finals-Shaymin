@@ -65,6 +65,13 @@ return [
         'price'          => 50,
         'stock_quantity' => 100,
     ],
+    [
+        'name'           => 'Bazooka',
+        'description'    => 'Powerful explosive weapon designed for maximum destruction.',
+        'category'       => 'Weapons',
+        'price'          => 50,
+        'stock_quantity' => 100,
+    ],
 
 
     [
