@@ -58,6 +58,13 @@ return [
         'price'          => 25,
         'stock_quantity' => 100,
     ],
+    [
+        'name'           => 'Flamethrower',
+        'description'    => 'Spreads fire across multiple targets, effective for crowd control.',
+        'category'       => 'Weapons',
+        'price'          => 50,
+        'stock_quantity' => 100,
+    ],
 
 
     [
