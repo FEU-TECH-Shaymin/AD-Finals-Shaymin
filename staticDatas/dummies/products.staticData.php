@@ -73,7 +73,7 @@ return [
         'stock_quantity' => 100,
     ],
 
-
+    // MEDICAL
     [
         'name'           => 'Bandaid',
         'description'    => 'Adhesive bandage used for covering minor cuts and wounds.',
@@ -81,7 +81,16 @@ return [
         'price'          => 10,
         'stock_quantity' => 100,
     ],
-        [
+    [
+        'name'           => 'Bandage',
+        'description'    => 'Basic medical supply used to stop bleeding and heal minor wounds.',
+        'category'       => 'Medical',
+        'price'          => 25,
+        'stock_quantity' => 100,
+    ],
+
+
+    [
         'name'           => 'Compass',
         'description'    => 'Navigation tool used to determine direction and assist in orienteering.',
         'category'       => 'Tools',
