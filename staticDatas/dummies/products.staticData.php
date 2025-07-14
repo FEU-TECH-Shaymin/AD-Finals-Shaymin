@@ -23,6 +23,14 @@ return [
         'price'          => 10,
         'stock_quantity' => 100,
     ],
+    [
+        'name'           => 'Axe',
+        'description'    => 'Heavy-duty weapon capable of chopping through bone and wood.',
+        'category'       => 'Weapons',
+        'price'          => 10,
+        'stock_quantity' => 100,
+    ],
+
 
     [
         'name'           => 'Bandaid',
