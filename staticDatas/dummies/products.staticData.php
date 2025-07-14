@@ -30,6 +30,13 @@ return [
         'price'          => 10,
         'stock_quantity' => 100,
     ],
+    [
+        'name'           => 'Machete',
+        'description'    => 'Long blade perfect for slashing through dense areas or enemies.',
+        'category'       => 'Weapons',
+        'price'          => 25,
+        'stock_quantity' => 100,
+    ],
 
 
     [
