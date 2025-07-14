@@ -88,6 +88,13 @@ return [
         'price'          => 25,
         'stock_quantity' => 100,
     ],
+    [
+        'name'           => 'Healing Potion',
+        'description'    => 'Restores health quickly and effectively during critical moments.',
+        'category'       => 'Medical',
+        'price'          => 50,
+        'stock_quantity' => 100,
+    ],
 
 
     [
