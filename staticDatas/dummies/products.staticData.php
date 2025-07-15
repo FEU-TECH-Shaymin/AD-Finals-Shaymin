@@ -133,6 +133,7 @@ return [
         'stock_quantity' => 100,
     ],
 
+    // SUSTENANCE
     [
         'name'           => 'Chocolate',
         'description'    => 'High-energy food item that boosts morale and provides quick calories.',
@@ -141,10 +142,54 @@ return [
         'stock_quantity' => 100,
     ],
     [
-        'name'           => 'Beginner \'s Bundle',
+        'name'           => 'Turon',
+        'description'    => 'Sweet banana roll snack that offers a quick energy boost.',
+        'category'       => 'Sustenance',
+        'price'          => 5,
+        'stock_quantity' => 100,
+    ],
+    [
+        'name'           => 'Chicken',
+        'description'    => 'Protein-rich meal ideal for restoring stamina.',
+        'category'       => 'Sustenance',
+        'price'          => 25,
+        'stock_quantity' => 100,
+    ],
+    [
+        'name'           => 'Rice',
+        'description'    => 'Carbohydrate staple providing long-lasting energy.',
+        'category'       => 'Sustenance',
+        'price'          => 25,
+        'stock_quantity' => 100,
+    ],
+    [
+        'name'           => 'Water',
+        'description'    => 'Essential for hydration and survival.',
+        'category'       => 'Sustenance',
+        'price'          => 10,
+        'stock_quantity' => 100,
+    ],
+
+    // BUNDLE DATA
+    [
+        'name'           => 'Beginner\'s Bundle',
         'description'    => '3 weapons, 2 medical, 2 sustenance (one food, one water)',
         'category'       => 'Sustenance',
         'price'          => 150,
+        'stock_quantity' => 100,
+    ],
+    [
+        'name'           => 'Intermediate Bundle',
+        'description'    => 'Includes 2 weapons, 2 medical items, 2 tools, and 2 sustenance supplies — perfect for balanced survival.',
+        'category'       => 'Bundles',
+        'price'          => 180,
+        'stock_quantity' => 100,
+    ],
+    [
+        'name'           => 'Advanced Bundle',
+        'description'    => 'Loaded with 5 weapons, 2 medical items, 3 tools, and 3 sustenance supplies — ideal for long-term survival.',
+        'category'       => 'Bundles',
+        'price'          => 300,
         'stock_quantity' => 100,
     ],
 ];
