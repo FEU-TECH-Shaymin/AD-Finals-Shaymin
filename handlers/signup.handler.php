@@ -4,69 +4,64 @@ declare(strict_types=1);
 require_once BASE_PATH . '/bootstrap.php';
 require_once VENDOR_PATH . '/autoload.php';
 require_once UTILS_PATH . '/envSetter.util.php';
-require_once UTILS_PATH . '/signup.util.php';
 require_once UTILS_PATH . '/auth.util.php';
+require_once UTILS_PATH . '/signup.util.php';
 
-// Start session so we can flash errors / old input
 Auth::init();
 
-// Build PDO
-$host = 'host.docker.internal';
-$port = $databases['pgPort'];
-$dbUser = $databases['pgUser'];
-$dbPass = $databases['pgPassword'];
-$dbName = $databases['pgDB'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Sanitize and collect inputs
+    $formData = [
+        'first_name' => $_POST['first_name'] ?? '',
+        'middle_name' => $_POST['middle_name'] ?? '',
+        'last_name' => $_POST['last_name'] ?? '',
+        'username' => $_POST['username'] ?? '',
+        'password' => $_POST['password'] ?? '',
+    ];
 
-$dsn = "pgsql:host={$host};port={$port};dbname={$dbName}";
-$pdo = new PDO($dsn, $dbUser, $dbPass, [
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-]);
-
-// Only accept POST
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: /pages/signup/index.php');
-    exit;
-}
-
-// Collect raw input
-$input = [
-    'first_name' => $_POST['first_name'] ?? '',
-    'middle_name' => $_POST['middle_name'] ?? '',
-    'last_name' => $_POST['last_name'] ?? '',
-    'username' => $_POST['username'] ?? '',
-    'password' => $_POST['password'] ?? '',
-    'role' => $_POST['role'] ?? '',
-];
-
-// 1) Validate
-$errors = Signup::validate($input);
-
-if (count($errors) > 0) {
-    $_SESSION['signup_errors'] = $errors;
-    $_SESSION['signup_old'] = $input;
-    header('Location: /pages/signup/index.php');
-    exit;
-}
-
-// 2) Create user
-try {
-    Signup::create($pdo, $input);
-
-} catch (PDOException $e) {
-    // Duplicate username?
-    if ($e->getCode() === '23505') {
-        $_SESSION['signup_errors'] = ['Username already taken.'];
-        $_SESSION['signup_old'] = $input;
-        header('Location: /pages/signup/index.php');
+    // 1. Validate input
+    $errors = Signup::validate($formData);
+    if (!empty($errors)) {
+        header('Location: /pages/signup/index.php?error=' . urlencode(implode(' ', $errors)));
         exit;
     }
-    // Otherwise, fail hard
-    error_log('[signup.handler] PDOException: ' . $e->getMessage());
-    http_response_code(500);
-    exit('Server error.');
-}
 
-// 3) Success — clear old flashes and redirect to login
-unset($_SESSION['signup_errors'], $_SESSION['signup_old']);
-header('Location: /pages/login/index.php?message=Account%created%successfully');
-exit;
+    try {
+        $pdo = Database::connect();
+
+        // 2. Check if username already exists
+        $stmt = $pdo->prepare("SELECT id FROM public.\"users\" WHERE username = :username");
+        $stmt->execute([':username' => trim($formData['username'])]);
+        if ($stmt->fetch()) {
+            header('Location: /pages/signup/index.php?error=' . urlencode('Username already exists.'));
+            exit;
+        }
+
+        // 3. Create the user with fixed role = 'Member'
+        Signup::create($pdo, $formData);
+
+        // 4. Fetch user data
+        $stmt = $pdo->prepare("SELECT id, first_name, last_name, username, role FROM public.\"users\" WHERE username = :username");
+        $stmt->execute([':username' => trim($formData['username'])]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user) {
+            $_SESSION['user'] = $user;
+
+            // 5. Redirect to user dashboard
+            header('Location: /pages/user/index.php');
+            exit;
+        } else {
+            header('Location: /pages/signup/index.php?error=' . urlencode('Signup failed. Please try again.'));
+            exit;
+        }
+
+    } catch (PDOException $e) {
+        error_log("Signup failed: " . $e->getMessage());
+        header('Location: /pages/signup/index.php?error=' . urlencode('A server error occurred.'));
+        exit;
+    }
+} else {
+    header('Location: /pages/signup/index.php?error=' . urlencode('Invalid request.'));
+    exit;
+}
