@@ -170,11 +170,19 @@ return [
         'stock_quantity' => 100,
     ],
 
+    // BUNDLE DATA
     [
         'name'           => 'Beginner \'s Bundle',
         'description'    => '3 weapons, 2 medical, 2 sustenance (one food, one water)',
         'category'       => 'Sustenance',
         'price'          => 150,
+        'stock_quantity' => 100,
+    ],
+    [
+        'name'           => 'Intermediate\'s Bundle',
+        'description'    => 'Includes 2 weapons, 2 medical items, 2 tools, and 2 sustenance supplies — perfect for balanced survival.',
+        'category'       => 'Bundles',
+        'price'          => 180,
         'stock_quantity' => 100,
     ],
 ];
