@@ -148,6 +148,13 @@ return [
         'price'          => 5,
         'stock_quantity' => 100,
     ],
+    [
+        'name'           => 'Chicken',
+        'description'    => 'Protein-rich meal ideal for restoring stamina.',
+        'category'       => 'Sustenance',
+        'price'          => 25,
+        'stock_quantity' => 100,
+    ],
 
     [
         'name'           => 'Beginner \'s Bundle',
