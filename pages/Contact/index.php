@@ -39,6 +39,11 @@ renderMainLayout(
                 </div>
             </div>
         </section>
+
+        <!-- Contact Form Section -->
+         <section id="contact-form" class="contact-form-section d-flex align-items-center">
+
+         </section>
         <?php
     },
 );
