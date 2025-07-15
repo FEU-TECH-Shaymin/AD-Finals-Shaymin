@@ -56,4 +56,38 @@
     margin-bottom: 10px;
 }
 
+/* Section 3: Form Section Background */
+.contact-form-section {
+    background: url(../../../../assets/img/contact-form-bg.png) no-repeat center center / cover;
+    min-height: 100vh;
+    justify-content: center;
+    padding: 20px;
+}
 
+.contact-form-section .card {
+    background-color: #f4f8fd1a;
+    backdrop-filter: blur(5px);
+    border-radius: 1rem;
+    max-width: 500px;
+    width: 100%;
+    color: white;
+}
+
+.contact-form-section label {
+    color: white;
+}
+
+.contact-form-section .btn {
+    background-color: #6F020D;
+    color: white;
+    width: 100%;
+    border: none;
+    border-radius: 30px;
+    padding: 12px;
+    font-weight: bold;
+}
+
+.contact-form-section .btn:hover {
+    background-color: white;
+    color: #6F020D;
+}
