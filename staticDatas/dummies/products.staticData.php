@@ -96,7 +96,7 @@ return [
         'stock_quantity' => 100,
     ],
 
-
+    // TOOLS
     [
         'name'           => 'Compass',
         'description'    => 'Navigation tool used to determine direction and assist in orienteering.',
@@ -104,6 +104,35 @@ return [
         'price'          => 10,
         'stock_quantity' => 100,
     ],
+    [
+        'name'           => 'Flashlight',
+        'description'    => 'Portable light source essential for exploring dark areas.',
+        'category'       => 'Tools',
+        'price'          => 10,
+        'stock_quantity' => 100,
+    ],
+    [
+        'name'           => 'Lighter',
+        'description'    => 'Compact fire-starting tool useful for survival and cooking.',
+        'category'       => 'Tools',
+        'price'          => 10,
+        'stock_quantity' => 100,
+    ],
+    [
+        'name'           => 'Radio',
+        'description'    => 'Communication device to receive emergency broadcasts and updates.',
+        'category'       => 'Tools',
+        'price'          => 10,
+        'stock_quantity' => 100,
+    ],
+    [
+        'name'           => 'Binoculars',
+        'description'    => 'Optical tool for scouting distant areas and spotting threats early.',
+        'category'       => 'Tools',
+        'price'          => 25,
+        'stock_quantity' => 100,
+    ],
+
     [
         'name'           => 'Chocolate',
         'description'    => 'High-energy food item that boosts morale and provides quick calories.',
