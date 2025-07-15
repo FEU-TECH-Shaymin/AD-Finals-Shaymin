@@ -172,7 +172,7 @@ return [
 
     // BUNDLE DATA
     [
-        'name'           => 'Beginner \'s Bundle',
+        'name'           => 'Beginner\'s Bundle',
         'description'    => '3 weapons, 2 medical, 2 sustenance (one food, one water)',
         'category'       => 'Sustenance',
         'price'          => 150,
