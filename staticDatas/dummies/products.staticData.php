@@ -125,6 +125,13 @@ return [
         'price'          => 10,
         'stock_quantity' => 100,
     ],
+    [
+        'name'           => 'Binoculars',
+        'description'    => 'Optical tool for scouting distant areas and spotting threats early.',
+        'category'       => 'Tools',
+        'price'          => 25,
+        'stock_quantity' => 100,
+    ],
 
     [
         'name'           => 'Chocolate',
