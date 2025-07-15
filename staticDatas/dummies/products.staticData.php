@@ -96,7 +96,7 @@ return [
         'stock_quantity' => 100,
     ],
 
-
+    // TOOLS
     [
         'name'           => 'Compass',
         'description'    => 'Navigation tool used to determine direction and assist in orienteering.',
@@ -104,6 +104,14 @@ return [
         'price'          => 10,
         'stock_quantity' => 100,
     ],
+    [
+        'name'           => 'Flashlight',
+        'description'    => 'Portable light source essential for exploring dark areas.',
+        'category'       => 'Tools',
+        'price'          => 10,
+        'stock_quantity' => 100,
+    ],
+
     [
         'name'           => 'Chocolate',
         'description'    => 'High-energy food item that boosts morale and provides quick calories.',
