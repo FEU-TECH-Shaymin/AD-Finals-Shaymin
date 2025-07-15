@@ -118,6 +118,13 @@ return [
         'price'          => 10,
         'stock_quantity' => 100,
     ],
+    [
+        'name'           => 'Radio',
+        'description'    => 'Communication device to receive emergency broadcasts and updates.',
+        'category'       => 'Tools',
+        'price'          => 10,
+        'stock_quantity' => 100,
+    ],
 
     [
         'name'           => 'Chocolate',
