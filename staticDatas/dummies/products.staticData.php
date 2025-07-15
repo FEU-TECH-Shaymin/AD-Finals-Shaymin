@@ -111,6 +111,13 @@ return [
         'price'          => 10,
         'stock_quantity' => 100,
     ],
+    [
+        'name'           => 'Lighter',
+        'description'    => 'Compact fire-starting tool useful for survival and cooking.',
+        'category'       => 'Tools',
+        'price'          => 10,
+        'stock_quantity' => 100,
+    ],
 
     [
         'name'           => 'Chocolate',
