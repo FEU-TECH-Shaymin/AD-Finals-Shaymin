@@ -155,6 +155,13 @@ return [
         'price'          => 25,
         'stock_quantity' => 100,
     ],
+    [
+        'name'           => 'Rice',
+        'description'    => 'Carbohydrate staple providing long-lasting energy.',
+        'category'       => 'Sustenance',
+        'price'          => 25,
+        'stock_quantity' => 100,
+    ],
 
     [
         'name'           => 'Beginner \'s Bundle',
