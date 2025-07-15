@@ -185,4 +185,11 @@ return [
         'price'          => 180,
         'stock_quantity' => 100,
     ],
+    [
+        'name'           => 'Advanced Bundle',
+        'description'    => 'Loaded with 5 weapons, 2 medical items, 3 tools, and 3 sustenance supplies — ideal for long-term survival.',
+        'category'       => 'Bundles',
+        'price'          => 300,
+        'stock_quantity' => 100,
+    ],
 ];
