@@ -162,6 +162,13 @@ return [
         'price'          => 25,
         'stock_quantity' => 100,
     ],
+    [
+        'name'           => 'Water',
+        'description'    => 'Essential for hydration and survival.',
+        'category'       => 'Sustenance',
+        'price'          => 10,
+        'stock_quantity' => 100,
+    ],
 
     [
         'name'           => 'Beginner \'s Bundle',
