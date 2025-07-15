@@ -6,7 +6,10 @@ require_once LAYOUTS_PATH . "/main.layout.php";
 renderMainLayout(
     function () {
         ?>
-        
+        <!--Contact Hero Section-->
+        <section class="contact-hero-section">
+            
+        </section>
     }
 )
 
