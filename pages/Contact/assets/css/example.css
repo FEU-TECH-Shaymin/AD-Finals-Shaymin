@@ -103,3 +103,17 @@
     background-color: white;
     color: #6F020D;
 }
+
+/* ====== Responsive Adjustments ====== */
+@media (max-width: 768px) {
+    .contact-hero-section h1 {
+        font-size: 1.8rem;
+    }
+
+    .icon-box {
+        margin-bottom: 20px;
+    }
+
+    .vertical-line {
+        display: none;
+    }
