@@ -68,36 +68,38 @@
 
 /* Section 3: Form Section Background */
 .contact-form-section {
-    background: url(../../../../assets/img/contact-form-bg.png) no-repeat center center / cover;
     min-height: 100vh;
+    background: url(../../../../assets/img/contact-form-bg.png) no-repeat center center / cover;
+    display: flex;
     justify-content: center;
+    align-items: center;
     padding: 20px;
 }
 
-.contact-form-section .card {
-    background-color: #f4f8fd1a;
-    backdrop-filter: blur(5px);
+.contact-form-card {
+    background-color: #f4f8fd1a;  /* Transparent background */
+    backdrop-filter: blur(3px);   /* Glass effect */
     border-radius: 1rem;
+    color: #E8EDEA;
     max-width: 500px;
     width: 100%;
-    color: white;
+    padding: 2rem;
 }
 
-.contact-form-section label {
-    color: white;
+.contact-form-card label {
+    color: #E8EDEA;
 }
 
-.contact-form-section .btn {
+.contact-form-card .btn {
     background-color: #6F020D;
     color: white;
+    border-radius: 49px;
+    font-weight: 600;
+    transition: 0.5s;
     width: 100%;
-    border: none;
-    border-radius: 30px;
-    padding: 12px;
-    font-weight: bold;
 }
 
-.contact-form-section .btn:hover {
+.contact-form-card .btn:hover {
     background-color: white;
     color: #6F020D;
 }
