@@ -25,16 +25,19 @@ renderMainLayout(
                         <img src="#" alt="Location Icon" class="contact-icon">
                         <h5>Where to Find Us</h5>
                         <p>311 Recto Ave. Sampaloc,<br>Metro Manila</p>
+                        <div class="vertical-line"></div>
                     </div>
                     <div class="col-md-3 icon-box">
                         <img src="#" alt="Working Hours Icon" class="contact-icon">
                         <h5>Working Hours</h5>
                         <p>Mon to Sat: 9:00 am - 6:00 pm<br>Sunday: 9:00 am - 4:00 pm</p>
+                        <div class="vertical-line"></div>
                     </div>
                     <div class="col-md-3 icon-box">
                         <img src="#" alt="Location Icon" class="contact-icon">
                         <h5>Communication</h5>
                         <p>+63 912 345 6789<br>outlast@gmail.com</p>
+                        <div class="vertical-line"></div>
                     </div>
                 </div>
             </div>
