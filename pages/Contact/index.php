@@ -44,26 +44,27 @@ renderMainLayout(
         </section>
 
         <!-- Contact Form Section -->
-        <section id="contact-form" class="contact-form-section d-flex align-items-center">
-            <div class="card p-4 shadow-lg">
-                <h2 class="text-center mb-4">Contact Us</h2>
-                <form method="POST" action="/handlers/contactForm.handler.php">
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" id="name" name="name" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" id="email" name="email" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea id="message" name="message" rows="5" class="form-control" required></textarea>
-                    </div>
-                    <button type="submit" class="btn">Send Message</button>
-                </form>
-            </div>
-        </section>
+        <section id="contact-form" class="contact-form-section">
+        <div class="contact-form-card shadow-lg">
+            <h2 class="text-center mb-4">Contact Us</h2>
+            <form method="POST" action="/handlers/contactForm.handler.php">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea id="message" name="message" rows="5" class="form-control" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
         <?php
     },
         [
