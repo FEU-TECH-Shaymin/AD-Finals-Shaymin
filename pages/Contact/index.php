@@ -63,6 +63,11 @@ renderMainLayout(
         </section>
         <?php
     },
-        
+        [
+        "css" => [
+            "./assets/css/contact.css"
+        ],
+        "js" => []
+    ]
 );
 ?>
