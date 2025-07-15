@@ -133,6 +133,7 @@ return [
         'stock_quantity' => 100,
     ],
 
+    // SUSTENANCE
     [
         'name'           => 'Chocolate',
         'description'    => 'High-energy food item that boosts morale and provides quick calories.',
@@ -140,6 +141,14 @@ return [
         'price'          => 5,
         'stock_quantity' => 100,
     ],
+    [
+        'name'           => 'Turon',
+        'description'    => 'Sweet banana roll snack that offers a quick energy boost.',
+        'category'       => 'Sustenance',
+        'price'          => 5,
+        'stock_quantity' => 100,
+    ],
+
     [
         'name'           => 'Beginner \'s Bundle',
         'description'    => '3 weapons, 2 medical, 2 sustenance (one food, one water)',
