@@ -179,7 +179,7 @@ return [
         'stock_quantity' => 100,
     ],
     [
-        'name'           => 'Intermediate\'s Bundle',
+        'name'           => 'Intermediate Bundle',
         'description'    => 'Includes 2 weapons, 2 medical items, 2 tools, and 2 sustenance supplies — perfect for balanced survival.',
         'category'       => 'Bundles',
         'price'          => 180,
