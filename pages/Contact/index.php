@@ -17,7 +17,10 @@ renderMainLayout(
             </div>
         </section>
 
-        
+        <!--Contact Info Section-->
+        <section class="contact-info-section">
+
+        </section>
         <?php
     },
 );
