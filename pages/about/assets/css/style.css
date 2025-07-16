@@ -53,3 +53,49 @@
     background-color: #6F020D;
     color: white;
 }
+
+/* === TEAM CARDS === */
+.team-card {
+    background-color: rgba(255, 255, 255, 0.05); /* Transparent glass effect */
+    backdrop-filter: blur(6px);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1.5rem;
+    color: white;
+    transition: transform 0.3s ease;
+    height: 100%;
+}
+
+.team-card:hover {
+    transform: scale(1.05);
+}
+
+/* Team Images */
+.team-img {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+/* Team Member Name */
+.team-card h5 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.25rem;
+}
+
+/* Team Role */
+.team-card .role {
+    font-style: italic;
+    color: #cccccc;
+    margin-bottom: 0;
+}
+
+/* Team Year */
+.team-card .year {
+    font-size: 0.9rem;
+    color: #aaaaaa;
+}
