@@ -20,7 +20,7 @@
 | Student Number | WakaTime |
 |-|-|
 | 202311026 | [![wakatime](https://wakatime.com/badge/user/65f5d1d3-0933-4b6c-b6df-d8bf043e70be/project/9072e330-ba90-4d0f-8f33-5f9a0cdb57b0.svg)](https://wakatime.com/badge/user/65f5d1d3-0933-4b6c-b6df-d8bf043e70be/project/9072e330-ba90-4d0f-8f33-5f9a0cdb57b0) |
-| studentnumber | wakatime |
+| Gonzales | [![wakatime](https://wakatime.com/badge/user/92714f91-5bd0-4e5f-ad0e-ceb54c8406d2/project/41ef207f-725d-4863-8046-bfb3f133a597.svg)](https://wakatime.com/badge/user/92714f91-5bd0-4e5f-ad0e-ceb54c8406d2/project/41ef207f-725d-4863-8046-bfb3f133a597) |
 | studentnumber | wakatime |
 | studentnumber | wakatime |
 | studentnumber | wakatime |
