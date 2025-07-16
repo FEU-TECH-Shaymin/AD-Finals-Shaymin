@@ -17,7 +17,4 @@ return [
     ['label' => 'Admin Dashboard', 'url' => '/pages/admin/index.php', 'authOnly' => true, 'role' => 'admin'],
     ['label' => 'Manage Products', 'url' => '/pages/admin/products.php', 'authOnly' => true, 'role' => 'admin'],
     
-        ['label' => 'Logout', 'url' => '/handlers/auth.handler.php','authOnly' => true],
-
-
 ];
