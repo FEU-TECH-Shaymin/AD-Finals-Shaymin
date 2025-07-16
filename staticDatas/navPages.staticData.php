@@ -9,7 +9,7 @@ return [
     ['label' => 'Signup', 'url' => '/pages/signup/index.php', 'guestOnly' => true],
 
     // User only
-    ['label' => 'Order', 'url' => '/pages/user/index.php', 'authOnly' => true, 'role' => 'user'],
+    ['label' => 'Order', 'url' => '/pages/orders/index.php', 'authOnly' => true, 'role' => 'user'],
     ['label' => 'User Dashboard', 'url' => '/pages/user/index.php', 'authOnly' => true, 'role' => 'user'],
 
     // Admin only
