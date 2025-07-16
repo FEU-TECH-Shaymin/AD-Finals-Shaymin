@@ -7,7 +7,7 @@
   <a href="https://github.com/FEU-TECH-Shaymin/AD-Finals-Shaymin">
     <img src="./assets/img/outlastLogo.png" alt="Outlast" width="80%" height="auto">
   </a>
-  <h3 align="center">Oulast</h3>
+  <h3 align="center">Outlast</h3>
 </div>
 <!-- TODO: Make a short description -->
 <div align="center">
