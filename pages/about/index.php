@@ -56,7 +56,7 @@ renderMainLayout(
                     </div>
                     <div class="col-md-4 col-lg-2">
                         <div class="team-card glass-card">
-                            <img src="assets/img/quervie.png" alt="Quervie Manrique" class="team-img">
+                            <img src="assets/img/querviemanrique.jpg" alt="Quervie Manrique" class="team-img">
                             <h5>Quervie Manrique</h5>
                             <p class="role">Forge-Master</p>
                             <p class="year">2nd Year - BSITWMA</p>
