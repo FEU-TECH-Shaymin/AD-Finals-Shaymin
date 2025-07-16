@@ -14,6 +14,11 @@ renderMainLayout(
         <section class="about-hero-section">
             
         </section>
+
+        <!-- Meet The Team Section -->
+        <section class="about-hero-section pt-5" id="team">
+
+        </section>
         <?php
     },
     [
