@@ -1,11 +1,11 @@
 /* === ABOUT PAGE MAIN BACKGROUND === */
-.about-hero-section {
+.about-wrapper {
     background: url(../img/about-bg.png) no-repeat center center / cover;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    padding: 80px 20px;
+    color: white;
 }
+
 
 /* === TEXT STYLES === */
 

@@ -1,17 +1,16 @@
 <?php
 declare(strict_types=1);
 
-// call the layout you want to use from layout folder
+// Call the layout you want to use from layout folder
 require_once LAYOUTS_PATH . "/main.layout.php";
-// $mongoCheckerResult = require_once HANDLERS_PATH . "/mongodbChecker.handler.php";
-// $postgresqlCheckerResult = require_once HANDLERS_PATH . "/postgreChecker.handler.php";
 
-// Call layout renderer
+// Render layout
 renderMainLayout(
     function () {
         ?>
-        <!-- About Hero + Team Section -->
-        <section class="about-hero-section">
+        <!-- Combined About Section with Single Background -->
+        <section class="about-wrapper">
+            <!-- Who Are We Section -->
             <div class="container text-center text-light">
                 <h1 class="about-title">Who Are We?</h1>
                 <p class="about-description">
@@ -23,11 +22,9 @@ renderMainLayout(
                 </p>
                 <a href="../contact/index.php" class="btn contact-cta">Contact Us</a>
             </div>
-        </section>
 
-        <!-- Meet The Team Section -->
-        <section class="about-hero-section pt-5" id="team">
-            <div class="container text-center text-light">
+            <!-- Meet The Team Section -->
+            <div class="container text-center text-light pt-5" id="team">
                 <h2 class="team-title">Meet The Team</h2>
                 <div class="row justify-content-center g-4">
                     <div class="col-md-4 col-lg-2">
@@ -64,7 +61,7 @@ renderMainLayout(
                     </div>
                     <div class="col-md-4 col-lg-2">
                         <div class="team-card glass-card">
-                            <img src="assets/img/querviemanrique.jpg" alt="Nicole Rivera" class="team-img">
+                            <img src="assets/img/nicole.png" alt="Nicole Rivera" class="team-img">
                             <h5>Nicole Rivera</h5>
                             <p class="role">Relic Painter</p>
                             <p class="year">2nd Year - BSITWMA</p>
@@ -79,9 +76,7 @@ renderMainLayout(
         "css" => [
             "./assets/css/style.css"
         ],
-        "js" => [
-
-        ]
+        "js" => []
     ]
 );
 ?>
