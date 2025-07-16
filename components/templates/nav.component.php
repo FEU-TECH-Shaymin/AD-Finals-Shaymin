@@ -27,11 +27,11 @@ function navHeader(array $navList, ?array $user = null): void
                         <?php endforeach; ?>
 
                         <?php if (!empty($user)): ?>
-                            <li class="nav-item d-flex align-items-center mx-lg-2">
+                            <!-- <li class="nav-item d-flex align-items-center mx-lg-2">
                                 <span class="nav-link disabled">
                                     👋 Welcome, <?= htmlspecialchars($user['username']) ?>
                                 </span>
-                            </li>
+                            </li> -->
                             <li class="nav-item">
                                 <a class="nav-link mx-lg-2 text-danger" href="/handlers/auth.handler.php?action=logout">Logout</a>
                             </li>
