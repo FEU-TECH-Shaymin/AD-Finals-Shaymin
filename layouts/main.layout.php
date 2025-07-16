@@ -1,66 +1,61 @@
 <?php
 declare(strict_types=1);
 
-// 1. Bootstrap, Autoload, Auth
+// 1. Bootstrap & Auth Setup
 require_once BASE_PATH . '/bootstrap.php';
 require_once BASE_PATH . '/vendor/autoload.php';
 require_once UTILS_PATH . '/auth.util.php';
-require_once UTILS_PATH . "/envSetter.util.php";
+require_once UTILS_PATH . '/envSetter.util.php';
 
 Auth::init();
 
-// 2. Load templates
+// 2. Templates
 require_once TEMPLATES_PATH . '/head.component.php';
 require_once TEMPLATES_PATH . '/nav.component.php';
 require_once TEMPLATES_PATH . '/foot.component.php';
 
-// 3. Load nav data & filter
+// 3. Load and Filter Navigation
 $allNavItems = require STATICDATAS_PATH . '/navPages.staticData.php';
 $isLoggedIn = Auth::check();
 $user = Auth::user();
+$role = trim($user['role'] ?? '');
 
-$headNavList = array_filter($allNavItems, function ($item) use ($isLoggedIn, $user) {
-    // Guest-only: only if not logged in
-    if (isset($item['guestOnly']) && $item['guestOnly'] === true && $isLoggedIn) {
+// Filter nav items based on visibility rules
+$headNavList = array_filter($allNavItems, function ($item) use ($isLoggedIn, $role) {
+    // guestOnly: only for not logged-in users
+    if (!empty($item['guestOnly']) && $isLoggedIn) {
         return false;
     }
 
-    // Auth-only: only if logged in
-    if (isset($item['authOnly']) && $item['authOnly'] === true && !$isLoggedIn) {
+    // authOnly: only for logged-in users
+    if (!empty($item['authOnly']) && !$isLoggedIn) {
         return false;
     }
 
-    // Role-based: only match if role exactly matches
-    if (isset($item['role'])) {
-        if (!$isLoggedIn || !isset($user['role']) || $item['role'] !== $user['role']) {
-            return false;
-        }
+    // role-specific visibility
+    if (isset($item['role']) && $item['role'] !== $role) {
+        return false;
     }
 
-    // Hide for specific role
-    if (isset($item['hideFor']) && isset($user['role']) && $item['hideFor'] === $user['role']) {
+    // hideFor specific role
+    if (isset($item['hideFor']) && $item['hideFor'] === $role) {
         return false;
     }
 
     return true;
 });
 
-// 4. Main layout function
+// 4. Render Layout
 function renderMainLayout(callable $content, array $customJsCss = []): void
 {
     global $headNavList, $user;
-
     head($customJsCss['css'] ?? []);
     navHeader($headNavList, $user);
     $content();
     footer($customJsCss['js'] ?? []);
 }
 
-// 5. Access control functions
-
-/**
- * Only allow logged-in users.
- */
+// 5. Auth Control Helpers
 function requireAuth(): void {
     if (!Auth::check()) {
         header('Location: /pages/login/index.php?error=unauthorized');
@@ -68,9 +63,6 @@ function requireAuth(): void {
     }
 }
 
-/**
- * Only allow guests (not logged in).
- */
 function requireGuest(): void {
     if (Auth::check()) {
         header('Location: /index.php');
@@ -78,23 +70,19 @@ function requireGuest(): void {
     }
 }
 
-/**
- * Only allow users with a specific role (e.g., 'admin', 'user').
- */
-function requireRole(string $role): void {
+function requireRole(string $requiredRole): void {
     $user = Auth::user();
-    if (!Auth::check() || !isset($user['role']) || $user['role'] !== $role) {
+    $role = trim($user['role'] ?? '');
+    if (!Auth::check() || $role !== $requiredRole) {
         header('Location: /index.php?error=forbidden');
         exit;
     }
 }
 
-/**
- * Allow guests and users, but block admins.
- */
 function requireNotAdmin(): void {
     $user = Auth::user();
-    if (Auth::check() && ($user['role'] ?? '') === 'admin') {
+    $role = trim($user['role'] ?? '');
+    if (Auth::check() && $role === 'admin') {
         header('Location: /pages/admin/index.php?error=not_allowed');
         exit;
     }
