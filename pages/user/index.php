@@ -10,9 +10,10 @@ require_once LAYOUTS_PATH . "/main.layout.php";
 renderMainLayout(
     function () {
         ?>
-        <!-- Hero Section -->
-        <section class="section">
+        <!-- User Section -->
+        <section class="user-section">
             <div class="container-fluid">
+                <img src="./assets/img/outlast-user-txt.png" class="img-fluid user-sc-img" alt="">
             </div>
         </section>
         <?php
