@@ -4,23 +4,25 @@ declare(strict_types=1);
 require_once BASE_PATH . '/bootstrap.php';
 require_once VENDOR_PATH . '/autoload.php';
 require_once UTILS_PATH . '/auth.util.php';
+require_once UTILS_PATH . '/envSetter.util.php';
 
-$databases = require_once UTILS_PATH . '/envSetter.util.php'; // ✅ Now assigned
-
-// Initialize session if not yet started
 Auth::init();
 
-// Connect to PostgreSQL using env values
-$host     = $databases['pgHost'];
-$port     = $databases['pgPort'];
-$username = $databases['pgUser'];
-$password = $databases['pgPassword'];
-$dbname   = $databases['pgDb'];
+// Connect to PostgreSQL using .env variables
+$dsn = sprintf(
+    'pgsql:host=%s;port=%s;dbname=%s',
+    $_ENV['PG_HOST'],
+    $_ENV['PG_PORT'],
+    $_ENV['PG_DB']
+);
 
-$dsn = "pgsql:host={$host};port={$port};dbname={$dbname}";
-$pdo = new PDO($dsn, $username, $password, [
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-]);
+try {
+    $pdo = new PDO($dsn, $_ENV['PG_USER'], $_ENV['PG_PASS'], [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+    ]);
+} catch (PDOException $e) {
+    exit('❌ DB Connection Failed: ' . $e->getMessage());
+}
 
 $action = $_REQUEST['action'] ?? null;
 
@@ -32,10 +34,11 @@ if ($action === 'login' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     if (Auth::login($pdo, $usernameInput, $passwordInput)) {
         $user = Auth::user();
 
+        // Redirect based on role
         if ($user['role'] === 'team lead') {
             header('Location: /pages/users/index.php');
         } else {
-            header('Location: /index.php');
+            header('Location: /pages/user/index.php');
         }
         exit;
     } else {
@@ -51,6 +54,7 @@ elseif ($action === 'logout') {
     exit;
 }
 
-// --- DEFAULT: Redirect to login ---
+// --- Default fallback ---
 header('Location: /pages/login/index.php');
 exit;
+
