@@ -17,7 +17,12 @@
 
 ![](https://visit-counter.vercel.app/counter.png?page=FEU-TECH-Shaymin/AD-Finals-Shaymin)
 
-[![wakatime](https://wakatime.com/badge/user/018dd99a-4985-4f98-8216-6ca6fe2ce0f8/project/63501637-9a31-42f0-960d-4d0ab47977f8.svg)](https://wakatime.com/badge/user/018dd99a-4985-4f98-8216-6ca6fe2ce0f8/project/63501637-9a31-42f0-960d-4d0ab47977f8)
+| 202311026        | [![wakatime](https://wakatime.com/badge/user/65f5d1d3-0933-4b6c-b6df-d8bf043e70be/project/9072e330-ba90-4d0f-8f33-5f9a0cdb57b0.svg)](https://wakatime.com/badge/user/65f5d1d3-0933-4b6c-b6df-d8bf043e70be/project/9072e330-ba90-4d0f-8f33-5f9a0cdb57b0)|
+| StudentNumber        | wakatime |
+| StudentNumber        | wakatime |
+| StudentNumber        | wakatime |
+| StudentNumber        | wakatime 
+|
 
 ---
 
