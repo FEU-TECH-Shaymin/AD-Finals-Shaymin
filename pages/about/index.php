@@ -64,7 +64,7 @@ renderMainLayout(
                     </div>
                     <div class="col-md-4 col-lg-2">
                         <div class="team-card glass-card">
-                            <img src="assets/img/querviemanrique.jpg" alt="Nicole Rivera" class="team-img">
+                            <img src="assets/img/nicole.png" alt="Nicole Rivera" class="team-img">
                             <h5>Nicole Rivera</h5>
                             <p class="role">Relic Painter</p>
                             <p class="year">2nd Year - BSITWMA</p>
