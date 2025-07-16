@@ -1,0 +1,94 @@
+/* Global Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding-top: 80px; /* for fixed nav if you use one */
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Container */
+.container-fluid {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Search Form */
+form[method="GET"] {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+form[method="GET"] input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+form[method="GET"] button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #0e7d48;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+form[method="GET"] button:hover {
+    background-color: #095f35;
+}
+
+/* Product List */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.product {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease;
+}
+
+.product:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.product strong {
+    font-size: 1.1rem;
+    color: #222;
+}
+
+.product small {
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.product em {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Responsive tweaks */
+@media (max-width: 500px) {
+    form[method="GET"] {
+        flex-direction: column;
+    }
+
+    form[method="GET"] button {
+        width: 100%;
+    }
+}
