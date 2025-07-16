@@ -1,0 +1,131 @@
+/* === ABOUT PAGE MAIN BACKGROUND === */
+.about-hero-section {
+    background: url(../img/about-bg.png) no-repeat center center / cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* === TEXT STYLES === */
+
+/* "Who Are We?" */
+.about-title {
+    font-size: 3rem;
+    font-weight: 900;
+    color: white;
+    text-align: center;
+}
+
+/* Paragraph under "Who Are We?" */
+.about-description {
+    font-size: 1.25rem;
+    max-width: 800px;
+    margin: 20px auto;
+    line-height: 1.6;
+    text-align: center;
+    color: white;
+}
+
+/* "Meet The Team" */
+.team-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: white;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* === CTA BUTTON === */
+.contact-cta {
+    background-color: white;
+    color: black;
+    border-radius: 30px;
+    padding: 10px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.contact-cta:hover {
+    background-color: #6F020D;
+    color: white;
+}
+
+/* === TEAM CARDS === */
+.team-card {
+    background-color: rgba(255, 255, 255, 0.05); /* Transparent glass effect */
+    backdrop-filter: blur(6px);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1.5rem;
+    color: white;
+    transition: transform 0.3s ease;
+    height: 100%;
+}
+
+.team-card:hover {
+    transform: scale(1.05);
+}
+
+/* Team Images */
+.team-img {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+/* Team Member Name */
+.team-card h5 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.25rem;
+}
+
+/* Team Role */
+.team-card .role {
+    font-style: italic;
+    color: #cccccc;
+    margin-bottom: 0;
+}
+
+/* Team Year */
+.team-card .year {
+    font-size: 0.9rem;
+    color: #aaaaaa;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 992px) {
+    .about-title {
+        font-size: 2.5rem;
+    }
+
+    .about-description {
+        font-size: 1.1rem;
+    }
+
+    .team-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-title {
+        font-size: 2rem;
+    }
+
+    .about-description {
+        font-size: 1rem;
+    }
+
+    .team-img {
+        height: 80px;
+        width: 80px;
+    }
+}
