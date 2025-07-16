@@ -22,7 +22,7 @@ renderMainLayout(
             <div class="container text-center">
                 <div class="row justify-content-center">
                     <div class="col-md-3 icon-box">
-                        <img src="#" alt="Location Icon" class="contact-icon">
+                        <img src="assets/img/location-icon.png" alt="Location Icon" class="contact-icon">
                         <h5>Where to Find Us</h5>
                         <p>311 Recto Ave. Sampaloc,<br>Metro Manila</p>
                         <div class="vertical-line"></div>
