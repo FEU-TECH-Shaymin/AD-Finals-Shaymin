@@ -23,7 +23,7 @@
 | Gonzales | [![wakatime](https://wakatime.com/badge/user/92714f91-5bd0-4e5f-ad0e-ceb54c8406d2/project/41ef207f-725d-4863-8046-bfb3f133a597.svg)](https://wakatime.com/badge/user/92714f91-5bd0-4e5f-ad0e-ceb54c8406d2/project/41ef207f-725d-4863-8046-bfb3f133a597) |
 | studentnumber | wakatime |
 | Oxina | [![wakatime](https://wakatime.com/badge/user/65f5d1d3-0933-4b6c-b6df-d8bf043e70be/project/9072e330-ba90-4d0f-8f33-5f9a0cdb57b0.svg)](https://wakatime.com/badge/user/65f5d1d3-0933-4b6c-b6df-d8bf043e70be/project/9072e330-ba90-4d0f-8f33-5f9a0cdb57b0) |
-| studentnumber | wakatime |
+| Rivera | [![wakatime](https://wakatime.com/badge/user/3347b15e-226a-471b-9f86-f04cdf705140/project/6e9fa798-b3cf-4fac-a6c4-0cfae883878d.svg)](https://wakatime.com/badge/user/3347b15e-226a-471b-9f86-f04cdf705140/project/6e9fa798-b3cf-4fac-a6c4-0cfae883878d) |
 
 ---
 
