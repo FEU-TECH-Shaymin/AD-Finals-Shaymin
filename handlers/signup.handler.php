@@ -1,67 +1,74 @@
 <?php
 declare(strict_types=1);
 
+// ✅ DEBUGGING ENABLED – REMOVE IN PRODUCTION
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+
 require_once BASE_PATH . '/bootstrap.php';
 require_once VENDOR_PATH . '/autoload.php';
 require_once UTILS_PATH . '/envSetter.util.php';
-require_once UTILS_PATH . '/auth.util.php';
 require_once UTILS_PATH . '/signup.util.php';
+require_once UTILS_PATH . '/auth.util.php';
 
 Auth::init();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Sanitize and collect inputs
-    $formData = [
-        'first_name' => $_POST['first_name'] ?? '',
-        'middle_name' => $_POST['middle_name'] ?? '',
-        'last_name' => $_POST['last_name'] ?? '',
-        'username' => $_POST['username'] ?? '',
-        'password' => $_POST['password'] ?? '',
-    ];
+// Load database credentials from env
+$env = require UTILS_PATH . '/envSetter.util.php';
+$dsn = "pgsql:host={$env['pgHost']};port={$env['pgPort']};dbname={$env['pgDb']}";
+$pdo = new PDO($dsn, $env['pgUser'], $env['pgPassword'], [
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+]);
 
-    // 1. Validate input
-    $errors = Signup::validate($formData);
-    if (!empty($errors)) {
-        header('Location: /pages/signup/index.php?error=' . urlencode(implode(' ', $errors)));
-        exit;
-    }
-
-    try {
-        $pdo = Database::connect();
-
-        // 2. Check if username already exists
-        $stmt = $pdo->prepare("SELECT id FROM public.\"users\" WHERE username = :username");
-        $stmt->execute([':username' => trim($formData['username'])]);
-        if ($stmt->fetch()) {
-            header('Location: /pages/signup/index.php?error=' . urlencode('Username already exists.'));
-            exit;
-        }
-
-        // 3. Create the user with fixed role = 'Member'
-        Signup::create($pdo, $formData);
-
-        // 4. Fetch user data
-        $stmt = $pdo->prepare("SELECT id, first_name, last_name, username, role FROM public.\"users\" WHERE username = :username");
-        $stmt->execute([':username' => trim($formData['username'])]);
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($user) {
-            $_SESSION['user'] = $user;
-
-            // 5. Redirect to user dashboard
-            header('Location: /pages/user/index.php');
-            exit;
-        } else {
-            header('Location: /pages/signup/index.php?error=' . urlencode('Signup failed. Please try again.'));
-            exit;
-        }
-
-    } catch (PDOException $e) {
-        error_log("Signup failed: " . $e->getMessage());
-        header('Location: /pages/signup/index.php?error=' . urlencode('A server error occurred.'));
-        exit;
-    }
-} else {
-    header('Location: /pages/signup/index.php?error=' . urlencode('Invalid request.'));
+// Accept POST only
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: /pages/signup/index.php');
     exit;
+}
+
+// Collect input
+$input = [
+    'first_name'   => $_POST['first_name'] ?? '',
+    'middle_name'  => $_POST['middle_name'] ?? '',
+    'last_name'    => $_POST['last_name'] ?? '',
+    'username'     => $_POST['username'] ?? '',
+    'email'        => $_POST['email'] ?? '',
+    'password'     => $_POST['password'] ?? '',
+];
+
+// Validate
+$errors = Signup::validate($input);
+if (!empty($errors)) {
+    $_SESSION['signup_errors'] = $errors;
+    $_SESSION['signup_old'] = $input;
+    header('Location: /pages/signup/index.php');
+    exit;
+}
+
+// Attempt to create & log in user
+try {
+    Signup::create($pdo, $input);
+
+    if (Auth::login($pdo, $input['username'], $input['password'])) {
+        header('Location: /pages/user/index.php');
+        exit;
+    }
+
+    // Auto-login failed
+    $_SESSION['signup_errors'] = ['Account created, but login failed. Please log in manually.'];
+    header('Location: /pages/login/index.php');
+    exit;
+
+} catch (PDOException $e) {
+    if ($e->getCode() === '23505') {
+        $_SESSION['signup_errors'] = ['Username or email already exists.'];
+        $_SESSION['signup_old'] = $input;
+        header('Location: /pages/signup/index.php');
+        exit;
+    }
+
+    error_log('[signup.handler] PDOException: ' . $e->getMessage());
+    http_response_code(500);
+    exit('❌ Server error: ' . $e->getMessage());
 }
