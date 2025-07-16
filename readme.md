@@ -65,11 +65,14 @@ Description of the project in details.
 
 ### Key Components
 
-<!-- TODO: List of Key Components -->
-<!-- The following are just sample -->
-
 - Authentication & Authorization
-- CRUD Operations for Invetory System
+- CRUD Operations for E-Commerce System
+- Responsive Frontend UI
+- Static & Dynamic Content Separation
+- Database Integration
+- Seeding, Migrate, and Reset Utilities
+- Security Measures
+- Error Handling & Custom 404 Pages
 
 ### Technology
 
