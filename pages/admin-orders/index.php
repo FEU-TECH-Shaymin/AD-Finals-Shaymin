@@ -10,7 +10,7 @@ require_once LAYOUTS_PATH . "/main.layout.php";
 renderMainLayout(
     function () {
         ?>
-        <!-- Hero Section -->
+        <!-- Admin Order Section -->
         <section class="admin-order-section">
             <div class="container-fluid">
                 <form action="/handlers/orders.handler.php" method="POST">
