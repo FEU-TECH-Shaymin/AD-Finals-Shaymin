@@ -29,7 +29,7 @@ renderMainLayout(
                     </div>
                     <div class="col-md-3">
                         <div class="dashboard-card glass-card">
-                            <img src="assets/img/box-icon.png" alt="Products Icon" class="dash-icon">
+                            <img src="assets/img/total-product-icon.png" alt="Products Icon" class="dash-icon">
                             <h5>Total Products</h5>
                             <p class="dash-count"><?= $totalProducts ?></p>
                         </div>
