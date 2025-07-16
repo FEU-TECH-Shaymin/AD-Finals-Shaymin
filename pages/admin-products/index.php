@@ -41,6 +41,30 @@ renderMainLayout(
                 </form>
             </div>
         </section>
+        
+        <section class="product-search-section">
+            <form method="GET">
+                <input type="text" name="search" placeholder="Search by name or category..." value="<?= htmlspecialchars($keyword) ?>">
+                <button type="submit">Search</button>
+            </form>
+
+            <!-- Product List -->
+            <div class="product-list">
+                <?php if (!$products): ?>
+                <p>No products found.</p>
+                <?php else: ?>
+                <?php foreach ($products as $p): ?>
+                    <div class="product">
+                    <strong><?= htmlspecialchars($p['name']) ?></strong><br>
+                    <small>Category: <?= htmlspecialchars($p['category']) ?></small><br>
+                    ₱<?= number_format((float)$p['price'], 2) ?><br>
+                    In Stock: <?= (int)$p['stock_quantity'] ?><br>
+                    <em><?= htmlspecialchars($p['description']) ?></em>
+                    </div>
+                <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+        </section>
         <?php
     },
     [
