@@ -2,7 +2,10 @@
 declare(strict_types=1);
 
 function navHeader(array $navList, ?array $user = null): void
+
 {
+        $isLoggedIn = isset($user);
+
         ?>
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid">
@@ -18,13 +21,29 @@ function navHeader(array $navList, ?array $user = null): void
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav ms-auto pe-3">
+
                         <?php foreach ($navList as $navItem): ?>
-                            <li class="nav-item">
-                                <a class="nav-link mx-lg-2 <?= $_SERVER['REQUEST_URI'] === $navItem['url'] ? 'active' : '' ?>" href="<?= htmlspecialchars($navItem['url']) ?>">
-                                    <?= htmlspecialchars($navItem['label']) ?>
-                                </a>
-                            </li>
-                            <?php endforeach; ?>
+                        <?php
+                            $visibility = $navItem['for'] ?? 'all';
+                            $shouldShow = (
+                                $visibility === 'all' ||
+                                ($visibility === 'guest' && !$isLoggedIn) ||
+                                ($visibility === 'auth' && $isLoggedIn) ||
+                                ($visibility === 'admin' && $isLoggedIn && ($user['role'] ?? '') === 'admin') ||
+                                ($visibility === 'user' && $isLoggedIn)
+                            );
+
+                            if (!$shouldShow) {
+                                continue;
+                            }
+                        ?>
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2 <?= $_SERVER['REQUEST_URI'] === $navItem['url'] ? 'active' : '' ?>" href="<?= htmlspecialchars($navItem['url']) ?>">
+                                <?= htmlspecialchars($navItem['label']) ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+
                         </ul>
                 </div>
                 </div>
