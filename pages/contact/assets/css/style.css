@@ -24,8 +24,8 @@
 }
 
 /* Section 1: Hero Image Background */
-.contact-form-section {
-    background: url(../img/contact-form-bg.png) no-repeat center center / cover;
+.contact-hero-section {
+    background: url(../img/contact-hero-bg.png) no-repeat center center / cover;
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -60,6 +60,7 @@
 /* Section 2: Info Section Background */
 .contact-info-section {
     background: url(../img/contact-icons-bg.png) no-repeat center center / cover;
+    min-height: 40vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -92,8 +93,9 @@
 
 
 /* Section 3: Form Section Background */
-.contact-hero-section {
-    background: url(../img/contact-hero-bg.png) no-repeat center center / cover;
+.contact-form-section {
+    background: url(../img/contact-form-bg.png) no-repeat center center / cover;
+    min-height: 600vh;
     display: flex;
     justify-content: center;
     align-items: center;
