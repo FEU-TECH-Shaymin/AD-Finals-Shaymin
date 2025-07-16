@@ -10,7 +10,10 @@ require_once LAYOUTS_PATH . "/main.layout.php";
 renderMainLayout(
     function () {
         ?>
-        <!-- PASTE YOUR CODE HERE -->
+        <!-- About Hero + Team Section -->
+        <section class="about-hero-section">
+            
+        </section>
         <?php
     },
     [
