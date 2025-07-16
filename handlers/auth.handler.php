@@ -35,8 +35,8 @@ if ($action === 'login' && $_SERVER['REQUEST_METHOD'] === 'POST') {
         $user = Auth::user();
 
         // Redirect based on role
-        if ($user['role'] === 'team lead') {
-            header('Location: /pages/users/index.php');
+        if ($user['role'] === 'admin') {
+            header('Location: /pages/admin/index.php');
         } else {
             header('Location: /pages/user/index.php');
         }
