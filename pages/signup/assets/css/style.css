@@ -1,18 +1,17 @@
-/* ====== Login Section ====== */
+/* ====== Signup Section ====== */
 
 .signup-section {
   min-height: 100vh;
   background: url(../../../../assets/img/flare.gif) no-repeat center center / cover;
   position: relative;
   padding: 20px;
-  justify-content: left;
+  justify-content: center;
 }
 
 .card {
   background-color: #f4f8fd1a;
   backdrop-filter: blur(3px);
   border-radius: 1rem;
-  left: 15%;
 }
 
 .btn{
@@ -49,10 +48,6 @@
     justify-content: center;
   }
 
-  .card{
-    left: 0%;
-  }
-
   .signin-signup {
     width: 90%;
     left: 50%;
@@ -85,4 +80,8 @@
   .title {
     font-size: 1.8rem;
   }
+}
+
+.signup-txt{
+  color: #E8EDEA;
 }
