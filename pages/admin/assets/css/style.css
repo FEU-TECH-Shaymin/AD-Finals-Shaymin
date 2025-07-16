@@ -45,3 +45,17 @@
     font-weight: bold;
     margin-top: 10px;
 }
+/* Responsive */
+@media (max-width: 768px) {
+    .dashboard-welcome {
+        font-size: 2rem;
+    }
+
+    .dash-count {
+        font-size: 1.5rem;
+    }
+
+    .dash-icon {
+        height: 50px;
+    }
+}
