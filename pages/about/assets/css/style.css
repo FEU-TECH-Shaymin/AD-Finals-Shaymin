@@ -35,3 +35,21 @@
     text-align: center;
     margin-bottom: 40px;
 }
+
+/* === CTA BUTTON === */
+.contact-cta {
+    background-color: white;
+    color: black;
+    border-radius: 30px;
+    padding: 10px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.contact-cta:hover {
+    background-color: #6F020D;
+    color: white;
+}
