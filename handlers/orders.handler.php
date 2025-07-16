@@ -61,3 +61,18 @@ if ($action === 'getAll') {
 // ❌ Fallback for invalid action
 http_response_code(400);
 echo json_encode(['error' => 'Invalid or missing action']);
+
+// ✅ 4. Admin: Count Total Orders
+if ($action === 'count') {
+    if (!Auth::check() || $_SESSION['user']['role'] !== 'admin') {
+        http_response_code(403);
+        echo json_encode(['error' => 'Admin access only']);
+        exit;
+    }
+
+    $stmt = $pdo->query("SELECT COUNT(*) FROM orders");
+    $total = $stmt->fetchColumn();
+
+    echo json_encode(['total_orders' => (int)$total]);
+    exit;
+}
