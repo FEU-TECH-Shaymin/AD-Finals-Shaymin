@@ -11,11 +11,11 @@ renderMainLayout(
     function () {
         ?>
         <!-- User Section -->
-        <section class="user-section">
-            <div class="container-fluid">
-                <img src="./assets/img/outlast-user-txt.png" class="img-fluid user-sc-img" alt="">
-            </div>
-        </section>
+            <section class="user-section">
+                <div class="container-fluid user-img-wrapper">
+                    <img src="./assets/img/outlast-user-txt.png" class="img-fluid user-sc-img" alt="">
+                </div>
+            </section>
         <?php
     },
     [
