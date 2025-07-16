@@ -41,7 +41,6 @@ function navHeader(array $navList, ?array $user = null): void
         </a>
     </li>
 <?php endforeach; ?>
-
                         </ul>
                 </div>
                 </div>
