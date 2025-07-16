@@ -11,6 +11,14 @@ return [
 
     // Authenticated only
     ['label' => 'User Dashboard', 'url' => '/pages/user/index.php', 'authOnly' => true, 'role' => 'user'],
+    ['label' => 'Product', 'url' => '/pages/products/index.php', 'authOnly' => true, 'role' => 'user'],
+     ['label' => 'Order', 'url' => '/pages/user/index.php', 'authOnly' => true, 'role' => 'user'],
+
+
     ['label' => 'Admin Dashboard', 'url' => '/pages/admin/index.php', 'authOnly' => true, 'role' => 'admin'],
+    ['label' => 'Product', 'url' => '/pages/admin-products/index.php', 'authOnly' => true, 'role' => 'admin'],
+    ['label' => 'Orders', 'url' => '/pages/admin-orders/index.php', 'authOnly' => true, 'role' => 'admin'],
+
+
     ['label' => 'Logout', 'url' => '/handlers/auth.handler.php?action=logout', 'authOnly' => true],
 ];
