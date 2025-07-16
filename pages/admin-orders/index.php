@@ -8,7 +8,6 @@ require_once UTILS_PATH . '/auth.util.php';
 // $mongoCheckerResult = require_once HANDLERS_PATH . "/mongodbChecker.handler.php";
 // $postgresqlCheckerResult = require_once HANDLERS_PATH . "/postgreChecker.handler.php";
 
-<?php
 // Extended Dummy Data for testing
 $orders = [
     ['order_id' => 1, 'user_id' => 101, 'total_amount' => 999.99, 'status' => 'pending', 'order_date' => '2024-07-01 10:30:00'],
@@ -35,7 +34,6 @@ $orders = [
 
 // Optionally test error
 // $error = "Sample error message.";
-?>
 
 // Call layout renderer
 renderMainLayout(
