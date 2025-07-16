@@ -28,7 +28,7 @@ renderMainLayout(
                         <div class="vertical-line"></div>
                     </div>
                     <div class="col-md-3 icon-box">
-                        <img src="#" alt="Working Hours Icon" class="contact-icon">
+                        <img src="assets/img/working-hours-icon.png" alt="Working Hours Icon" class="contact-icon">
                         <h5>Working Hours</h5>
                         <p>Mon to Sat: 9:00 am - 6:00 pm<br>Sunday: 9:00 am - 4:00 pm</p>
                         <div class="vertical-line"></div>
