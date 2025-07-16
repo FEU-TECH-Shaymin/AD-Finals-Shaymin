@@ -47,7 +47,7 @@ renderMainLayout(
         <section id="contact-form" class="contact-form-section">
         <div class="contact-form-card shadow-lg">
             <h2 class="text-center mb-4">Contact Us</h2>
-            <form method="POST" action="https://formsubmit.co/slsuls.alexamhelgagan@gmail.com">
+            <form method="POST" action="https://formsubmit.co/df4244f50a2a52f095d37f83940a83eb">
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
                     <input type="text" id="name" name="name" class="form-control" required>
