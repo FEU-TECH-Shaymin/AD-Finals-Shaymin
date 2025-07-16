@@ -5,6 +5,7 @@
     font-size: 3rem;
     font-weight: 900;
     text-align: center;
+    color: white;
 }
 
 .contact-hero-section p {
@@ -13,6 +14,7 @@
     margin: 20px auto;
     line-height: 1.6;
     text-align: center;
+    color: white;
 }
 
 .contact-cta {
@@ -25,26 +27,17 @@
 
 /* Section 1: Hero Image Background */
 .contact-hero-section {
-    background: url(../img/contact-hero-bg.png) no-repeat center center / cover;
+    background: url(../img/contact-hero.jpg) no-repeat center center / cover;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.contact-hero-section h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-}
-
-.contact-hero-section p {
-    max-width: 600px;
-    margin: 20px auto;
-}
 
 .contact-cta {
-    background-color: #6F020D;
-    color: white;
+    background-color: white;
+    color: black;
     border-radius: 30px;
     padding: 10px 30px;
     text-decoration: none;
@@ -53,19 +46,22 @@
 }
 
 .contact-cta:hover {
-    background-color: white;
-    color: #6F020D;
+    background-color: #6F020D;
+    color: white;
 }
 
 /* Section 2: Info Section Background */
 .contact-info-section {
     background: url(../img/contact-icons-bg.png) no-repeat center center / cover;
-    min-height: 40vh;
+    min-height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.contact-info-section p{
+    color: white;
+}
 
 .icon-box {
     padding: 20px;
@@ -95,7 +91,7 @@
 /* Section 3: Form Section Background */
 .contact-form-section {
     background: url(../img/contact-form-bg.png) no-repeat center center / cover;
-    min-height: 600vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
