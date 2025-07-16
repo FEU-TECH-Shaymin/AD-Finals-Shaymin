@@ -34,7 +34,7 @@ renderMainLayout(
                         <div class="vertical-line"></div>
                     </div>
                     <div class="col-md-3 icon-box">
-                        <img src="#" alt="Location Icon" class="contact-icon">
+                        <img src="#" alt="Communication Icon" class="contact-icon">
                         <h5>Communication</h5>
                         <p>+63 912 345 6789<br>outlast@gmail.com</p>
                         <div class="vertical-line"></div>
