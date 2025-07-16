@@ -7,6 +7,9 @@ return [
   ['label' => 'Login', 'url' => '/pages/login/index.php', 'guestOnly' => true],
     ['label' => 'Sign-up', 'url' => '/pages/signup/index.php', 'guestOnly' => true],
 
+    // Guest Only
+    ['label' => 'Login', 'url' => '/pages/login/index.php', 'guestOnly' => true],
+    ['label' => 'Sign Up', 'url' => '/pages/signup/index.php', 'guestOnly' => true],
 
 
     // User-only
