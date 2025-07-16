@@ -21,7 +21,13 @@ renderMainLayout(
                 <h1 class="dashboard-welcome">Welcome, Admin!</h1>
                 <div class="row justify-content-center g-4 mt-4">
 
-                    
+                    <div class="col-md-3">
+                        <div class="dashboard-card glass-card">
+                            <img src="assets/img/user-icon.png" alt="Users Icon" class="dash-icon">
+                            <h5>Total Users</h5>
+                            <p class="dash-count"><?= $totalUsers ?></p>
+                        </div>
+                    </div>
 
                 </div>
             </div>
