@@ -49,28 +49,33 @@ class Signup
      */
     public static function create(PDO $pdo, array $data): void
     {
-        $stmt = $pdo->prepare("
-            INSERT INTO public.\"users\" (
-                first_name, middle_name, last_name, username, password, role
-            ) VALUES (
-                :first, :middle, :last, :username, :password, 'Member'
-            )
-        ");
+        try {
+            $stmt = $pdo->prepare("
+                INSERT INTO public.\"users\" (
+                    first_name, middle_name, last_name, username, password, role
+                ) VALUES (
+                    :first, :middle, :last, :username, :password, 'Member'
+                )
+            ");
 
-        $hashed = password_hash($data['password'], PASSWORD_DEFAULT);
+            $hashed = password_hash($data['password'], PASSWORD_DEFAULT);
 
-        $params = [
-            ':first'    => trim($data['first_name']),
-            ':middle'   => $data['middle_name'] !== '' ? trim($data['middle_name']) : null,
-            ':last'     => trim($data['last_name']),
-            ':username' => trim($data['username']),
-            ':password' => $hashed,
-        ];
+            $params = [
+                ':first'    => trim($data['first_name']),
+                ':middle'   => $data['middle_name'] !== '' ? trim($data['middle_name']) : null,
+                ':last'     => trim($data['last_name']),
+                ':username' => trim($data['username']),
+                ':password' => $hashed,
+            ];
 
-        file_put_contents(BASE_PATH . '/signup_debug.log', "INSERT PARAMS:\n" . print_r($params, true), FILE_APPEND);
+            file_put_contents(BASE_PATH . '/signup_debug.log', "INSERT PARAMS:\n" . print_r($params, true), FILE_APPEND);
 
-        $stmt->execute($params);
+            $stmt->execute($params);
 
-        file_put_contents(BASE_PATH . '/signup_debug.log', "✅ USER INSERTED\n", FILE_APPEND);
+            file_put_contents(BASE_PATH . '/signup_debug.log', "✅ USER INSERTED\n", FILE_APPEND);
+        } catch (PDOException $e) {
+            file_put_contents(BASE_PATH . '/signup_debug.log', "❌ INSERT FAILED: " . $e->getMessage() . "\n", FILE_APPEND);
+            throw $e;
+        }
     }
 }
