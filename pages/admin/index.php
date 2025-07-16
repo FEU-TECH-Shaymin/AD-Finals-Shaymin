@@ -20,7 +20,6 @@ renderMainLayout(
             <div class="container text-center text-light">
                 <h1 class="dashboard-welcome">Welcome, Admin!</h1>
                 <div class="row justify-content-center g-4 mt-4">
-
                     <div class="col-md-3">
                         <div class="dashboard-card glass-card">
                             <img src="assets/img/user-icon.png" alt="Users Icon" class="dash-icon">
@@ -28,7 +27,13 @@ renderMainLayout(
                             <p class="dash-count"><?= $totalUsers ?></p>
                         </div>
                     </div>
-
+                    <div class="col-md-3">
+                        <div class="dashboard-card glass-card">
+                            <img src="assets/img/box-icon.png" alt="Products Icon" class="dash-icon">
+                            <h5>Total Products</h5>
+                            <p class="dash-count"><?= $totalProducts ?></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section></section>
