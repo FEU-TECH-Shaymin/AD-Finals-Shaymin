@@ -12,11 +12,10 @@ renderMainLayout(
     function () use ($error, $message) {
         ?>
         <section class="signup-section d-flex align-items-center" style="min-height: 100vh;">
-            <div class="card p-4 shadow-lg" style="max-width: 400px; width: 100%;">
-                <form id="sign-up-form" action="/handlers/signup.handler.php" method="POST">
-                    <h2 class="text-center mb-4">Sign Up</h2>
-
-                    <?php if (!empty($message)): ?>
+            <div class="card p-4 shadow-lg" style="max-width: 800px; width: 100%;">
+                <h2 class="text-center mb-4 signup-txt">Sign Up</h2>
+                
+                <?php if (!empty($message)): ?>
                         <div class="alert alert-success" role="alert">
                             <?= htmlspecialchars($message) ?>
                         </div>
@@ -28,25 +27,10 @@ renderMainLayout(
                         </div>
                     <?php endif; ?>
 
-                    <div class="mb-3">
-                        <label for="first_name" class="form-label">First Name</label>
-                        <input type="text" id="first_name" name="first_name" class="form-control" required>
-                        <div class="invalid-feedback">Please enter your first name.</div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="middle_name" class="form-label">Middle Name</label>
-                        <input type="text" id="middle_name" name="middle_name" class="form-control" required>
-                        <div class="invalid-feedback">Please enter your middle name.</div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="last_name" class="form-label">Last Name</label>
-                        <input type="text" id="last_name" name="last_name" class="form-control" required>
-                        <div class="invalid-feedback">Please enter your last name.</div>
-                    </div>
-
-                    <div class="mb-3">
+                <form id="sign-up-form" action="/handlers/signup.handler.php" method="POST">
+                    <div class="row">
+            <div class="col-12 col-sm-6">
+              <div class="mb-3">
                         <label for="username" class="form-label">Username</label>
                         <input type="text" id="username" name="username" class="form-control" required>
                         <div class="invalid-feedback">Please enter a username.</div>
@@ -63,6 +47,27 @@ renderMainLayout(
                         <input type="password" id="password" name="password" class="form-control" minlength="8" required>
                         <div class="invalid-feedback">Password must be at least 8 characters.</div>
                     </div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <div class="mb-3">
+                        <label for="first_name" class="form-label">First Name</label>
+                        <input type="text" id="first_name" name="first_name" class="form-control" required>
+                        <div class="invalid-feedback">Please enter your first name.</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="middle_name" class="form-label">Middle Name</label>
+                        <input type="text" id="middle_name" name="middle_name" class="form-control" required>
+                        <div class="invalid-feedback">Please enter your middle name.</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="last_name" class="form-label">Last Name</label>
+                        <input type="text" id="last_name" name="last_name" class="form-control" required>
+                        <div class="invalid-feedback">Please enter your last name.</div>
+                    </div>
+            </div>
+          </div>
 
                     <input type="hidden" name="action" value="signup">
 
