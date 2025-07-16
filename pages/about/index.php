@@ -40,7 +40,7 @@ renderMainLayout(
                     </div>
                     <div class="col-md-4 col-lg-2">
                         <div class="team-card glass-card">
-                            <img src="assets/img/michaela.png" alt="Michaela Gonzales" class="team-img">
+                            <img src="assets/img/michaela.jpg" alt="Michaela Gonzales" class="team-img">
                             <h5>Michaela Gonzales</h5>
                             <p class="role">The Archivist</p>
                             <p class="year">2nd Year - BSITWMA</p>
