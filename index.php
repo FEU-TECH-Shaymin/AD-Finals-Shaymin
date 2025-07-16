@@ -31,6 +31,12 @@ renderMainLayout(
           <img src="./assets/img/chooseOutlast.png" alt="Why Choose Outlast" class="choose-img">
          </div>
       </section>
+
+      <section class="about-cards">
+        <div class="about-container container">
+          <div class="row g-4" id="about-cards-grid"></div>
+        </div>
+      </section>
         <?php
     },
     [
