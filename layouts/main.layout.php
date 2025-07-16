@@ -20,15 +20,21 @@ $isLoggedIn = Auth::check();
 $user = Auth::user();
 
 $headNavList = array_filter($allNavItems, function ($item) use ($isLoggedIn, $user) {
+    // Show only if user is logged in, if 'authOnly' is true
     if (!empty($item['authOnly']) && !$isLoggedIn) {
         return false;
     }
+
+    // Show only if user is NOT logged in, if 'guestOnly' is true
     if (!empty($item['guestOnly']) && $isLoggedIn) {
         return false;
     }
-    if (!empty($item['role']) && ($user['role'] ?? '') !== $item['role']) {
+
+    // Show only to specific roles, if 'role' is set
+    if (!empty($item['role']) && ($user['role'] ?? null) !== $item['role']) {
         return false;
     }
+
     return true;
 });
 
@@ -36,8 +42,16 @@ $headNavList = array_filter($allNavItems, function ($item) use ($isLoggedIn, $us
 function renderMainLayout(callable $content, array $customJsCss = []): void
 {
     global $headNavList, $user;
+
+    // Load the HTML <head> and include CSS
     head($customJsCss['css'] ?? []);
+
+    // Render the navigation bar with filtered items
     navHeader($headNavList, $user);
+
+    // Render the page content
     $content();
+
+    // Load the <footer> and include JS
     footer($customJsCss['js'] ?? []);
 }
