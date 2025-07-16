@@ -2,7 +2,7 @@
 
 /* Section 1: Hero Image Background */
 .contact-hero-section {
-    background: url(../../../../assets/img/contact-hero.jpg) no-repeat center center / cover;
+    background: url(../img/contact-hero.jpg) no-repeat center center / cover;
     color: white;
     text-align: center;
     padding: 100px 20px;
@@ -69,7 +69,7 @@
 /* Section 3: Form Section Background */
 .contact-form-section {
     min-height: 100vh;
-    background: url(../../../../assets/img/contact-form-bg.png) no-repeat center center / cover;
+    background: url(/assets/img/contact-form-bg.png) no-repeat center center / cover;
     display: flex;
     justify-content: center;
     align-items: center;
