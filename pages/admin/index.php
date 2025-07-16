@@ -51,7 +51,6 @@ renderMainLayout(
             "./assets/css/style.css"
         ],
         "js" => [
-            "./assets/js/script.js"
         ]
     ]
 );
