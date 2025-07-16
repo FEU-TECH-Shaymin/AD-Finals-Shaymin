@@ -16,7 +16,7 @@ renderMainLayout(
     function () use ($totalUsers, $totalProducts, $totalOrders) {
         ?>
         <!-- Hero Section -->
-        <section class="section">
+        <section class="dashboard-wrapper">
             <div class="container-fluid">
             </div>
         </section>
