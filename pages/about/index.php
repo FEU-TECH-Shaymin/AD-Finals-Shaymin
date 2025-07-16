@@ -27,7 +27,19 @@ renderMainLayout(
 
         <!-- Meet The Team Section -->
         <section class="about-hero-section pt-5" id="team">
-
+            <div class="container text-center text-light">
+                <h2 class="team-title">Meet The Team</h2>
+                <div class="row justify-content-center g-4">
+                    <div class="col-md-4 col-lg-2">
+                        <div class="team-card glass-card">
+                            <img src="assets/img/alexa.png" alt="Alexa Gagan" class="team-img">
+                            <h5>Alexa Gagan</h5>
+                            <p class="role">Vision Weaver</p>
+                            <p class="year">2nd Year – BSITWMA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
         <?php
     },
