@@ -15,10 +15,10 @@ renderMainLayout(
             <div class="container text-center text-light">
                 <h1 class="about-title">Who Are We?</h1>
                 <p class="about-description">
-                    We are survivors of the old world and builders of what comes next. When the world fell silent, we didn’t.
+                    We are survivors of the old world and builders of what comes next. When the world fell silent, we didn't.
                     We crafted tools, gathered knowledge, and built networks to help others endure.<br><br>
                     At Outlast, we supply the gear, knowledge, and essentials every survivor needs to face the horde and reclaim the future.
-                    Whether you're hunting supplies, trading Zombie Crystals, or searching for safe ground — we’re the ones lighting your path forward.<br><br>
+                    Whether you're hunting supplies, trading Zombie Crystals, or searching for safe ground — we're the ones lighting your path forward.<br><br>
                     Survive. Adapt. Outlast.
                 </p>
                 <a href="../contact/index.php" class="btn contact-cta">Contact Us</a>
@@ -32,10 +32,10 @@ renderMainLayout(
                 <div class="row justify-content-center g-4">
                     <div class="col-md-4 col-lg-2">
                         <div class="team-card glass-card">
-                            <img src="assets/img/alexa.png" alt="Alexa Gagan" class="team-img">
+                            <img src="assets/img/AlexaGagan.png" alt="Alexa Gagan" class="team-img">
                             <h5>Alexa Gagan</h5>
                             <p class="role">Vision Weaver</p>
-                            <p class="year">2nd Year – BSITWMA</p>
+                            <p class="year">2nd Year - BSITWMA</p>
                         </div>
                     </div>
                     <div class="col-md-4 col-lg-2">
@@ -43,7 +43,7 @@ renderMainLayout(
                             <img src="assets/img/michaela.png" alt="Michaela Gonzales" class="team-img">
                             <h5>Michaela Gonzales</h5>
                             <p class="role">The Archivist</p>
-                            <p class="year">2nd Year – BSITWMA</p>
+                            <p class="year">2nd Year - BSITWMA</p>
                         </div>
                     </div>
                     <div class="col-md-4 col-lg-2">
@@ -51,7 +51,7 @@ renderMainLayout(
                             <img src="assets/img/shane.png" alt="Shane Oxina" class="team-img">
                             <h5>Shane Oxina</h5>
                             <p class="role">The Pathfinder</p>
-                            <p class="year">2nd Year – BSITWMA</p>
+                            <p class="year">2nd Year - BSITWMA</p>
                         </div>
                     </div>
                     <div class="col-md-4 col-lg-2">
@@ -59,7 +59,7 @@ renderMainLayout(
                             <img src="assets/img/quervie.png" alt="Quervie Manrique" class="team-img">
                             <h5>Quervie Manrique</h5>
                             <p class="role">Forge-Master</p>
-                            <p class="year">2nd Year – BSITWMA</p>
+                            <p class="year">2nd Year - BSITWMA</p>
                         </div>
                     </div>
                     <div class="col-md-4 col-lg-2">
@@ -67,7 +67,7 @@ renderMainLayout(
                             <img src="assets/img/nicole.png" alt="Nicole Rivera" class="team-img">
                             <h5>Nicole Rivera</h5>
                             <p class="role">Relic Painter</p>
-                            <p class="year">2nd Year – BSITWMA</p>
+                            <p class="year">2nd Year - BSITWMA</p>
                         </div>
                     </div>
                 </div>
