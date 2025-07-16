@@ -5,10 +5,17 @@ require_once UTILS_PATH . '/envSetter.util.php';
 
 class ProductsUtil {
     private static function connect(): PDO {
+        $dsn = sprintf(
+            'pgsql:host=%s;port=%s;dbname=%s',
+            $_ENV['PG_HOST'],
+            $_ENV['PG_PORT'],
+            $_ENV['PG_DB']
+        );
+
         return new PDO(
-            $_ENV['pgsql_dsn'],
-            $_ENV['pgsql_user'],
-            $_ENV['pgsql_pass'],
+            $dsn,
+            $_ENV['PG_USER'],
+            $_ENV['PG_PASS'],
             [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
         );
     }
