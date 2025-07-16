@@ -20,25 +20,25 @@ $isLoggedIn = Auth::check();
 $user = Auth::user();
 
 $headNavList = array_filter($allNavItems, function ($item) use ($isLoggedIn, $user) {
-    // Auth-only check
-    if (!empty($item['authOnly']) && !$isLoggedIn) {
+    // Guest-only: only if not logged in
+    if (isset($item['guestOnly']) && $item['guestOnly'] === true && $isLoggedIn) {
         return false;
     }
 
-    // Guest-only check
-    if (!empty($item['guestOnly']) && $isLoggedIn) {
+    // Auth-only: only if logged in
+    if (isset($item['authOnly']) && $item['authOnly'] === true && !$isLoggedIn) {
         return false;
     }
 
-    // Role check
-    if (!empty($item['role'])) {
-        if (!$isLoggedIn || !isset($user['role']) || $user['role'] !== $item['role']) {
+    // Role-based: only match if role exactly matches
+    if (isset($item['role'])) {
+        if (!$isLoggedIn || !isset($user['role']) || $item['role'] !== $user['role']) {
             return false;
         }
     }
 
-    // ✅ Hide-for check (e.g., hide Products for admin)
-    if (!empty($item['hideFor']) && isset($user['role']) && $item['hideFor'] === $user['role']) {
+    // Hide for specific role
+    if (isset($item['hideFor']) && isset($user['role']) && $item['hideFor'] === $user['role']) {
         return false;
     }
 
