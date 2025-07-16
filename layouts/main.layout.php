@@ -20,24 +20,24 @@ $isLoggedIn = Auth::check();
 $user = Auth::user();
 $role = trim($user['role'] ?? '');
 
-// Filter nav items based on visibility rules
+// Filter navigation items
 $headNavList = array_filter($allNavItems, function ($item) use ($isLoggedIn, $role) {
-    // guestOnly: only for not logged-in users
+    // Hide if guestOnly but user is logged in
     if (!empty($item['guestOnly']) && $isLoggedIn) {
         return false;
     }
 
-    // authOnly: only for logged-in users
+    // Hide if authOnly but user is not logged in
     if (!empty($item['authOnly']) && !$isLoggedIn) {
         return false;
     }
 
-    // role-specific visibility
+    // Hide if specific role required and user doesn't match
     if (isset($item['role']) && $item['role'] !== $role) {
         return false;
     }
 
-    // hideFor specific role
+    // Hide if explicitly blocked for this role
     if (isset($item['hideFor']) && $item['hideFor'] === $role) {
         return false;
     }
@@ -49,8 +49,9 @@ $headNavList = array_filter($allNavItems, function ($item) use ($isLoggedIn, $ro
 function renderMainLayout(callable $content, array $customJsCss = []): void
 {
     global $headNavList, $user;
+
     head($customJsCss['css'] ?? []);
-    navHeader($headNavList, $user);
+    navHeader($headNavList, $user);  // navHeader expects nav list and user info
     $content();
     footer($customJsCss['js'] ?? []);
 }
