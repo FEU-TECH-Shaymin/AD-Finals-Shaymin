@@ -73,6 +73,7 @@ Description of the project in details.
 - Responsive Frontend UI
 - Static & Dynamic Content Separation
 - Database Integration
+- Seeding, Migrate, and Reset Utilities
 
 ### Technology
 
