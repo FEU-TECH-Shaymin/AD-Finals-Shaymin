@@ -37,8 +37,9 @@
 /* Section 2: Info Section Background */
 .contact-info-section {
     background: url(../img/contact-icons-bg.png) no-repeat center center / cover;
-    min-height: 100vh;
-    color: white;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
     padding: 60px 20px;
 }
 
