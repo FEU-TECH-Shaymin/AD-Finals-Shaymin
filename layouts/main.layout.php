@@ -20,23 +20,22 @@ $isLoggedIn = Auth::check();
 $user = Auth::user();
 
 $headNavList = array_filter($allNavItems, function ($item) use ($isLoggedIn, $user) {
-    // Show only if user is logged in, if 'authOnly' is true
-    if (!empty($item['authOnly']) && !$isLoggedIn) {
-        return false;
-    }
+    // Auth-only check
+    if (!empty($item['authOnly']) && !$isLoggedIn) return false;
 
-    // Show only if user is NOT logged in, if 'guestOnly' is true
-    if (!empty($item['guestOnly']) && $isLoggedIn) {
-        return false;
-    }
+    // Guest-only check
+    if (!empty($item['guestOnly']) && $isLoggedIn) return false;
 
-    // Show only to specific roles, if 'role' is set
-    if (!empty($item['role']) && ($user['role'] ?? null) !== $item['role']) {
-        return false;
+    // Role check
+    if (!empty($item['role'])) {
+        if (!$isLoggedIn || !isset($user['role']) || $user['role'] !== $item['role']) {
+            return false;
+        }
     }
 
     return true;
 });
+
 
 // 4. Main layout function
 function renderMainLayout(callable $content, array $customJsCss = []): void
