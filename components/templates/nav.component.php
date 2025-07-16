@@ -30,7 +30,7 @@ function navHeader(array $navList, ?array $user = null): void
                                 ($visibility === 'guest' && !$isLoggedIn) ||
                                 ($visibility === 'auth' && $isLoggedIn) ||
                                 ($visibility === 'admin' && $isLoggedIn && ($user['role'] ?? '') === 'admin') ||
-                                ($visibility === 'user' && $isLoggedIn)
+                                ($visibility === 'user' && $isLoggedIn && in_array(($user['role'] ?? ''), ['user', 'admin']))
                             );
 
                             if (!$shouldShow) {
