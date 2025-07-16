@@ -71,6 +71,7 @@ Description of the project in details.
 - Authentication & Authorization
 - CRUD Operations for E-Commerce System
 - Responsive Frontend UI
+- Static & Dynamic Content Separation
 
 ### Technology
 
