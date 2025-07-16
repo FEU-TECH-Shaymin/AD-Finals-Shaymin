@@ -10,3 +10,38 @@
     font-weight: 800;
     color: white;
 }
+
+/* Stat Boxes */
+.dashboard-card {
+    background-color: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(6px);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.dashboard-card:hover {
+    transform: scale(1.05);
+}
+
+/* Icon Image (already in white circle) */
+.dash-icon {
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+/* Title */
+.dashboard-card h5 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* Dynamic Number */
+.dash-count {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
