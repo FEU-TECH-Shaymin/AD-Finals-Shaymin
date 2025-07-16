@@ -69,7 +69,7 @@ Description of the project in details.
 <!-- The following are just sample -->
 
 - Authentication & Authorization
-- CRUD Operations for Invetory System
+- CRUD Operations for E-Commerce System
 
 ### Technology
 
