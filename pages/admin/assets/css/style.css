@@ -3,3 +3,10 @@
     min-height: 100vh;
     padding: 100px 20px;
 }
+
+/* Title */
+.dashboard-welcome {
+    font-size: 3rem;
+    font-weight: 800;
+    color: white;
+}
