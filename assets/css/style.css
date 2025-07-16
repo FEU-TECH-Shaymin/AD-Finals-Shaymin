@@ -414,11 +414,13 @@
   }
 }
 
+
+
 /* ====== About Section ====== */
 .about-section {
   background-color: #342222;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -478,7 +480,7 @@
   transition: transform calc(var(--d) * 1.5) var(--e);
   pointer-events: none;
   z-index: 0;
-  background: rgba(53, 26, 8, 0.61);
+  background: rgba(75, 14, 3, 0.369);
 }
 
 .about-card::after {
