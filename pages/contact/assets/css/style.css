@@ -1,12 +1,14 @@
 /* ====== Contact Page Styles ====== */
 
+/* General Style */
+
 /* Section 1: Hero Image Background */
-.contact-hero-section {
-    background: url(../img/contact-hero.jpg) no-repeat center center / cover;
+.contact-form-section {
+    background: url(../img/contact-form-bg.png) no-repeat center center / cover;
     min-height: 100vh;
-    color: white;
-    text-align: center;
-    padding: 100px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .contact-hero-section h1 {
@@ -37,11 +39,9 @@
 /* Section 2: Info Section Background */
 .contact-info-section {
     background: url(../img/contact-icons-bg.png) no-repeat center center / cover;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    margin: 0;
-    padding: 0;  /* No padding here either */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -71,15 +71,11 @@
 
 
 /* Section 3: Form Section Background */
-.contact-form-section {
-    background: url(../img/contact-form-bg.png) no-repeat center center / cover;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
+.contact-hero-section {
+    background: url(../img/contact-hero-bg.png) no-repeat center center / cover;
     display: flex;
     justify-content: center;
-    margin: 0;
-    padding: 0;
+    align-items: center;
 }
 
 .contact-form-card {
