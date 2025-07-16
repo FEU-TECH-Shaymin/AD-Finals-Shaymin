@@ -72,6 +72,7 @@ Description of the project in details.
 - CRUD Operations for E-Commerce System
 - Responsive Frontend UI
 - Static & Dynamic Content Separation
+- Database Integration
 
 ### Technology
 
