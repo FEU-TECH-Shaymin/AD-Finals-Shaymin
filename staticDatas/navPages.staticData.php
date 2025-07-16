@@ -12,10 +12,10 @@ return [
 
     // User-only
     ['label' => 'Order', 'url' => '/pages/orders/index.php', 'authOnly' => true, 'role' => 'user'],
-    ['label' => '', 'url' => '/pages/user/index.php', 'authOnly' => true, 'role' => 'user'],
+    ['label' => 'Dashboard', 'url' => '/pages/user/index.php', 'authOnly' => true, 'role' => 'user'],
 
     // Admin-only
-    ['label' => '', 'url' => '/pages/admin/index.php', 'authOnly' => true, 'role' => 'admin'],
+    ['label' => 'Dashboard', 'url' => '/pages/admin/index.php', 'authOnly' => true, 'role' => 'admin'],
     ['label' => 'Manage Products', 'url' => '/pages/admin/products.php', 'authOnly' => true, 'role' => 'admin'],
     
 ];
