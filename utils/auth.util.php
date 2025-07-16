@@ -15,7 +15,6 @@ class Auth
     public static function login(PDO $pdo, string $username, string $password): bool
     {
         try {
-            // 🔧 Removed LEFT JOIN to public.images
             $stmt = $pdo->prepare("
                 SELECT
                     user_id,
@@ -29,7 +28,6 @@ class Auth
             ");
             $stmt->execute([':username' => $username]);
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
         } catch (\PDOException $e) {
             error_log('[Auth::login] PDOException: ' . $e->getMessage());
             return false;
@@ -41,21 +39,20 @@ class Auth
         }
 
         if (!password_verify($password, $user['password'])) {
-            error_log("[Auth::login] Password mismatch for user_id={$user['id']}");
+            error_log("[Auth::login] Password mismatch for user_id={$user['user_id']}");
             return false;
         }
 
         session_regenerate_id(true);
-       $_SESSION['user'] = [
-    'id'         => $user['user_id'],  // now this key exists
-    'first_name' => $user['first_name'],
-    'last_name'  => $user['last_name'],
-    'username'   => $user['username'],
-    'role'       => $user['role'],
-];
+        $_SESSION['user'] = [
+            'id'         => $user['user_id'],
+            'first_name' => $user['first_name'],
+            'last_name'  => $user['last_name'],
+            'username'   => $user['username'],
+            'role'       => $user['role'],
+        ];
 
-        error_log("[Auth::login] Login successful for user_id={$user['id']}");
-
+        error_log("[Auth::login] Login successful for user_id={$user['user_id']}");
         return true;
     }
 
