@@ -17,9 +17,15 @@ renderMainLayout(
         ?>
         <!-- Hero Section -->
         <section class="dashboard-wrapper">
-            <div class="container-fluid">
+            <div class="container text-center text-light">
+                <h1 class="dashboard-welcome">Welcome, Admin!</h1>
+                <div class="row justify-content-center g-4 mt-4">
+
+                    
+
+                </div>
             </div>
-        </section>
+        </section></section>
         <?php
     },
     [
