@@ -21,10 +21,14 @@ $user = Auth::user();
 
 $headNavList = array_filter($allNavItems, function ($item) use ($isLoggedIn, $user) {
     // Auth-only check
-    if (!empty($item['authOnly']) && !$isLoggedIn) return false;
+    if (!empty($item['authOnly']) && !$isLoggedIn) {
+        return false;
+    }
 
     // Guest-only check
-    if (!empty($item['guestOnly']) && $isLoggedIn) return false;
+    if (!empty($item['guestOnly']) && $isLoggedIn) {
+        return false;
+    }
 
     // Role check
     if (!empty($item['role'])) {
@@ -33,24 +37,65 @@ $headNavList = array_filter($allNavItems, function ($item) use ($isLoggedIn, $us
         }
     }
 
+    // ✅ Hide-for check (e.g., hide Products for admin)
+    if (!empty($item['hideFor']) && isset($user['role']) && $item['hideFor'] === $user['role']) {
+        return false;
+    }
+
     return true;
 });
-
 
 // 4. Main layout function
 function renderMainLayout(callable $content, array $customJsCss = []): void
 {
     global $headNavList, $user;
 
-    // Load the HTML <head> and include CSS
     head($customJsCss['css'] ?? []);
-
-    // Render the navigation bar with filtered items
     navHeader($headNavList, $user);
-
-    // Render the page content
     $content();
-
-    // Load the <footer> and include JS
     footer($customJsCss['js'] ?? []);
+}
+
+// 5. Access control functions
+
+/**
+ * Only allow logged-in users.
+ */
+function requireAuth(): void {
+    if (!Auth::check()) {
+        header('Location: /pages/login/index.php?error=unauthorized');
+        exit;
+    }
+}
+
+/**
+ * Only allow guests (not logged in).
+ */
+function requireGuest(): void {
+    if (Auth::check()) {
+        header('Location: /index.php');
+        exit;
+    }
+}
+
+/**
+ * Only allow users with a specific role (e.g., 'admin', 'user').
+ */
+function requireRole(string $role): void {
+    $user = Auth::user();
+    if (!Auth::check() || !isset($user['role']) || $user['role'] !== $role) {
+        header('Location: /index.php?error=forbidden');
+        exit;
+    }
+}
+
+/**
+ * Allow guests and users, but block admins.
+ */
+function requireNotAdmin(): void {
+    $user = Auth::user();
+    if (Auth::check() && ($user['role'] ?? '') === 'admin') {
+        header('Location: /pages/admin/index.php?error=not_allowed');
+        exit;
+    }
 }
