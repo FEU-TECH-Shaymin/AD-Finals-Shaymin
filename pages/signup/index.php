@@ -29,20 +29,20 @@ renderMainLayout(
                     <?php endif; ?>
 
                     <div class="mb-3">
-                        <label for="username" class="form-label">First Name</label>
-                        <input type="text" id="fname" name="fname" class="form-control" required>
+                        <label for="first_name" class="form-label">First Name</label>
+                        <input type="text" id="first_name" name="first_name" class="form-control" required>
                         <div class="invalid-feedback">Please enter your first name.</div>
                     </div>
 
                     <div class="mb-3">
-                        <label for="username" class="form-label">Middle Name</label>
-                        <input type="text" id="mname" name="mname" class="form-control" required>
+                        <label for="middle_name" class="form-label">Middle Name</label>
+                        <input type="text" id="middle_name" name="middle_name" class="form-control" required>
                         <div class="invalid-feedback">Please enter your middle name.</div>
                     </div>
 
                     <div class="mb-3">
-                        <label for="username" class="form-label">Last Name</label>
-                        <input type="text" id="lname" name="lname" class="form-control" required>
+                        <label for="last_name" class="form-label">Last Name</label>
+                        <input type="text" id="last_name" name="last_name" class="form-control" required>
                         <div class="invalid-feedback">Please enter your last name.</div>
                     </div>
 
