@@ -15,31 +15,23 @@ class Signup
     {
         $errors = [];
 
-        // Trim all inputs once
-        $first_name = trim($data['first_name'] ?? '');
-        $last_name = trim($data['last_name'] ?? '');
-        $username = trim($data['username'] ?? '');
-        $password = $data['password'] ?? '';
+        $first_name  = trim($data['first_name'] ?? '');
+        $middle_name = trim($data['middle_name'] ?? '');
+        $last_name   = trim($data['last_name'] ?? '');
+        $username    = trim($data['username'] ?? '');
+        $password    = $data['password'] ?? '';
 
-        // 1) Required fields
-        if ($first_name === '') {
-            $errors[] = 'First name is required.';
-        }
-        if ($last_name === '') {
-            $errors[] = 'Last name is required.';
-        }
-        if ($username === '') {
-            $errors[] = 'Username is required.';
-        }
+        if ($first_name === '')  $errors[] = 'First name is required.';
+        if ($last_name === '')   $errors[] = 'Last name is required.';
+        if ($username === '')    $errors[] = 'Username is required.';
 
-        // 2) Password policy
         $pwLen = strlen($password);
         if (
-            $pwLen < 8
-            || !preg_match('/[A-Z]/', $password)
-            || !preg_match('/[a-z]/', $password)
-            || !preg_match('/\d/', $password)
-            || !preg_match('/\W/', $password)
+            $pwLen < 8 ||
+            !preg_match('/[A-Z]/', $password) ||
+            !preg_match('/[a-z]/', $password) ||
+            !preg_match('/\d/', $password) ||
+            !preg_match('/\W/', $password)
         ) {
             $errors[] = 'Password must be at least 8 characters and include uppercase, lowercase, number, and special character.';
         }
@@ -51,27 +43,34 @@ class Signup
      * Create the user in the database. Role is fixed as 'Member'.
      *
      * @param PDO   $pdo
-     * @param array $data  Same keys as validate()
+     * @param array $data  Must include: first_name, middle_name, last_name, username, password
      * @return void
      * @throws PDOException on SQL errors
      */
     public static function create(PDO $pdo, array $data): void
     {
         $stmt = $pdo->prepare("
-            INSERT INTO public.\"users\"
-              (first_name, middle_name, last_name, username, password, role)
-            VALUES
-              (:first, :middle, :last, :username, :password, 'Member')
+            INSERT INTO public.\"users\" (
+                first_name, middle_name, last_name, username, password, role
+            ) VALUES (
+                :first, :middle, :last, :username, :password, 'Member'
+            )
         ");
 
         $hashed = password_hash($data['password'], PASSWORD_DEFAULT);
 
-        $stmt->execute([
-            ':first' => trim($data['first_name']),
-            ':middle' => trim($data['middle_name'] ?? '') !== '' ? trim($data['middle_name']) : null,
-            ':last' => trim($data['last_name']),
+        $params = [
+            ':first'    => trim($data['first_name']),
+            ':middle'   => $data['middle_name'] !== '' ? trim($data['middle_name']) : null,
+            ':last'     => trim($data['last_name']),
             ':username' => trim($data['username']),
             ':password' => $hashed,
-        ]);
+        ];
+
+        file_put_contents(BASE_PATH . '/signup_debug.log', "INSERT PARAMS:\n" . print_r($params, true), FILE_APPEND);
+
+        $stmt->execute($params);
+
+        file_put_contents(BASE_PATH . '/signup_debug.log', "✅ USER INSERTED\n", FILE_APPEND);
     }
 }
