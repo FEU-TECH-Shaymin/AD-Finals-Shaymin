@@ -74,6 +74,7 @@ Description of the project in details.
 - Static & Dynamic Content Separation
 - Database Integration
 - Seeding, Migrate, and Reset Utilities
+- Security Measures
 
 ### Technology
 
