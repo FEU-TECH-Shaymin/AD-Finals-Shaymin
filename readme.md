@@ -92,6 +92,7 @@ The system supports both admin and survivor roles, and its architecture is desig
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)
 
 #### Tools
+![Docker](https://img.shields.io/badge/docker-257bd6?style=for-the-badge&logo=docker&logoColor=white)
 
 ## Rules, Practices and Principles
 
