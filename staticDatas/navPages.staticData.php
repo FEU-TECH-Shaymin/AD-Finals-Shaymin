@@ -1,9 +1,9 @@
 <?php
 return [
     ['label' => 'Home', 'url' => '/index.php'],
-    ['label' => 'About', 'url' => '/pages/about/index.php', 'guestOnly' => true],
+    ['label' => 'About', 'url' => '/pages/about/index.php'],
      ['label' => 'Products', 'url' => '/pages/about/index.php', 'authOnly' => true],
-     ['label' => 'Contact', 'url' => '/pages/contact/index.php', 'guestOnly' => true],
+     ['label' => 'Contact', 'url' => '/pages/contact/index.php'],
     ['label' => 'Login', 'url' => '/pages/login/index.php', 'guestOnly' => true],
     ['label' => 'Signup', 'url' => '/pages/signup/index.php', 'guestOnly' => true],
     ['label' => 'Logout', 'url' => '/handlers/auth.handler.php', 'authOnly' => true],
