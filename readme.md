@@ -58,10 +58,13 @@
 
 ## Overview
 
-<!-- TODO: To be changed -->
-<!-- The following are just sample -->
+*Survive the Horde.  Thrive in the Apocalypse.*
 
-Description of the project in details.
+Outlast is a post-apocalyptic-themed e-commerce website designed to equip survivors with essential gear for enduring a hostile world. From survival tools and weapons to medical and utility supplies, the platform captures the urgency of survival in a collapsed society.
+
+This group project is built using PHP, PostgreSQL, HTML/CSS, Bootstrap, and JavaScript, and is containerized with Docker for easy deployment. Composer is also used for dependency and utility management.
+
+The system supports both admin and survivor roles, and its architecture is designed for modularity, security, and responsiveness. All core functionalities are structured and detailed in the Key Components section below.
 
 ### Key Components
 
