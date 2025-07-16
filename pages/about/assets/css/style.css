@@ -99,3 +99,33 @@
     font-size: 0.9rem;
     color: #aaaaaa;
 }
+
+/* === RESPONSIVE === */
+@media (max-width: 992px) {
+    .about-title {
+        font-size: 2.5rem;
+    }
+
+    .about-description {
+        font-size: 1.1rem;
+    }
+
+    .team-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-title {
+        font-size: 2rem;
+    }
+
+    .about-description {
+        font-size: 1rem;
+    }
+
+    .team-img {
+        height: 80px;
+        width: 80px;
+    }
+}
