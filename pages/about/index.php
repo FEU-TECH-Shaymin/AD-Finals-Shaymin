@@ -21,7 +21,7 @@ renderMainLayout(
                     Whether you're hunting supplies, trading Zombie Crystals, or searching for safe ground — we’re the ones lighting your path forward.<br><br>
                     Survive. Adapt. Outlast.
                 </p>
-                <a href="#team" class="btn contact-cta">Contact Us</a>
+                <a href="../contact/index.php" class="btn contact-cta">Contact Us</a>
             </div>
         </section>
 
