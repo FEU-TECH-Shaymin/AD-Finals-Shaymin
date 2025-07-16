@@ -75,6 +75,7 @@ Description of the project in details.
 - Database Integration
 - Seeding, Migrate, and Reset Utilities
 - Security Measures
+- Error Handling & Custom 404 Pages
 
 ### Technology
 
