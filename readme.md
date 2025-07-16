@@ -58,9 +58,6 @@
 
 ## Overview
 
-<!-- TODO: To be changed -->
-<!-- The following are just sample -->
-
 *Survive the Horde.  Thrive in the Apocalypse.*
 
 Outlast is a post-apocalyptic-themed e-commerce website designed to equip survivors with essential gear for enduring a hostile world. From survival tools and weapons to medical and utility supplies, the platform captures the urgency of survival in a collapsed society.
