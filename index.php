@@ -27,9 +27,17 @@ renderMainLayout(
         </section>
 
         <section class="about-section">
-         <div class="container-fluid">
-          <img src="./assets/img/chooseOutlast.png" alt="Why Choose Outlast" class="choose-img">
-         </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-12 col-sm-6">
+              <img src="./assets/img/outlastImage1.png" alt="Woman standing infront of door" class="img-fluid abt-img">
+            </div>
+            <div class="col-12 col-sm-6">
+              <img src="./assets/img/outlastImage2.png" alt="Why Choose Outlast text" class="img-fluid abt-img">
+            </div>
+          </div>
+          <!-- <img src="./assets/img/chooseOutlast.png" alt="Why Choose Outlast" class="choose-img"> -->
+        </div>
       </section>
 
       <section class="about-cards">
