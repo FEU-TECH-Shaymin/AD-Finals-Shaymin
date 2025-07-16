@@ -1,6 +1,27 @@
 /* ====== Contact Page Styles ====== */
 
-/* General Style */
+/* HERO TEXTS (Default for Desktop) */
+.contact-hero-section h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    text-align: center;
+}
+
+.contact-hero-section p {
+    font-size: 1.25rem;
+    max-width: 700px;
+    margin: 20px auto;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.contact-cta {
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 12px 40px;
+    display: inline-block;
+    margin-top: 20px;
+}
 
 /* Section 1: Hero Image Background */
 .contact-form-section {
@@ -118,5 +139,32 @@
 
     .vertical-line {
         display: none;
+    }
+}
+
+/* Tablets */
+@media (max-width: 992px) {
+    .contact-hero-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .contact-hero-section p {
+        font-size: 1.1rem;
+    }
+}
+
+/* Phones */
+@media (max-width: 576px) {
+    .contact-hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .contact-hero-section p {
+        font-size: 1rem;
+    }
+
+    .contact-cta {
+        font-size: 0.9rem;
+        padding: 10px 30px;
     }
 }
