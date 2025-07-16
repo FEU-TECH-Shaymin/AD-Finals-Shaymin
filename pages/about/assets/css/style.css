@@ -1,0 +1,8 @@
+/* === ABOUT PAGE MAIN BACKGROUND === */
+.about-hero-section {
+    background: url(../img/about-bg.png) no-repeat center center / cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
