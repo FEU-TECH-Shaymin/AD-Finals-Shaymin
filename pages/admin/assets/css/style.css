@@ -1,0 +1,61 @@
+.dashboard-wrapper {
+    background: url(../img/admin-bg.png) no-repeat center center / cover;
+    min-height: 100vh;
+    padding: 100px 20px;
+}
+
+/* Title */
+.dashboard-welcome {
+    font-size: 3rem;
+    font-weight: 800;
+    color: white;
+}
+
+/* Stat Boxes */
+.dashboard-card {
+    background-color: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(6px);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.dashboard-card:hover {
+    transform: scale(1.05);
+}
+
+/* Icon Image (already in white circle) */
+.dash-icon {
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+/* Title */
+.dashboard-card h5 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* Dynamic Number */
+.dash-count {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+/* Responsive */
+@media (max-width: 768px) {
+    .dashboard-welcome {
+        font-size: 2rem;
+    }
+
+    .dash-count {
+        font-size: 1.5rem;
+    }
+
+    .dash-icon {
+        height: 50px;
+    }
+}
