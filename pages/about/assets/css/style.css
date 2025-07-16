@@ -4,6 +4,7 @@
     min-height: 100vh;
     padding: 80px 20px;
     color: white;
+    padding-bottom: 10%;
 }
 
 
@@ -15,6 +16,7 @@
     font-weight: 900;
     color: white;
     text-align: center;
+    margin-top: 10%;
 }
 
 /* Paragraph under "Who Are We?" */
@@ -33,7 +35,7 @@
     font-weight: 800;
     color: white;
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 10%;
 }
 
 /* === CTA BUTTON === */
@@ -47,6 +49,7 @@
     transition: 0.3s;
     display: inline-block;
     margin-top: 20px;
+    margin-bottom: 10%;
 }
 
 .contact-cta:hover {

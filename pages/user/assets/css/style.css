@@ -1,9 +1,32 @@
 /* ====== User Section ====== */
-
 .user-section {
   min-height: 100vh;
   background: url(../img/user-section-bg.png) no-repeat center center / cover;
-  position: relative;
   padding: 20px;
-  justify-content: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;    /* Default for small screens */
+}
+
+/* Image wrapper always full width, controls alignment */
+.user-img-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;    /* Center by default */
+}
+
+.user-sc-img {
+  max-width: 65%;
+  height: auto;
+}
+
+/* On screens wider than 600px, align image to the right */
+@media (min-width: 601px) {
+  .user-img-wrapper {
+    justify-content: flex-end;
+  }
+
+  .user-sc-img{
+    width: fit-content;
+  }
 }
