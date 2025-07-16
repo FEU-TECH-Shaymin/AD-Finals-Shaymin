@@ -38,9 +38,10 @@
 .contact-info-section {
     background: url(../img/contact-icons-bg.png) no-repeat center center / cover;
     background-size: cover;
-    background-repeat: no-repeat;
     background-position: center center;
-    padding: 60px 20px;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;  /* No padding here either */
 }
 
 
@@ -71,13 +72,14 @@
 
 /* Section 3: Form Section Background */
 .contact-form-section {
-    min-height: 100vh;
     background: url(../img/contact-form-bg.png) no-repeat center center / cover;
-    min-height: 100vh;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 20px;
+    margin: 0;
+    padding: 0;
 }
 
 .contact-form-card {
