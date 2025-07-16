@@ -54,7 +54,7 @@ class Signup
                 INSERT INTO public.\"users\" (
                     first_name, middle_name, last_name, username, password, role
                 ) VALUES (
-                    :first, :middle, :last, :username, :password, 'Member'
+                    :first, :middle, :last, :username, :password, 'user'
                 )
             ");
 
