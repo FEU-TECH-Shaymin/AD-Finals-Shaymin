@@ -13,7 +13,7 @@ $totalOrders = getTotalOrders();
 
 // Call layout renderer
 renderMainLayout(
-    function () {
+    function () use ($totalUsers, $totalProducts, $totalOrders) {
         ?>
         <!-- Hero Section -->
         <section class="section">
