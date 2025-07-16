@@ -9,9 +9,8 @@
   </a>
   <h3 align="center">Outlast</h3>
 </div>
-<!-- TODO: Make a short description -->
 <div align="center">
-  Short Description. (Optional)
+  Outlast is a post-apocalyptic-themed e-commerce webpage where survivors can browse and purchase essential gear to stay alive. From survival tools and weapons to life-saving consumables, Outlast equips you with everything needed to thrive in a world where danger lurks around every corner. Prepare, protect, and prevail.
 </div>
 
 <br />
