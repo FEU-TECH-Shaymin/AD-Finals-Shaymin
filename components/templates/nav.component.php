@@ -23,13 +23,13 @@ function navHeader(array $navList, ?array $user = null): void
                  <?php foreach ($navList as $navItem): ?>
     <?php
         $visibility = $navItem['for'] ?? 'all';
-        $shouldShow = (
-            $visibility === 'all' ||
-            ($visibility === 'guest' && !$isLoggedIn) ||
-            ($visibility === 'auth' && $isLoggedIn) ||
-            ($visibility === 'admin' && $isLoggedIn && ($user['role'] ?? '') === 'admin') ||
-            ($visibility === 'member' && $isLoggedIn && ($user['role'] ?? '') === 'user')
-        );
+       $shouldShow = (
+    $visibility === 'all' ||
+    ($visibility === 'guest' && !$isLoggedIn) ||
+    ($visibility === 'auth' && $isLoggedIn) ||
+    ($visibility === 'admin' && $isLoggedIn && ($user['role'] ?? '') === 'admin') ||
+    ($visibility === 'user' && $isLoggedIn)
+);
 
         if (!$shouldShow) {
             continue;
