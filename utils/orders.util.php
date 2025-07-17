@@ -50,3 +50,19 @@ function insertOrder(array $data): array
         ];
     }
 }
+
+/**
+ * Fetch all available products from the database
+ */
+function getAllProducts(): array
+{
+    try {
+        $pdo = connectOrdersDB();
+
+        $stmt = $pdo->query("SELECT * FROM products WHERE stock_quantity > 0 ORDER BY name ASC");
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        return []; // optionally log the error
+    }
+}
