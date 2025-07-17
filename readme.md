@@ -4,33 +4,32 @@
 
 <br />
 <div align="center">
-  <a href="https://github.com/zyx-0314/">
-  <!-- TODO: If you want to add logo or banner you can add it here -->
-    <img src="./assets/img/nyebe_white.png" alt="Nyebe" width="130" height="100">
+  <a href="https://github.com/FEU-TECH-Shaymin/AD-Finals-Shaymin">
+    <img src="./assets/img/outlastLogo.png" alt="Outlast" width="80%" height="auto">
   </a>
-<!-- TODO: Change Title to the name of the title of your Project -->
-  <h3 align="center">Title</h3>
+  <h3 align="center">Outlast</h3>
 </div>
-<!-- TODO: Make a short description -->
 <div align="center">
-  Short Description. (Optional)
+  Outlast is a post-apocalyptic-themed e-commerce webpage where survivors can browse and purchase essential gear to stay alive. From survival tools and weapons to life-saving consumables, Outlast equips you with everything needed to thrive in a world where danger lurks around every corner. Prepare, protect, and prevail.
 </div>
 
 <br />
 
-<!-- TODO: Change the zyx-0314 into your github username  -->
-<!-- TODO: Change the WD-Template-Project into the same name of your folder -->
+![](https://visit-counter.vercel.app/counter.png?page=FEU-TECH-Shaymin/AD-Finals-Shaymin)
 
-![](https://visit-counter.vercel.app/counter.png?page=zyx-0314/AD-CI4-Template-Project)
-
-[![wakatime](https://wakatime.com/badge/user/018dd99a-4985-4f98-8216-6ca6fe2ce0f8/project/63501637-9a31-42f0-960d-4d0ab47977f8.svg)](https://wakatime.com/badge/user/018dd99a-4985-4f98-8216-6ca6fe2ce0f8/project/63501637-9a31-42f0-960d-4d0ab47977f8)
+| Student | WakaTime |
+|-|-|
+| Gagan | [![wakatime](https://wakatime.com/badge/user/443593d2-a49b-4deb-9e6c-bfa25506f1aa/project/d8ed5cda-cafb-47c5-908e-4ec4dffc1750.svg)](https://wakatime.com/badge/user/443593d2-a49b-4deb-9e6c-bfa25506f1aa/project/d8ed5cda-cafb-47c5-908e-4ec4dffc1750) |
+| Gonzales | [![wakatime](https://wakatime.com/badge/user/92714f91-5bd0-4e5f-ad0e-ceb54c8406d2/project/41ef207f-725d-4863-8046-bfb3f133a597.svg)](https://wakatime.com/badge/user/92714f91-5bd0-4e5f-ad0e-ceb54c8406d2/project/41ef207f-725d-4863-8046-bfb3f133a597) |
+| Manrique | [![wakatime](https://wakatime.com/badge/user/50d53971-71c4-47c9-a5ac-6d633c759326/project/773143f7-908b-4f91-a8a0-1566d88f8e25.svg)](https://wakatime.com/badge/user/50d53971-71c4-47c9-a5ac-6d633c759326/project/773143f7-908b-4f91-a8a0-1566d88f8e25) |
+| Oxina | [![wakatime](https://wakatime.com/badge/user/65f5d1d3-0933-4b6c-b6df-d8bf043e70be/project/9072e330-ba90-4d0f-8f33-5f9a0cdb57b0.svg)](https://wakatime.com/badge/user/65f5d1d3-0933-4b6c-b6df-d8bf043e70be/project/9072e330-ba90-4d0f-8f33-5f9a0cdb57b0) |
+| Rivera | [![wakatime](https://wakatime.com/badge/user/3347b15e-226a-471b-9f86-f04cdf705140/project/6e9fa798-b3cf-4fac-a6c4-0cfae883878d.svg)](https://wakatime.com/badge/user/3347b15e-226a-471b-9f86-f04cdf705140/project/6e9fa798-b3cf-4fac-a6c4-0cfae883878d) |
 
 ---
 
 <br />
 <br />
 
-<!-- TODO: If you want to add more layers for your readme -->
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -58,22 +57,27 @@
 
 ## Overview
 
-<!-- TODO: To be changed -->
-<!-- The following are just sample -->
+*Survive the Horde.  Thrive in the Apocalypse.*
 
-Description of the project in details.
+Outlast is a post-apocalyptic-themed e-commerce website designed to equip survivors with essential gear for enduring a hostile world. From survival tools and weapons to medical and utility supplies, the platform captures the urgency of survival in a collapsed society.
+
+This group project is built using PHP, PostgreSQL, HTML/CSS, Bootstrap, and JavaScript, and is containerized with Docker for easy deployment. Composer is also used for dependency and utility management.
+
+The system supports both admin and survivor roles, and its architecture is designed for modularity, security, and responsiveness. All core functionalities are structured and detailed in the Key Components section below.
 
 ### Key Components
 
-<!-- TODO: List of Key Components -->
-<!-- The following are just sample -->
-
 - Authentication & Authorization
-- CRUD Operations for Invetory System
+- CRUD Operations for E-Commerce System
+- Responsive Frontend UI
+- Static & Dynamic Content Separation
+- Database Integration
+- Seeding, Migrate, and Reset Utilities
+- Security Measures
+- Error Handling & Custom 404 Pages
 
 ### Technology
 
-<!-- TODO: List of Technology Used -->
 #### Language
 ![HTML](https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)
@@ -81,17 +85,13 @@ Description of the project in details.
 ![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
 
 #### Framework/Library
-![CodeIgniter](https://img.shields.io/badge/CodeIgniter-EF4223?style=for-the-badge&logo=codeigniter&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
 
 #### Databases
-![MySQL](https://img.shields.io/badge/MySQL-00758F?style=for-the-badge&logo=mysql&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)
 
-#### Deployment
-![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+#### Tools
+![Docker](https://img.shields.io/badge/docker-257bd6?style=for-the-badge&logo=docker&logoColor=white)
 
 ## Rules, Practices and Principles
 
@@ -155,11 +155,8 @@ AD-ProjectName
 
 ## Resources
 
-<!-- TODO: Add References -->
-
 | Title        | Purpose                                                                       | Link          |
 | ------------ | ----------------------------------------------------------------------------- | ------------- |
-| Sample Title | Sample purpose would be here like this and this is the example of what it is. | trykolang.com |
-| Sample Title | Sample purpose would be here like this and this is the example of what it is. | trykolang.com |
-| Sample Title | Sample purpose would be here like this and this is the example of what it is. | trykolang.com |
-| Sample Title | Sample purpose would be here like this and this is the example of what it is. | trykolang.com |
+| Login/Signup Page | Provides a reference implementation of responsive login and signup forms with modern styling and structure. | <a href="https://codepen.io/BROOK_BK7/pen/VwjwRWr">Codepen</a> |
+| Glitch Effect | Used for the glitch animation effect for images or backgrounds in the landing page. | <a href="https://codepen.io/Diana-Moretti/pen/RNwyPOV">Codepen</a> |
+| Glitch Text Effect | Used to create animated text glitch effects for the landing page. | <a href="https://codepen.io/hoskinshozzy/pen/jKRqXv">Codepen</a> |

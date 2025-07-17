@@ -1,0 +1,91 @@
+/* ====== Signup Section ====== */
+
+.signup-section {
+  min-height: 100vh;
+  background: url(../../../../assets/img/flare.gif) no-repeat center center / cover;
+  position: relative;
+  padding: 20px;
+  justify-content: center;
+}
+
+.card {
+  background-color: #f4f8fd1a;
+  backdrop-filter: blur(3px);
+  border-radius: 1rem;
+}
+
+.btn{
+  width: 150px;
+  background-color: #6F020D;
+  border: none;
+  outline: none;
+  height: 49px;
+  border-radius: 49px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.btn:hover {
+  background-color: white;
+  border:inset 4px #6F020D;
+  color:#290408;
+}
+
+#sign-in-form, #sign-up-form{
+  color: #E8EDEA;
+}
+
+#sign-in-form a, #sign-up-form a{
+  color: #E8EDEA;
+}
+
+@media (max-width: 870px) {
+  .login-signup-section{
+    justify-content: center;
+  }
+
+  .signin-signup {
+    width: 90%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0 1rem;
+  }
+
+  form {
+    padding: 1rem;
+  }
+
+  .input-field {
+    max-width: 100%;
+    height: 50px;
+    grid-template-columns: 20% 80%;
+    margin: 8px 0;
+  }
+
+  .input-field i {
+    font-size: 1rem;
+  }
+
+  .btn {
+    width: 100%;
+    height: 45px;
+    font-size: 1rem;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+}
+
+.signup-txt{
+  color: #E8EDEA;
+}
+
+.invalid-feedback {
+    font-weight: bold;
+}

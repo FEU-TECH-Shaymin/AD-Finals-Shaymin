@@ -1,0 +1,168 @@
+/* ====== Contact Page Styles ====== */
+
+/* HERO TEXTS (Default for Desktop) */
+.contact-hero-section h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    text-align: center;
+    color: white;
+}
+
+.contact-hero-section p {
+    font-size: 1.25rem;
+    max-width: 700px;
+    margin: 20px auto;
+    line-height: 1.6;
+    text-align: center;
+    color: white;
+}
+
+.contact-cta {
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 12px 40px;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+/* Section 1: Hero Image Background */
+.contact-hero-section {
+    background: url(../img/contact-hero.jpg) no-repeat center center / cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.contact-cta {
+    background-color: white;
+    color: black;
+    border-radius: 30px;
+    padding: 10px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.contact-cta:hover {
+    background-color: #6F020D;
+    color: white;
+}
+
+/* Section 2: Info Section Background */
+.contact-info-section {
+    background: url(../img/contact-icons-bg.png) no-repeat center center / cover;
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-info-section p, h5{
+    color: white;
+}
+
+.icon-box {
+    padding: 20px;
+    position: relative;
+}
+
+.contact-icon {
+    width: 60px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.vertical-line {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+}
+
+.icon-box:last-child .vertical-line {
+    display: none;
+}
+
+
+/* Section 3: Form Section Background */
+.contact-form-section {
+    background: url(../img/contact-form-bg.png) no-repeat center center / cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-form-card {
+    background-color: #f4f8fd1a;  /* Transparent background */
+    backdrop-filter: blur(3px);   /* Glass effect */
+    border-radius: 1rem;
+    color: #E8EDEA;
+    max-width: 500px;
+    width: 100%;
+    padding: 2rem;
+}
+
+.contact-form-card label {
+    color: #E8EDEA;
+}
+
+.contact-form-card .btn {
+    background-color: #6F020D;
+    color: white;
+    border-radius: 49px;
+    font-weight: 600;
+    transition: 0.5s;
+    width: 100%;
+}
+
+.contact-form-card .btn:hover {
+    background-color: white;
+    color: #6F020D;
+}
+
+/* ====== Responsive Adjustments ====== */
+@media (max-width: 768px) {
+    .contact-hero-section h1 {
+        font-size: 1.8rem;
+    }
+
+    .icon-box {
+        margin-bottom: 20px;
+    }
+
+    .vertical-line {
+        display: none;
+    }
+}
+
+/* Tablets */
+@media (max-width: 992px) {
+    .contact-hero-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .contact-hero-section p {
+        font-size: 1.1rem;
+    }
+}
+
+/* Phones */
+@media (max-width: 576px) {
+    .contact-hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .contact-hero-section p {
+        font-size: 1rem;
+    }
+
+    .contact-cta {
+        font-size: 0.9rem;
+        padding: 10px 30px;
+    }
+}
