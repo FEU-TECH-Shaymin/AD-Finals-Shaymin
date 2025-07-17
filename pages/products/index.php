@@ -12,6 +12,21 @@ $products = $keyword
     : ProductsUtil::getAll();
 
 // Call layout renderer
+
+$categories = [
+  "Weapons" => [
+    ["name" => "Baseball Bat", "desc" => "Sturdy blunt weapon effective for close combat and self-defense", "price" => 10, "bg" => "images/baseball bat.png"],
+    ["name" => "Sword", "desc" => "Sharp melee weapon ideal for silent and precise attacks.", "price" => 10, "bg" => "images/sword.png"],
+    ["name" => "Knife", "desc" => "Compact blade suitable for stealth and utility purposes.", "price" => 10, "bg" => "images/knife.png"],
+    ["name" => "Axe", "desc" => "Heavy-duty weapon capable of chopping through bone and wood.", "price" => 10, "bg" => "images/axe.png"],
+    ["name" => "Machete", "desc" => "Long blade perfect for slashing through dense areas or enemies.", "price" => 25, "bg" => "images/machete.png"],
+    ["name" => "Chainsaw", "desc" => "Devastating close-range weapon with high damage output.", "price" => 25, "bg" => "images/chainsaw.png"],
+    ["name" => "Gun", "desc" => "Reliable ranged weapon suitable for rapid elimination of threats.", "price" => 25, "bg" => "images/gun.png"],
+    ["name" => "Bow and Arrow", "desc" => "Silent ranged weapon useful for distance attacks and reuse of ammo.", "price" => 25, "bg" => "images/bow and arrow.jpg"],
+    ["name" => "Flamethrower", "desc" => "Spreads fire across multiple targets, effective for crowd control.", "price" => 50, "bg" => "images/flame thrower.jpg"],
+    ["name" => "Bazooka", "desc" => "Powerful explosive weapon designed for maximum destruction.", "price" => 50, "bg" => "images/bazooka.jpg"],
+  ],
+
 renderMainLayout(
     function () use ($keyword, $products) {
         ?>
