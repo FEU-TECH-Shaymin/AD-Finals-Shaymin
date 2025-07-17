@@ -27,6 +27,11 @@ renderMainLayout(
                                     <input type="email" id="email" name="email" class="form-control" required>
                                     <div class="invalid-feedback">Please enter a valid email address.</div>
                                 </div>
+                                <div class="mb-3">
+                                    <label for="phoneNumber" class="form-label">Phone Number</label>
+                                    <input type="phoneNumber" id="phoneNumber" name="phoneNumber" class="form-control" required>
+                                    <div class="invalid-feedback">Please enter a valid phone number.</div>
+                                </div>
                             </div>
                         </div>
                     </form>
