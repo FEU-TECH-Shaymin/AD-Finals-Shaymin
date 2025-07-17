@@ -26,3 +26,9 @@ body {
   height: auto;
 }
 
+/* ─────── SEARCH SECTION ─────── */
+.search-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
