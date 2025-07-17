@@ -10,47 +10,51 @@ require_once LAYOUTS_PATH . "/main.layout.php";
 renderMainLayout(
     function () {
         ?>
-          <div class="container">
-    <div class="form-header">
-      <h1>Transaction</h1>
-    </div>
+        <section class="transaction-section d-flex align-items-center" style="min-height: 100vh;">
+            <div class="card p-4 shadow-lg" style="max-width: 800px; width: 100%;"class="card p-4 shadow-lg" style="max-width: 800px; width: 100%;">
+                <h2 class="text-center transaction-txt">Transaction</h2>
+                <div class="checkout-content">
+                    <form class="checkout-form" id="form" action="submit_transaction.php" method="POST">
+                        <div class="row">
+                            <div class="col-12 col-sm-6">
+                                <div class="mb-3">
+                                    <label for="full_name" class="form-label">Full Name</label>
+                                    <input type="text" id="full_name" name="full_name" class="form-control" required>
+                                    <div class="invalid-feedback">Please enter your full name.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" id="email" name="email" class="form-control" required>
+                                    <div class="invalid-feedback">Please enter a valid email address.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phoneNumber" class="form-label">Phone Number</label>
+                                    <input type="phoneNumber" id="phoneNumber" name="phoneNumber" class="form-control" required>
+                                    <div class="invalid-feedback">Please enter a valid phone number.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="address" class="form-label">Address</label>
+                                    <input type="address" id="address" name="address" class="form-control" required>
+                                    <div class="invalid-feedback">Please enter a valid address.</div>
+                                </div>
+                            </div>
 
-    <div class="checkout-content">
-      <form class="checkout-form" action="submit_transaction.php" method="POST">
-        <label>
-          Full Name <span>*</span>
-          <input type="text" name="fullname" required>
-        </label>
-
-        <label>
-          Email <span>*</span>
-          <input type="email" name="email" required>
-        </label>
-
-        <label>
-          Phone Number <span>*</span>
-          <input type="tel" name="phone" required>
-        </label>
-
-        <label>
-          Address <span>*</span>
-          <input type="text" name="address" required>
-        </label>
-      </form>
-
-      <div class="order-summary">
-        <h2>Order Summary</h2>
-        <p><strong>Product:</strong> Outlast Survival Kit</p>
-        <p><strong>Price:</strong> ₱1,299.00</p>
-        <p class="total"><strong>Total:</strong> ₱1,299.00</p>
-
-        <div class="buttons">
-          <button class="confirm" type="submit" form="form">Confirm Order</button>
-          <button class="cancel" onclick="window.location.href='index.php'">Cancel</button>
-        </div>
-      </div>
-    </div>
-  </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="order-summary">
+                                    <h2>Order Summary</h2>
+                                    <p><strong>Product:</strong> Outlast Survival Kit</p>
+                                    <p><strong>Price:</strong> ₱1,299.00</p>
+                                    <p class="total"><strong>Total:</strong> ₱1,299.00</p>
+                                    <div class="buttons">
+                                        <button class="confirm" type="submit" form="form">Confirm Order</button>
+                                        <button class="cancel" type="button" onclick="window.location.href='index.php'">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
         <?php
     },
     [

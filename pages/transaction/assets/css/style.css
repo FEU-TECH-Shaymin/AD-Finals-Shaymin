@@ -1,19 +1,36 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Arial Black', sans-serif;
-  background-color: #0d0d0d;
+.transaction-section {
+  position: relative; /* Needed for ::before absolute positioning */
+  min-height: 100vh;
+  background: url(pages/transaction/assets/img/bg-transaction.jpg) no-repeat center center / cover;
+  background-attachment: fixed;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.transaction-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #5a18184f; /* Semi-transparent overlay */
+  z-index: 0;
+}
+
+.transaction-txt {
   color: #fff;
 }
 
-.container {
-  max-width: 1100px;
-  margin: 40px auto;
-  padding: 30px;
-  background-color: #000;
-  border: 2px solid #900;
-  border-radius: 10px;
-  box-shadow: 0 0 20px #900;
+.card {
+  background-color: #f4f8fd1a;
+  backdrop-filter: blur(3px);
+  border-radius: 1rem;
+  width: 80%;
+  height: 70%;
 }
 
 .form-header {
@@ -58,15 +75,15 @@ body {
 .checkout-form input {
   margin-top: 5px;
   padding: 10px;
-  background: #1a1a1a;
+  background: #E8EDEA;
   border: 1px solid #900;
-  color: #fff;
+  color: #0C0E19;
   border-radius: 5px;
 }
 
 .order-summary {
   flex: 1 1 35%;
-  background-color: #1a1a1a;
+  background-color: #e8e8e8;
   border: 2px solid #900;
   border-radius: 10px;
   padding: 20px;
