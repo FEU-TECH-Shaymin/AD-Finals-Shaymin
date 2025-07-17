@@ -40,7 +40,9 @@ renderMainLayout(
                             </div>
 
                             <div class="col-12 col-sm-6">
-                                
+                                <div class="order-summary">
+                                    
+                                </div>
                             </div>
                         </div>
                     </form>
