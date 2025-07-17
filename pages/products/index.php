@@ -26,6 +26,21 @@ renderMainLayout(
                     <img src="images/carttt.png" alt="Cart" class="icon-img">
                 </div>
             </div>
+
+            <?php foreach ($categories as $category => $items): ?>
+                <h2 class="category-title"><?= $category ?></h2>
+                <div class="product-grid">
+                    <?php foreach ($items as $product): ?>
+                        <div class="product-card" style="background-image: url('<?= $product['bg'] ?>');">
+                            <div class="product-info">
+                                <div class="product-name"><?= $product['name'] ?></div>
+                                <div class="product-desc"><?= $product['desc'] ?></div>
+                                <div class="product-price"><?= $product['price'] ?> zombie crystals</div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endforeach; ?>
         </section>
         <?php
     },
