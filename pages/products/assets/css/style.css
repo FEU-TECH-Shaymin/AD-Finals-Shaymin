@@ -132,7 +132,7 @@ body {
 
 /* ─────── PRODUCT INFO BOX ─────── */
 .product-info {
-  background: rgba(0, 0, 0, 0.85);
+  background-color:#000;
   padding: 15px;
   width: 100%;
   box-sizing: border-box;
