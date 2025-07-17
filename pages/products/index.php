@@ -11,31 +11,59 @@ $products = $keyword
     ? ProductsUtil::search($keyword)
     : ProductsUtil::getAll();
 
+// Group products by category
+$categories = [];
+foreach ($products as $product) {
+    $category = $product['category'] ?? 'Uncategorized';
+    $categories[$category][] = $product;
+}
+
 // Call layout renderer
 renderMainLayout(
-    function () use ($keyword, $products) {
+    function () use ($keyword, $categories) {
         ?>
         <section class="all-categories-bg">
             <div class="top-bar">
-                <img src="images/outlastLogo.png" class="logo" alt="Outlast Logo">
-                <div class="search-section">
-                    <input type="text" class="search" placeholder="Search">
-                    <img src="images/search.png" class="search-icon" alt="Search">
-                </div>
+
+                <form method="GET" action="" class="search-section">
+                    <input 
+                        type="text" 
+                        class="search" 
+                        name="search" 
+                        placeholder="Search"
+                        value="<?= htmlspecialchars($keyword) ?>"
+                    >
+                    <button type="submit" class="search-btn">
+                        <img src="/images/search.png" class="search-icon" alt="Search">
+                    </button>
+                </form>
+
                 <div class="icons">
-                    <img src="images/carttt.png" alt="Cart" class="icon-img">
+                    <img src="/images/carttt.png" alt="Cart" class="icon-img">
                 </div>
             </div>
 
             <?php foreach ($categories as $category => $items): ?>
-                <h2 class="category-title"><?= $category ?></h2>
+                <h2 class="category-title"><?= htmlspecialchars($category) ?></h2>
                 <div class="product-grid">
-                    <?php foreach ($items as $product): ?>
-                        <div class="product-card" style="background-image: url('<?= $product['bg'] ?>');">
+                    <?php foreach ($items as $product): 
+                        // Handle image path with fallback if file doesn't exist
+                        $imageFilename = $product['image_path'] ?? 'default.png';
+                        $imageDir = '/pages/products/assets/img/';
+                        $absolutePath = $_SERVER['DOCUMENT_ROOT'] . $imageDir . $imageFilename;
+                        $finalFilename = file_exists($absolutePath) ? $imageFilename : 'default.png';
+                        $bgPath = $imageDir . rawurlencode($finalFilename);
+                    ?>
+                        <div 
+                            class="product-card"
+                            style="background-image: url('<?= htmlspecialchars($bgPath) ?>');"
+                        >
                             <div class="product-info">
-                                <div class="product-name"><?= $product['name'] ?></div>
-                                <div class="product-desc"><?= $product['desc'] ?></div>
-                                <div class="product-price"><?= $product['price'] ?> zombie crystals</div>
+                                <div class="product-name"><?= htmlspecialchars($product['name'] ?? '') ?></div>
+                                <div class="product-desc"><?= htmlspecialchars($product['description'] ?? '') ?></div>
+                                <div class="product-price">
+                                    <?= htmlspecialchars($product['price'] ?? '0.00') ?> zombie crystals
+                                </div>
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -49,7 +77,7 @@ renderMainLayout(
             "./assets/css/style.css"
         ],
         "js" => [
-            "./assets/js/script.js"
+            "/assets/js/script.js"
         ]
     ]
 );
