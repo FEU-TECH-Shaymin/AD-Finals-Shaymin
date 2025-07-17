@@ -2,6 +2,8 @@
 $pdo = require_once __DIR__ . '/../../utils/database.util.php';
 require_once __DIR__ . '/../../layouts/main.layout.php';
 
+$foundUser = null; // ✅ Initialize before use
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['create'])) {
         $stmt = $pdo->prepare("INSERT INTO users (role, first_name, middle_name, last_name, username, password) VALUES (?, ?, ?, ?, ?, ?)");
@@ -30,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 $allUsers = $pdo->query("SELECT * FROM users")->fetchAll(PDO::FETCH_ASSOC);
 
-renderMainLayout(function () use ($allUsers, $foundUser ?? null) {
+renderMainLayout(function () use ($allUsers, $foundUser) {
 ?>
 <section class="admin-container">
     <h1>User Administration</h1>
@@ -100,3 +102,4 @@ renderMainLayout(function () use ($allUsers, $foundUser ?? null) {
     "css" => ["./assets/css/style.css"],
     "js" => []
 ]);
+?>
