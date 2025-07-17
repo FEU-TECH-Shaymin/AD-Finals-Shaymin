@@ -200,6 +200,7 @@ return [
         'category'       => 'Sustenance',
         'price'          => 150,
         'stock_quantity' => 100,
+        'image_path'     => 'images/beginner.jpg',
     ],
     [
         'name'           => 'Intermediate Bundle',
@@ -207,6 +208,7 @@ return [
         'category'       => 'Bundles',
         'price'          => 180,
         'stock_quantity' => 100,
+        'image_path'     => 'images/intermediate.jpg',
     ],
     [
         'name'           => 'Advanced Bundle',
@@ -214,5 +216,6 @@ return [
         'category'       => 'Bundles',
         'price'          => 300,
         'stock_quantity' => 100,
+        'image_path'     => 'images/advanced.jpg',
     ],
 ];
