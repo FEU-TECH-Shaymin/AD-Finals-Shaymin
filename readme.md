@@ -17,7 +17,7 @@
 
 ![](https://visit-counter.vercel.app/counter.png?page=FEU-TECH-Shaymin/AD-Finals-Shaymin)
 
-| Student Number | WakaTime |
+| Student | WakaTime |
 |-|-|
 | Gagan | [![wakatime](https://wakatime.com/badge/user/443593d2-a49b-4deb-9e6c-bfa25506f1aa/project/d8ed5cda-cafb-47c5-908e-4ec4dffc1750.svg)](https://wakatime.com/badge/user/443593d2-a49b-4deb-9e6c-bfa25506f1aa/project/d8ed5cda-cafb-47c5-908e-4ec4dffc1750) |
 | Gonzales | [![wakatime](https://wakatime.com/badge/user/92714f91-5bd0-4e5f-ad0e-ceb54c8406d2/project/41ef207f-725d-4863-8046-bfb3f133a597.svg)](https://wakatime.com/badge/user/92714f91-5bd0-4e5f-ad0e-ceb54c8406d2/project/41ef207f-725d-4863-8046-bfb3f133a597) |
