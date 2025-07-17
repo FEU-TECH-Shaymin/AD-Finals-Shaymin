@@ -272,7 +272,7 @@
 }
 
 .hero-img{
-  max-width: 600px;
+  max-width: 80%;
   margin-bottom: 25px;
 }
 
@@ -311,6 +311,7 @@
   transition: background-color 0.3s;
   background-color: #e8edeabb;
   backdrop-filter: blur(3px);
+  font-size: 1rem;
 }
 
 .hero-cta:hover {
@@ -322,6 +323,26 @@
 .hero-cta i {
   margin-left: 0.5rem;
   vertical-align: middle;
+}
+
+/* Medium screens */
+@media (max-width: 768px) {
+  .hero-cta {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.5rem;
+    margin-left: 10px;
+  }
+}
+
+/* Small screens */
+@media (max-width: 576px) {
+  .hero-cta {
+    font-size: 0.85rem;
+    padding: 0.5rem 1.2rem;
+    display: block;
+    margin: 10px auto 0;
+    text-align: center;
+  }
 }
 
 .hero-heading,
