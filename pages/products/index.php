@@ -76,6 +76,15 @@ renderMainLayout(
                                 <div class="product-name"><?= $product['name'] ?></div>
                                 <div class="product-desc"><?= $product['desc'] ?></div>
                                 <div class="product-price"><?= $product['price'] ?> zombie crystals</div>
+
+                                <!-- ADD TO CART FORM -->
+                                 <form action="transaction.php" method="POST">
+                                    <input type="hidden" name="name" value="<?= $product['name'] ?>">
+                                    <input type="hidden" name="price" value="<?= $product['price'] ?>">
+                                    <input type="hidden" name="desc" value="<?= $product['desc'] ?>">
+                                    <input type="hidden" name="bg" value="<?= $product['bg'] ?>">
+                                    <button class="add-to-cart" data-name="<?= $product['name'] ?>">Add to Cart</button>
+                                </form>
                             </div>
                         </div>
                     <?php endforeach; ?>
