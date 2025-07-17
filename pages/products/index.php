@@ -26,6 +26,11 @@ $categories = [
     ["name" => "Flamethrower", "desc" => "Spreads fire across multiple targets, effective for crowd control.", "price" => 50, "bg" => "images/flame thrower.jpg"],
     ["name" => "Bazooka", "desc" => "Powerful explosive weapon designed for maximum destruction.", "price" => 50, "bg" => "images/bazooka.jpg"],
   ],
+  "Medical" => [
+    ["name" => "Bandaid", "desc" => "Adhesive bandage used for covering minor cuts and wounds.", "price" => 10, "bg" => "images/bandaid.jpg"],
+    ["name" => "Bandage", "desc" => "Basic medical supply used to stop bleeding and heal minor wounds.", "price" => 25, "bg" => "images/bandage.jpg"],
+    ["name" => "Healing Potion", "desc" => "Restores health quickly and effectively during critical moments.", "price" => 50, "bg" => "images/healing potion.jpg"],
+  ],
 
 renderMainLayout(
     function () use ($keyword, $products) {
