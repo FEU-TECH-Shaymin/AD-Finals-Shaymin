@@ -45,6 +45,12 @@ $categories = [
     ["name" => "Rice", "desc" => "Carbohydrate staple providing long-lasting energy.", "price" => 25, "bg" => "images/rice.jpg"],
     ["name" => "Water", "desc" => "Essential for hydration and survival.", "price" => 10, "bg" => "images/water.jpg"],
   ],
+  "Bundles" => [
+    ["name" => "Beginner’s Bundle", "desc" => "3 weapons, 2 medical, 2 sustenance (one food, one water)", "price" => 150, "bg" => "images/beginner.jpg"],
+    ["name" => "Intermediate Bundle", "desc" => "2 weapons, 2 medical, 2 tools, 2 sustenance", "price" => 180, "bg" => "images/intermediate.jpg"],
+    ["name" => "Advanced Bundle", "desc" => "5 weapons, 2 medical, 3 tools, 3 sustenance", "price" => 300, "bg" => "images/advanced.jpg"],
+  ],
+];
 
 renderMainLayout(
     function () use ($keyword, $products) {
