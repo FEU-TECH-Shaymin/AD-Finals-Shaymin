@@ -1,6 +1,8 @@
 <?php
 // BASE_PATH should point to the root of your project (typically /var/www/html in Docker)
 define('BASE_PATH', realpath(__DIR__));
+require_once BASE_PATH . '/vendor/autoload.php';
+
 define('HANDLERS_PATH', realpath(BASE_PATH . '/handlers'));
 define('UTILS_PATH', realpath(BASE_PATH . '/utils'));
 define('DUMMIES_PATH', realpath(BASE_PATH . '/staticDatas/dummies'));
