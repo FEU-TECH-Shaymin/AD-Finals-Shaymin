@@ -8,11 +8,7 @@ return [
         'category' => 'Weapons',
         'price' => 10,
         'stock_quantity' => 100,
-<<<<<<< HEAD
         'image_path' => 'baseballbat.png',
-=======
-        'image_path'     => 'img/baseball bat.png',
->>>>>>> bd38eb92e427e69a84e7766258ddec2859a71381
     ],
     [
         'name' => 'Sword',
@@ -20,11 +16,7 @@ return [
         'category' => 'Weapons',
         'price' => 10,
         'stock_quantity' => 100,
-<<<<<<< HEAD
         'image_path' => 'sword.png',
-=======
-        'image_path'     => 'img/sword.png',
->>>>>>> bd38eb92e427e69a84e7766258ddec2859a71381
     ],
     [
         'name' => 'Knife',
@@ -32,11 +24,7 @@ return [
         'category' => 'Weapons',
         'price' => 10,
         'stock_quantity' => 100,
-<<<<<<< HEAD
         'image_path' => 'knife.png',
-=======
-        'image_path'     => 'img/knife.png',
->>>>>>> bd38eb92e427e69a84e7766258ddec2859a71381
     ],
     [
         'name' => 'Axe',
@@ -44,11 +32,7 @@ return [
         'category' => 'Weapons',
         'price' => 10,
         'stock_quantity' => 100,
-<<<<<<< HEAD
         'image_path' => 'axe.png',
-=======
-        'image_path'     => 'img/axe.png',
->>>>>>> bd38eb92e427e69a84e7766258ddec2859a71381
     ],
     [
         'name' => 'Machete',
@@ -56,11 +40,7 @@ return [
         'category' => 'Weapons',
         'price' => 25,
         'stock_quantity' => 100,
-<<<<<<< HEAD
         'image_path' => 'machete.png',
-=======
-        'image_path'     => 'img/machete.png',
->>>>>>> bd38eb92e427e69a84e7766258ddec2859a71381
     ],
     [
         'name' => 'Chainsaw',
@@ -68,11 +48,7 @@ return [
         'category' => 'Weapons',
         'price' => 25,
         'stock_quantity' => 100,
-<<<<<<< HEAD
         'image_path' => 'chainsaw.png',
-=======
-        'image_path'     => 'img/chainsaw.png',
->>>>>>> bd38eb92e427e69a84e7766258ddec2859a71381
     ],
     [
         'name' => 'Gun',
@@ -80,11 +56,7 @@ return [
         'category' => 'Weapons',
         'price' => 25,
         'stock_quantity' => 100,
-<<<<<<< HEAD
         'image_path' => 'gun.png',
-=======
-        'image_path'     => 'img/gun.png',
->>>>>>> bd38eb92e427e69a84e7766258ddec2859a71381
     ],
     [
         'name' => 'Bow and Arrow',
@@ -92,11 +64,7 @@ return [
         'category' => 'Weapons',
         'price' => 25,
         'stock_quantity' => 100,
-<<<<<<< HEAD
         'image_path' => 'bowandarrow.jpg',
-=======
-        'image_path'     => 'img/bow and arrow.jpg',
->>>>>>> bd38eb92e427e69a84e7766258ddec2859a71381
     ],
     [
         'name' => 'Flamethrower',
@@ -104,11 +72,7 @@ return [
         'category' => 'Weapons',
         'price' => 50,
         'stock_quantity' => 100,
-<<<<<<< HEAD
         'image_path' => 'flamethrower.jpg',
-=======
-        'image_path'     => 'img/flame thrower.jpg',
->>>>>>> bd38eb92e427e69a84e7766258ddec2859a71381
     ],
     [
         'name' => 'Bazooka',
@@ -116,11 +80,7 @@ return [
         'category' => 'Weapons',
         'price' => 50,
         'stock_quantity' => 100,
-<<<<<<< HEAD
         'image_path' => 'bazooka.jpg',
-=======
-        'image_path'     => 'img/bazooka.jpg',
->>>>>>> bd38eb92e427e69a84e7766258ddec2859a71381
     ],
 
     // MEDICAL
@@ -130,11 +90,7 @@ return [
         'category' => 'Medical',
         'price' => 10,
         'stock_quantity' => 100,
-<<<<<<< HEAD
         'image_path' => 'bandaid.jpg',
-=======
-        'image_path'     => 'img/bandaid.jpg',
->>>>>>> bd38eb92e427e69a84e7766258ddec2859a71381
     ],
     [
         'name' => 'Bandage',
@@ -142,11 +98,7 @@ return [
         'category' => 'Medical',
         'price' => 25,
         'stock_quantity' => 100,
-<<<<<<< HEAD
         'image_path' => 'bandage.jpg',
-=======
-        'image_path'     => 'img/bandage.jpg',
->>>>>>> bd38eb92e427e69a84e7766258ddec2859a71381
     ],
     [
         'name' => 'Healing Potion',
@@ -154,11 +106,7 @@ return [
         'category' => 'Medical',
         'price' => 50,
         'stock_quantity' => 100,
-<<<<<<< HEAD
         'image_path' => 'healingpotion.jpg',
-=======
-        'image_path'     => 'img/healing potion.jpg',
->>>>>>> bd38eb92e427e69a84e7766258ddec2859a71381
     ],
 
     // TOOLS
@@ -168,11 +116,7 @@ return [
         'category' => 'Tools',
         'price' => 10,
         'stock_quantity' => 100,
-<<<<<<< HEAD
         'image_path' => 'compass.jpg',
-=======
-        'image_path'     => 'img/compass.jpg',
->>>>>>> bd38eb92e427e69a84e7766258ddec2859a71381
     ],
     [
         'name' => 'Flashlight',
@@ -180,11 +124,7 @@ return [
         'category' => 'Tools',
         'price' => 10,
         'stock_quantity' => 100,
-<<<<<<< HEAD
         'image_path' => 'flashlight.jpg',
-=======
-        'image_path'     => 'img/flashlight.jpg',
->>>>>>> bd38eb92e427e69a84e7766258ddec2859a71381
     ],
     [
         'name' => 'Lighter',
@@ -192,11 +132,7 @@ return [
         'category' => 'Tools',
         'price' => 10,
         'stock_quantity' => 100,
-<<<<<<< HEAD
         'image_path' => 'lighter.jpg',
-=======
-        'image_path'     => 'img/lighter.jpg',
->>>>>>> bd38eb92e427e69a84e7766258ddec2859a71381
     ],
     [
         'name' => 'Radio',
@@ -204,11 +140,7 @@ return [
         'category' => 'Tools',
         'price' => 10,
         'stock_quantity' => 100,
-<<<<<<< HEAD
         'image_path' => 'radio.jpg',
-=======
-        'image_path'     => 'img/radio.jpg',
->>>>>>> bd38eb92e427e69a84e7766258ddec2859a71381
     ],
     [
         'name' => 'Binoculars',
@@ -216,11 +148,7 @@ return [
         'category' => 'Tools',
         'price' => 25,
         'stock_quantity' => 100,
-<<<<<<< HEAD
         'image_path' => 'binoculars.jpg',
-=======
-        'image_path'     => 'img/binoculars.jpg',
->>>>>>> bd38eb92e427e69a84e7766258ddec2859a71381
     ],
 
     // SUSTENANCE
@@ -230,11 +158,7 @@ return [
         'category' => 'Sustenance',
         'price' => 5,
         'stock_quantity' => 100,
-<<<<<<< HEAD
         'image_path' => 'chocolate.jpg',
-=======
-        'image_path'     => 'img/chocolate.jpg',
->>>>>>> bd38eb92e427e69a84e7766258ddec2859a71381
     ],
     [
         'name' => 'Turon',
@@ -242,11 +166,7 @@ return [
         'category' => 'Sustenance',
         'price' => 5,
         'stock_quantity' => 100,
-<<<<<<< HEAD
         'image_path' => 'turon.jpg',
-=======
-        'image_path'     => 'img/turon.jpg',
->>>>>>> bd38eb92e427e69a84e7766258ddec2859a71381
     ],
     [
         'name' => 'Chicken',
@@ -254,11 +174,7 @@ return [
         'category' => 'Sustenance',
         'price' => 25,
         'stock_quantity' => 100,
-<<<<<<< HEAD
         'image_path' => 'chicken.jpg',
-=======
-        'image_path'     => 'img/chicken.jpg',
->>>>>>> bd38eb92e427e69a84e7766258ddec2859a71381
     ],
     [
         'name' => 'Rice',
@@ -266,11 +182,7 @@ return [
         'category' => 'Sustenance',
         'price' => 25,
         'stock_quantity' => 100,
-<<<<<<< HEAD
         'image_path' => 'rice.jpg',
-=======
-        'image_path'     => 'img/rice.jpg',
->>>>>>> bd38eb92e427e69a84e7766258ddec2859a71381
     ],
     [
         'name' => 'Water',
@@ -278,11 +190,7 @@ return [
         'category' => 'Sustenance',
         'price' => 10,
         'stock_quantity' => 100,
-<<<<<<< HEAD
         'image_path' => 'water.jpg',
-=======
-        'image_path'     => 'img/water.jpg',
->>>>>>> bd38eb92e427e69a84e7766258ddec2859a71381
     ],
 
     // BUNDLES
@@ -292,11 +200,7 @@ return [
         'category' => 'Sustenance',
         'price' => 150,
         'stock_quantity' => 100,
-<<<<<<< HEAD
         'image_path' => 'beginner.jpg',
-=======
-        'image_path'     => 'img/beginner.jpg',
->>>>>>> bd38eb92e427e69a84e7766258ddec2859a71381
     ],
     [
         'name' => 'Intermediate Bundle',
@@ -304,11 +208,7 @@ return [
         'category' => 'Bundles',
         'price' => 180,
         'stock_quantity' => 100,
-<<<<<<< HEAD
         'image_path' => 'intermediate.jpg',
-=======
-        'image_path'     => 'img/intermediate.jpg',
->>>>>>> bd38eb92e427e69a84e7766258ddec2859a71381
     ],
     [
         'name' => 'Advanced Bundle',
@@ -316,10 +216,6 @@ return [
         'category' => 'Bundles',
         'price' => 300,
         'stock_quantity' => 100,
-<<<<<<< HEAD
         'image_path' => 'advanced.jpg',
-=======
-        'image_path'     => 'img/advanced.jpg',
->>>>>>> bd38eb92e427e69a84e7766258ddec2859a71381
     ],
 ];
