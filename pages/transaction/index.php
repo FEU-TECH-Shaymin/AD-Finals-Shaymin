@@ -15,7 +15,9 @@ renderMainLayout(
                 <h2 class="text-center transaction-txt">Transaction</h2>
                 <div class="checkout-content">
                     <form class="checkout-form" id="form" action="submit_transaction.php" method="POST">
+                        <div class="row">
 
+                        </div>
                     </form>
                 </div>
             </div>
