@@ -22,6 +22,11 @@ renderMainLayout(
                                     <input type="text" id="full_name" name="full_name" class="form-control" required>
                                     <div class="invalid-feedback">Please enter your full name.</div>
                                 </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" id="email" name="email" class="form-control" required>
+                                    <div class="invalid-feedback">Please enter a valid email address.</div>
+                                </div>
                             </div>
                         </div>
                     </form>
