@@ -14,7 +14,9 @@ renderMainLayout(
             <div class="card p-4 shadow-lg" style="max-width: 800px; width: 100%;"class="card p-4 shadow-lg" style="max-width: 800px; width: 100%;">
                 <h2 class="text-center transaction-txt">Transaction</h2>
                 <div class="checkout-content">
+                    <form class="checkout-form" id="form" action="submit_transaction.php" method="POST">
 
+                    </form>
                 </div>
             </div>
         </section>
