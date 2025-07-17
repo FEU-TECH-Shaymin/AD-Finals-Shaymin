@@ -1,62 +1,111 @@
-/* ====== User Section ====== */
-.admin-users-section {
-  position: relative;   /* Needed for ::before absolute positioning */
-  min-height: 100vh;
-  background: url(../img/aus-bg.jpg) no-repeat center center / cover;
-  background-attachment: fixed;
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;     /* Ensure ::before doesn't escape */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: url('/assets/img/admin-user-bg.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    min-height: 100vh;
 }
 
-.admin-users-section::before {
-  content: '';
-  position: absolute;
-  top: 0; 
-  left: 0;
-  width: 100%; 
-  height: 100%;
-  background: #1d1c1c5e;  /* Semi-transparent overlay */
-  z-index: 0;
+.admin-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(18px);
+    border-radius: 20px;
+    padding: 40px;
+    margin: 40px;
+    max-width: 900px;
+    width: 100%;
+    color: black;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 }
 
-.aos-card {
-  background-color: #f4f8fd1a;
-  backdrop-filter: blur(3px);
-  border-radius: 1rem;
-  color: #E8EDEA;
+.admin-container h1 {
+    color: white;
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-.aos-table{
-  background: transparent;
+.glass-box {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    padding: 25px 30px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.table-wrapper {
-  border-radius: 0.5rem;
-  overflow: hidden;
-  backdrop-filter: blur(3px);
+.glass-box h2 {
+    color: #6F020D;
+    font-size: 22px;
+    margin-bottom: 10px;
 }
 
-.table-body-scroll {
-  max-height: 350px;
-  overflow-y: auto;
+.glass-box .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
 }
 
-.table-wrapper table {
-  width: 100%;
-  table-layout: fixed; /* Force equal column widths */
-  margin-bottom: 0;
+input,
+select {
+    padding: 10px 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: #222;
+    color: #fff;
+    font-size: 14px;
+    width: 100%;
 }
 
-.table-wrapper thead th {
-  background-color: #6F020D;
-  color: #E8EDEA;
-  padding: 20px;
+input::placeholder {
+    color: #aaa;
 }
 
-.table-wrapper tbody td {
-  color: #0C0E19;
-  padding: 20px;
+button {
+    padding: 10px 18px;
+    background-color: #6F020D;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: white;
+    color: #6F020D;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table thead {
+    background-color: #6F020D;
+    color: white;
+}
+
+table th,
+table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+p {
+    color: #333;
+    font-weight: bold;
+    margin: 0;
 }
