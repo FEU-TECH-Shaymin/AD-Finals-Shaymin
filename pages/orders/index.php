@@ -1,9 +1,11 @@
 <?php
 declare(strict_types=1);
 
-require_once __DIR__ . '/../../bootstrap.php';
-require_once LAYOUTS_PATH . '/main.layout.php';
+require_once BASE_PATH . '/bootstrap.php';
 require_once UTILS_PATH . '/auth.util.php';
+require_once UTILS_PATH . '/orders.util.php'; // ✅ Add this if missing
+require_once LAYOUTS_PATH . "/main.layout.php";
+
 
 Auth::init();
 $user = Auth::user();
@@ -16,7 +18,7 @@ renderMainLayout(function () use ($user) {
 
     // ✅ Fetch products from DB
     $pdo = connectOrdersDB();
-    $products = $pdo->query("SELECT product_id, product_name, price FROM products")->fetchAll(PDO::FETCH_ASSOC);
+$products = $pdo->query("SELECT product_id, name AS product_name, price FROM products")->fetchAll(PDO::FETCH_ASSOC);
     ?>
     <link rel="stylesheet" href="/pages/orders/assets/css/style.css">
 
