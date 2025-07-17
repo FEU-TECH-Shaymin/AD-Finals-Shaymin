@@ -21,3 +21,8 @@ body {
   flex-wrap: nowrap;
 }
 
+.logo {
+  width: 311px;
+  height: auto;
+}
+
