@@ -17,5 +17,7 @@ return [
     // Admin-only
     ['label' => 'Dashboard', 'url' => '/pages/admin/index.php', 'authOnly' => true, 'role' => 'admin'],
     ['label' => 'Manage Products', 'url' => '/pages/admin-products/index.php', 'authOnly' => true, 'role' => 'admin'],
+        ['label' => 'Manage Orders', 'url' => '/pages/admin-orders/index.php', 'authOnly' => true, 'role' => 'admin'],
+
     
 ];
