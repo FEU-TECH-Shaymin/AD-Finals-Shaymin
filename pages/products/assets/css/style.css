@@ -147,7 +147,11 @@ body {
   text-shadow: 1px 1px 3px #e32636;
 }
 
-
+.product-desc {
+  font-size: 13px;
+  color: #ccc;
+  margin-bottom: 5px;
+}
 
 
 
