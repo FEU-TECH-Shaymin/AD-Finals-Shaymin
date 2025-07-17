@@ -32,6 +32,11 @@ renderMainLayout(
                                     <input type="phoneNumber" id="phoneNumber" name="phoneNumber" class="form-control" required>
                                     <div class="invalid-feedback">Please enter a valid phone number.</div>
                                 </div>
+                                <div class="mb-3">
+                                    <label for="address" class="form-label">Address</label>
+                                    <input type="address" id="address" name="address" class="form-control" required>
+                                    <div class="invalid-feedback">Please enter a valid address.</div>
+                                </div>
                             </div>
                         </div>
                     </form>
