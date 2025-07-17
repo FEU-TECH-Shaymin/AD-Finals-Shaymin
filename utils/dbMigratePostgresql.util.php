@@ -38,7 +38,7 @@ foreach ([
     'orders',
     'products',
     'users',
-    'projects'
+    'order_items'
 ] as $table) {
     $pdo->exec("DROP TABLE IF EXISTS {$table} CASCADE;");
     echo "🗑️  Dropped table: {$table}\n";
