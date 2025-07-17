@@ -16,7 +16,9 @@ renderMainLayout(
                 <div class="checkout-content">
                     <form class="checkout-form" id="form" action="submit_transaction.php" method="POST">
                         <div class="row">
-
+                            <div class="col-12 col-sm-6">
+                                
+                            </div>
                         </div>
                     </form>
                 </div>
