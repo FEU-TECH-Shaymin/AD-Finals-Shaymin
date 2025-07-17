@@ -8,7 +8,7 @@ return [
         'category'       => 'Weapons',
         'price'          => 10,
         'stock_quantity' => 100,
-        'image_path'     => 'img/baseball bat.png',
+        'image_path'     => 'img/baseballbat.png',
     ],
     [
         'name'           => 'Sword',
