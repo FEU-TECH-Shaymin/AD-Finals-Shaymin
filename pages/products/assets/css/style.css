@@ -138,7 +138,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-sizing: border-box;
   text-align: left;
   z-index: 2;
 }
