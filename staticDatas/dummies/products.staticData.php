@@ -8,6 +8,7 @@ return [
         'category'       => 'Weapons',
         'price'          => 10,
         'stock_quantity' => 100,
+        'image_path'     => 'images/baseball bat.png',
     ],
     [
         'name'           => 'Sword',
@@ -15,6 +16,7 @@ return [
         'category'       => 'Weapons',
         'price'          => 10,
         'stock_quantity' => 100,
+        'image_path'     => 'images/sword.png',
     ],
     [
         'name'           => 'Knife',
@@ -22,6 +24,7 @@ return [
         'category'       => 'Weapons',
         'price'          => 10,
         'stock_quantity' => 100,
+        'image_path'     => 'images/knife.png',
     ],
     [
         'name'           => 'Axe',
@@ -29,6 +32,7 @@ return [
         'category'       => 'Weapons',
         'price'          => 10,
         'stock_quantity' => 100,
+        'image_path'     => 'images/axe.png',
     ],
     [
         'name'           => 'Machete',
@@ -36,6 +40,7 @@ return [
         'category'       => 'Weapons',
         'price'          => 25,
         'stock_quantity' => 100,
+        'image_path'     => 'images/machete.png',
     ],
     [
         'name'           => 'Chainsaw',
@@ -43,6 +48,7 @@ return [
         'category'       => 'Weapons',
         'price'          => 25,
         'stock_quantity' => 100,
+        'image_path'     => 'images/chainsaw.png',
     ],
     [
         'name'           => 'Gun',
@@ -50,6 +56,7 @@ return [
         'category'       => 'Weapons',
         'price'          => 25,
         'stock_quantity' => 100,
+        'image_path'     => 'images/gun.png',
     ],
     [
         'name'           => 'Bow and Arrow',
@@ -57,6 +64,7 @@ return [
         'category'       => 'Weapons',
         'price'          => 25,
         'stock_quantity' => 100,
+        'image_path'     => 'images/bow and arrow.jpg',
     ],
     [
         'name'           => 'Flamethrower',
@@ -64,6 +72,7 @@ return [
         'category'       => 'Weapons',
         'price'          => 50,
         'stock_quantity' => 100,
+        'image_path'     => 'images/flame thrower.jpg',
     ],
     [
         'name'           => 'Bazooka',
@@ -71,6 +80,7 @@ return [
         'category'       => 'Weapons',
         'price'          => 50,
         'stock_quantity' => 100,
+        'image_path'     => 'images/bazooka.jpg',
     ],
 
     // MEDICAL
