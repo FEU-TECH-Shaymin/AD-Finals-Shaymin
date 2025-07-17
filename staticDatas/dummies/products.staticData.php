@@ -158,6 +158,7 @@ return [
         'category'       => 'Sustenance',
         'price'          => 5,
         'stock_quantity' => 100,
+        'image_path'     => 'images/chocolate.jpg',
     ],
     [
         'name'           => 'Turon',
@@ -165,6 +166,7 @@ return [
         'category'       => 'Sustenance',
         'price'          => 5,
         'stock_quantity' => 100,
+        'image_path'     => 'images/turon.jpg',
     ],
     [
         'name'           => 'Chicken',
@@ -172,6 +174,7 @@ return [
         'category'       => 'Sustenance',
         'price'          => 25,
         'stock_quantity' => 100,
+        'image_path'     => 'images/chicken.jpg',
     ],
     [
         'name'           => 'Rice',
@@ -179,6 +182,7 @@ return [
         'category'       => 'Sustenance',
         'price'          => 25,
         'stock_quantity' => 100,
+        'image_path'     => 'images/rice.jpg',
     ],
     [
         'name'           => 'Water',
@@ -186,6 +190,7 @@ return [
         'category'       => 'Sustenance',
         'price'          => 10,
         'stock_quantity' => 100,
+        'image_path'     => 'images/water.jpg',
     ],
 
     // BUNDLE DATA
