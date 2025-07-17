@@ -41,7 +41,11 @@ renderMainLayout(
 
                             <div class="col-12 col-sm-6">
                                 <div class="order-summary">
-                                    
+                                    <h2>Order Summary</h2>
+                                    <p><strong>Product:</strong> Outlast Survival Kit</p>
+                                    <p><strong>Price:</strong> ₱1,299.00</p>
+                                    <p class="total"><strong>Total:</strong> ₱1,299.00</p>
+                                    <div class="buttons">
                                 </div>
                             </div>
                         </div>
