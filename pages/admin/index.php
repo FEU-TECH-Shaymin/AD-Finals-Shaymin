@@ -5,6 +5,7 @@ declare(strict_types=1);
 require_once LAYOUTS_PATH . "/main.layout.php";
 // $mongoCheckerResult = require_once HANDLERS_PATH . "/mongodbChecker.handler.php";
 // $postgresqlCheckerResult = require_once HANDLERS_PATH . "/postgreChecker.handler.php";
+require_once UTILS_PATH . "/dbConnection.util.php";
 
 // Fetch values from database
 $totalUsers = getTotalUsers($pdo);
