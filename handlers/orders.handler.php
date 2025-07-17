@@ -16,9 +16,11 @@ if (!$user) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $totalAmount = $_POST['total_amount'] ?? null;
     $status = $_POST['status'] ?? 'pending';
+    $productIds = $_POST['product_id'] ?? [];
+    $quantities = $_POST['quantity'] ?? [];
 
-    if (!is_numeric($totalAmount)) {
-        die('Invalid total amount.');
+    if (!is_numeric($totalAmount) || empty($productIds) || empty($quantities)) {
+        die('Invalid form submission.');
     }
 
     $order = [
@@ -27,11 +29,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'status' => $status
     ];
 
-    $result = insertOrder($order);
+    // Step 1: Insert into orders table
+    $pdo = connectOrdersDB();
 
-    if ($result['success']) {
+    try {
+        $pdo->beginTransaction();
+
+        $stmt = $pdo->prepare("
+            INSERT INTO orders (user_id, total_amount, status)
+            VALUES (:user_id, :total_amount, :status)
+            RETURNING order_id
+        ");
+        $stmt->execute([
+            ':user_id' => $order['user_id'],
+            ':total_amount' => $order['total_amount'],
+            ':status' => $order['status']
+        ]);
+
+        $orderId = $stmt->fetchColumn();
+
+        // Step 2: Insert into order_items table
+        $itemStmt = $pdo->prepare("
+            INSERT INTO order_items (order_id, product_id, quantity)
+            VALUES (:order_id, :product_id, :quantity)
+        ");
+
+        foreach ($productIds as $index => $productId) {
+            $quantity = (int) $quantities[$index];
+
+            if ($quantity > 0) {
+                $itemStmt->execute([
+                    ':order_id' => $orderId,
+                    ':product_id' => $productId,
+                    ':quantity' => $quantity
+                ]);
+            }
+        }
+
+        $pdo->commit();
         header('Location: /pages/orders/index.php?success=1');
-    } else {
-        echo "Order failed: " . $result['message'];
+        exit;
+    } catch (PDOException $e) {
+        $pdo->rollBack();
+        echo "Order failed: " . $e->getMessage();
     }
 }
