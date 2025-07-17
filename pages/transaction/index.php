@@ -17,7 +17,11 @@ renderMainLayout(
                     <form class="checkout-form" id="form" action="submit_transaction.php" method="POST">
                         <div class="row">
                             <div class="col-12 col-sm-6">
-                                
+                                <div class="mb-3">
+                                    <label for="full_name" class="form-label">Full Name</label>
+                                    <input type="text" id="full_name" name="full_name" class="form-control" required>
+                                    <div class="invalid-feedback">Please enter your full name.</div>
+                                </div>
                             </div>
                         </div>
                     </form>
