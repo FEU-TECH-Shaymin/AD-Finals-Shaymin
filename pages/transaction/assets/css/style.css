@@ -1,7 +1,7 @@
 .transaction-section {
   position: relative; /* Needed for ::before absolute positioning */
   min-height: 100vh;
-  background: url(../img/ts-img.png) no-repeat center center / cover;
+  background: url(pages/transaction/assets/img/bg-transaction.jpg) no-repeat center center / cover;
   background-attachment: fixed;
   padding: 20px;
   display: flex;
