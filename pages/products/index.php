@@ -15,35 +15,32 @@ $products = $keyword
 renderMainLayout(
     function () use ($keyword, $products) {
         ?>
-        <!-- 🔍 Search Form -->
-        <section class="section">
-            <div class="container-fluid">
-                <form method="GET">
-                    <input type="text" name="search" placeholder="Search by name or category..." value="<?= htmlspecialchars($keyword) ?>">
-                    <button type="submit">Search</button>
-                </form>
-            </div>
-        </section>
-
-        <!-- 📦 Product List -->
-        <section class="section">
-            <div class="container-fluid">
-                <div class="product-list" style="margin-top: 1rem;">
-                    <?php if (empty($products)): ?>
-                        <p>No products found.</p>
-                    <?php else: ?>
-                        <?php foreach ($products as $p): ?>
-                            <div class="product" style="margin-bottom: 1rem; padding: 1rem; border: 1px solid #ccc;">
-                                <strong><?= htmlspecialchars($p['name']) ?></strong><br>
-                                <small>Category: <?= htmlspecialchars($p['category']) ?></small><br>
-                                ₱<?= number_format((float)$p['price'], 2) ?><br>
-                                In Stock: <?= (int)$p['stock_quantity'] ?><br>
-                                <em><?= htmlspecialchars($p['description']) ?></em>
-                            </div>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
+        <section class="all-categories-bg">
+            <div class="top-bar">
+                <img src="images/outlastLogo.png" class="logo" alt="Outlast Logo">
+                <div class="search-section">
+                    <input type="text" class="search" placeholder="Search">
+                    <img src="images/search.png" class="search-icon" alt="Search">
+                </div>
+                <div class="icons">
+                    <img src="images/carttt.png" alt="Cart" class="icon-img">
                 </div>
             </div>
+
+            <?php foreach ($categories as $category => $items): ?>
+                <h2 class="category-title"><?= $category ?></h2>
+                <div class="product-grid">
+                    <?php foreach ($items as $product): ?>
+                        <div class="product-card" style="background-image: url('<?= $product['bg'] ?>');">
+                            <div class="product-info">
+                                <div class="product-name"><?= $product['name'] ?></div>
+                                <div class="product-desc"><?= $product['desc'] ?></div>
+                                <div class="product-price"><?= $product['price'] ?> zombie crystals</div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endforeach; ?>
         </section>
         <?php
     },
