@@ -130,7 +130,15 @@ body {
   box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
 }
 
-
+/* ─────── PRODUCT INFO BOX ─────── */
+.product-info {
+  background: rgba(0, 0, 0, 0.85);
+  padding: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+  z-index: 2;
+}
 
 
 
