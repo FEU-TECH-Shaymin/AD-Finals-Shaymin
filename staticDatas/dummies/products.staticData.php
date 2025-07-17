@@ -116,6 +116,7 @@ return [
         'category'       => 'Tools',
         'price'          => 10,
         'stock_quantity' => 100,
+        'image_path'     => 'images/compass.jpg',
     ],
     [
         'name'           => 'Flashlight',
@@ -123,6 +124,7 @@ return [
         'category'       => 'Tools',
         'price'          => 10,
         'stock_quantity' => 100,
+        'image_path'     => 'images/flashlight.jpg',
     ],
     [
         'name'           => 'Lighter',
@@ -130,6 +132,7 @@ return [
         'category'       => 'Tools',
         'price'          => 10,
         'stock_quantity' => 100,
+        'image_path'     => 'images/lighter.jpg',
     ],
     [
         'name'           => 'Radio',
@@ -137,6 +140,7 @@ return [
         'category'       => 'Tools',
         'price'          => 10,
         'stock_quantity' => 100,
+        'image_path'     => 'images/radio.jpg',
     ],
     [
         'name'           => 'Binoculars',
@@ -144,6 +148,7 @@ return [
         'category'       => 'Tools',
         'price'          => 25,
         'stock_quantity' => 100,
+        'image_path'     => 'images/binoculars.jpg',
     ],
 
     // SUSTENANCE
