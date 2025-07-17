@@ -33,6 +33,19 @@ class ProductsUtil {
         return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
     }
 
+    public static function search(string $keyword): array {
+        $pdo = self::connect();
+        $stmt = $pdo->prepare("
+            SELECT * FROM products
+            WHERE name ILIKE :kw OR description ILIKE :kw OR category ILIKE :kw
+            ORDER BY name
+        ");
+        $stmt->execute([
+            'kw' => '%' . $keyword . '%'
+        ]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public static function create(array $data): bool {
         $pdo = self::connect();
         $stmt = $pdo->prepare("
