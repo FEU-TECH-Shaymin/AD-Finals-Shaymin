@@ -68,7 +68,9 @@ body {
   filter: drop-shadow(0 0 2px red);
 }
 
-
+.icon-img:hover {
+  transform: scale(1.2);
+}
 
 
 
