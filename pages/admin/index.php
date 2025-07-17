@@ -55,7 +55,18 @@ renderMainLayout(
         ]
     ]
 );
-// Simulated queries (replace with real queries)
-function getTotalUsers(): int { return 157; }
-function getTotalProducts(): int { return 56; }
-function getTotalOrders(): int { return 93; }
+
+function getTotalUsers(PDO $pdo): int {
+    $stmt = $pdo->query("SELECT COUNT(*) FROM public.users WHERE role = 'user'");
+    return (int) $stmt->fetchColumn();
+}
+
+function getTotalProducts(PDO $pdo): int {
+    $stmt = $pdo->query("SELECT COUNT(*) FROM public.products");
+    return (int) $stmt->fetchColumn();
+}
+
+function getTotalOrders(PDO $pdo): int {
+    $stmt = $pdo->query("SELECT COUNT(*) FROM public.orders");
+    return (int) $stmt->fetchColumn();
+}
