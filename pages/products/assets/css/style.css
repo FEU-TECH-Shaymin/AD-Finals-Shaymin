@@ -52,3 +52,10 @@ body {
   display: none;
   filter: drop-shadow(0 0 2px red);
 }
+
+/* ─────── ICONS ─────── */
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
