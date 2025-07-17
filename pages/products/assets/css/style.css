@@ -83,7 +83,12 @@ body {
   letter-spacing: 2px;
 }
 
-
+/* ─────── PRODUCT GRID ─────── */
+.product-grid {
+  display: grid;
+  gap: 30px;
+  padding: 0 20px 80px;
+}
 
 
 
