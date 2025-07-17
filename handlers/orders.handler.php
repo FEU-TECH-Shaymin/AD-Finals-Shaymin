@@ -14,24 +14,74 @@ if (!$user) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $totalAmount = $_POST['total_amount'] ?? null;
-    $status = $_POST['status'] ?? 'pending';
+    $productIds = $_POST['product_id'] ?? [];
+    $quantities = $_POST['quantity'] ?? [];
 
-    if (!is_numeric($totalAmount)) {
-        die('Invalid total amount.');
+    if (empty($productIds) || empty($quantities) || count($productIds) !== count($quantities)) {
+        die('Invalid form submission.');
     }
 
-    $order = [
-        'user_id' => $user['user_id'],
-        'total_amount' => (float) $totalAmount,
-        'status' => $status
-    ];
+    // Step 1: Connect to DB
+    $pdo = connectOrdersDB();
 
-    $result = insertOrder($order);
+    try {
+        $pdo->beginTransaction();
 
-    if ($result['success']) {
+        // Step 2: Calculate total price from product IDs and quantities
+        $totalAmount = 0;
+        $productData = [];
+
+        $inClause = implode(',', array_fill(0, count($productIds), '?'));
+        $stmt = $pdo->prepare("SELECT product_id, price FROM products WHERE product_id IN ($inClause)");
+        $stmt->execute($productIds);
+        $prices = $stmt->fetchAll(PDO::FETCH_KEY_PAIR); // [product_id => price]
+
+        foreach ($productIds as $index => $productId) {
+            $productId = (int) $productId;
+            $quantity = (int) $quantities[$index];
+
+            if ($quantity > 0 && isset($prices[$productId])) {
+                $totalAmount += $prices[$productId] * $quantity;
+                $productData[] = ['id' => $productId, 'quantity' => $quantity];
+            }
+        }
+
+        if ($totalAmount <= 0) {
+            throw new Exception("Invalid total amount.");
+        }
+
+        // Step 3: Insert into orders table
+        $orderStmt = $pdo->prepare("
+            INSERT INTO orders (user_id, total_amount, status)
+            VALUES (:user_id, :total_amount, 'pending')
+            RETURNING order_id
+        ");
+        $orderStmt->execute([
+            ':user_id' => $user['user_id'],
+            ':total_amount' => $totalAmount
+        ]);
+
+        $orderId = $orderStmt->fetchColumn();
+
+        // Step 4: Insert into order_items table
+        $itemStmt = $pdo->prepare("
+            INSERT INTO order_items (order_id, product_id, quantity)
+            VALUES (:order_id, :product_id, :quantity)
+        ");
+
+        foreach ($productData as $item) {
+            $itemStmt->execute([
+                ':order_id' => $orderId,
+                ':product_id' => $item['id'],
+                ':quantity' => $item['quantity']
+            ]);
+        }
+
+        $pdo->commit();
         header('Location: /pages/orders/index.php?success=1');
-    } else {
-        echo "Order failed: " . $result['message'];
+        exit;
+    } catch (Throwable $e) {
+        $pdo->rollBack();
+        echo "Order failed: " . $e->getMessage();
     }
 }

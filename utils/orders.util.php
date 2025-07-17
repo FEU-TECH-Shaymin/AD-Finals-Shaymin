@@ -42,11 +42,34 @@ function insertOrder(array $data): array
             ':status' => $data['status']
         ]);
 
-        return ['success' => true];
+        // Return order ID
+        $orderId = $pdo->lastInsertId();
+
+        return ['success' => true, 'order_id' => $orderId];
     } catch (PDOException $e) {
         return [
             'success' => false,
             'message' => $e->getMessage()
         ];
+    }
+}
+
+/**
+ * Fetch all available products
+ */
+function fetchAllProducts(): array
+{
+    try {
+        $pdo = connectOrdersDB();
+        $stmt = $pdo->query("
+            SELECT product_id, name, price, stock_quantity
+            FROM products
+            WHERE stock_quantity > 0
+            ORDER BY name
+        ");
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        return [];
     }
 }
