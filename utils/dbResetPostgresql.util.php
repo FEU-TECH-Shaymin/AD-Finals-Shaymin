@@ -58,7 +58,7 @@ $path = BASE_PATH . "/database/{$modelFile}";
 // ——— TRUNCATE tables ———
 echo "Truncating tables…\n";
 
-$tables = ['users', 'orders', 'products', 'transactions'];
+$tables = ['users', 'orders', 'products', 'transactions', 'order_items'];
 
 foreach ($tables as $table) {
     $pdo->exec("TRUNCATE TABLE {$table} RESTART IDENTITY CASCADE;");
