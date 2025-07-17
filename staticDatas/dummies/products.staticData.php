@@ -64,7 +64,7 @@ return [
         'category'       => 'Weapons',
         'price'          => 25,
         'stock_quantity' => 100,
-        'image_path'     => 'img/bow and arrow.jpg',
+        'image_path'     => 'img/bowandarrow.jpg',
     ],
     [
         'name'           => 'Flamethrower',
@@ -72,7 +72,7 @@ return [
         'category'       => 'Weapons',
         'price'          => 50,
         'stock_quantity' => 100,
-        'image_path'     => 'img/flame thrower.jpg',
+        'image_path'     => 'img/flamethrower.jpg',
     ],
     [
         'name'           => 'Bazooka',
@@ -106,7 +106,7 @@ return [
         'category'       => 'Medical',
         'price'          => 50,
         'stock_quantity' => 100,
-        'image_path'     => 'img/healing potion.jpg',
+        'image_path'     => 'img/healingpotion.jpg',
     ],
 
     // TOOLS
