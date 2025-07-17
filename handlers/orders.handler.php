@@ -21,23 +21,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die('Invalid form submission.');
     }
 
-    // Step 1: Connect to DB
     $pdo = connectOrdersDB();
 
     try {
         $pdo->beginTransaction();
 
-        // Step 2: Calculate total price from product IDs and quantities
         $totalAmount = 0;
         $productData = [];
 
-        $inClause = implode(',', array_fill(0, count($productIds), '?'));
-        $stmt = $pdo->prepare("SELECT product_id, price FROM products WHERE product_id IN ($inClause)");
+        $placeholders = implode(',', array_fill(0, count($productIds), '?'));
+        $stmt = $pdo->prepare("SELECT product_id, price FROM products WHERE product_id IN ($placeholders)");
         $stmt->execute($productIds);
         $prices = $stmt->fetchAll(PDO::FETCH_KEY_PAIR); // [product_id => price]
 
         foreach ($productIds as $index => $productId) {
-            $productId = (int) $productId;
+            $productId = (string) $productId;
             $quantity = (int) $quantities[$index];
 
             if ($quantity > 0 && isset($prices[$productId])) {
@@ -50,20 +48,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             throw new Exception("Invalid total amount.");
         }
 
-        // Step 3: Insert into orders table
         $orderStmt = $pdo->prepare("
             INSERT INTO orders (user_id, total_amount, status)
             VALUES (:user_id, :total_amount, 'pending')
             RETURNING order_id
         ");
         $orderStmt->execute([
-            ':user_id' => $user['user_id'],
+            ':user_id' => $user['id'], // ✅ fixed session key
             ':total_amount' => $totalAmount
         ]);
 
         $orderId = $orderStmt->fetchColumn();
 
-        // Step 4: Insert into order_items table
         $itemStmt = $pdo->prepare("
             INSERT INTO order_items (order_id, product_id, quantity)
             VALUES (:order_id, :product_id, :quantity)
