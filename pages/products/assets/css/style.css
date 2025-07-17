@@ -11,3 +11,13 @@ body {
   background-color: #000;
 }
 
+/* ─────── TOP BAR ─────── */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 40px;
+  background-color: rgba(0, 0, 0, 0.9);
+  flex-wrap: nowrap;
+}
+
