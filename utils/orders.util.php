@@ -1,44 +1,52 @@
 <?php
 declare(strict_types=1);
 
-class OrdersUtil
+// Load environment variables
+require_once BASE_PATH . '/bootstrap.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(BASE_PATH);
+$dotenv->load();
+
+/**
+ * Standalone PostgreSQL connection
+ */
+function connectOrdersDB(): PDO {
+    $dsn = sprintf(
+        "pgsql:host=%s;port=%s;dbname=%s",
+        $_ENV['PG_HOST'],
+        $_ENV['PG_PORT'],
+        $_ENV['PG_DB']
+    );
+
+    return new PDO($dsn, $_ENV['PG_USER'], $_ENV['PG_PASS'], [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+    ]);
+}
+
+/**
+ * Insert order into the orders table
+ */
+function insertOrder(array $data): array
 {
-    // ✅ Create a new order (User Only)
-    public static function create(PDO $pdo, array $data): bool
-    {
-        $sql = "
-            INSERT INTO public.orders (
-                user_id,
-                total_amount,
-                status
-            ) VALUES (
-                :user_id,
-                :total_amount,
-                :status
-            )
-        ";
+    try {
+        $pdo = connectOrdersDB();
 
-        $stmt = $pdo->prepare($sql);
+        $stmt = $pdo->prepare("
+            INSERT INTO orders (user_id, total_amount, status)
+            VALUES (:user_id, :total_amount, :status)
+        ");
 
-        return $stmt->execute([
-            ':user_id'      => $data['user_id'],
+        $stmt->execute([
+            ':user_id' => $data['user_id'],
             ':total_amount' => $data['total_amount'],
-            ':status'       => $data['status'] ?? 'pending',
+            ':status' => $data['status']
         ]);
-    }
 
-    // ✅ Get all orders for a specific user (User Only)
-    public static function getByUser(PDO $pdo, string $userId): array
-    {
-        $stmt = $pdo->prepare("SELECT * FROM public.orders WHERE user_id = :user_id ORDER BY order_date DESC");
-        $stmt->execute([':user_id' => $userId]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    // ✅ Admin: Get all orders in the system (Admin Only)
-    public static function getAll(PDO $pdo): array
-    {
-        $stmt = $pdo->query("SELECT * FROM public.orders ORDER BY order_date DESC");
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return ['success' => true];
+    } catch (PDOException $e) {
+        return [
+            'success' => false,
+            'message' => $e->getMessage()
+        ];
     }
 }
