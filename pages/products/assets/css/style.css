@@ -136,6 +136,7 @@ body {
   color: #fff;
   padding: 15px;
   display: flex;
+  flex-direction: column;
   width: 100%;
   box-sizing: border-box;
   text-align: left;
