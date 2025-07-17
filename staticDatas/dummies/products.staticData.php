@@ -8,6 +8,7 @@ return [
         'category'       => 'Weapons',
         'price'          => 10,
         'stock_quantity' => 100,
+        'image_path'     => 'images/baseball bat.png',
     ],
     [
         'name'           => 'Sword',
@@ -15,6 +16,7 @@ return [
         'category'       => 'Weapons',
         'price'          => 10,
         'stock_quantity' => 100,
+        'image_path'     => 'images/sword.png',
     ],
     [
         'name'           => 'Knife',
@@ -22,6 +24,7 @@ return [
         'category'       => 'Weapons',
         'price'          => 10,
         'stock_quantity' => 100,
+        'image_path'     => 'images/knife.png',
     ],
     [
         'name'           => 'Axe',
@@ -29,6 +32,7 @@ return [
         'category'       => 'Weapons',
         'price'          => 10,
         'stock_quantity' => 100,
+        'image_path'     => 'images/axe.png',
     ],
     [
         'name'           => 'Machete',
@@ -36,6 +40,7 @@ return [
         'category'       => 'Weapons',
         'price'          => 25,
         'stock_quantity' => 100,
+        'image_path'     => 'images/machete.png',
     ],
     [
         'name'           => 'Chainsaw',
@@ -43,6 +48,7 @@ return [
         'category'       => 'Weapons',
         'price'          => 25,
         'stock_quantity' => 100,
+        'image_path'     => 'images/chainsaw.png',
     ],
     [
         'name'           => 'Gun',
@@ -50,6 +56,7 @@ return [
         'category'       => 'Weapons',
         'price'          => 25,
         'stock_quantity' => 100,
+        'image_path'     => 'images/gun.png',
     ],
     [
         'name'           => 'Bow and Arrow',
@@ -57,6 +64,7 @@ return [
         'category'       => 'Weapons',
         'price'          => 25,
         'stock_quantity' => 100,
+        'image_path'     => 'images/bow and arrow.jpg',
     ],
     [
         'name'           => 'Flamethrower',
@@ -64,6 +72,7 @@ return [
         'category'       => 'Weapons',
         'price'          => 50,
         'stock_quantity' => 100,
+        'image_path'     => 'images/flame thrower.jpg',
     ],
     [
         'name'           => 'Bazooka',
@@ -71,6 +80,7 @@ return [
         'category'       => 'Weapons',
         'price'          => 50,
         'stock_quantity' => 100,
+        'image_path'     => 'images/bazooka.jpg',
     ],
 
     // MEDICAL
@@ -80,6 +90,7 @@ return [
         'category'       => 'Medical',
         'price'          => 10,
         'stock_quantity' => 100,
+        'image_path'     => 'images/bandaid.jpg',
     ],
     [
         'name'           => 'Bandage',
@@ -87,6 +98,7 @@ return [
         'category'       => 'Medical',
         'price'          => 25,
         'stock_quantity' => 100,
+        'image_path'     => 'images/bandage.jpg',
     ],
     [
         'name'           => 'Healing Potion',
@@ -94,6 +106,7 @@ return [
         'category'       => 'Medical',
         'price'          => 50,
         'stock_quantity' => 100,
+        'image_path'     => 'images/healing potion.jpg',
     ],
 
     // TOOLS
@@ -103,6 +116,7 @@ return [
         'category'       => 'Tools',
         'price'          => 10,
         'stock_quantity' => 100,
+        'image_path'     => 'images/compass.jpg',
     ],
     [
         'name'           => 'Flashlight',
@@ -110,6 +124,7 @@ return [
         'category'       => 'Tools',
         'price'          => 10,
         'stock_quantity' => 100,
+        'image_path'     => 'images/flashlight.jpg',
     ],
     [
         'name'           => 'Lighter',
@@ -117,6 +132,7 @@ return [
         'category'       => 'Tools',
         'price'          => 10,
         'stock_quantity' => 100,
+        'image_path'     => 'images/lighter.jpg',
     ],
     [
         'name'           => 'Radio',
@@ -124,6 +140,7 @@ return [
         'category'       => 'Tools',
         'price'          => 10,
         'stock_quantity' => 100,
+        'image_path'     => 'images/radio.jpg',
     ],
     [
         'name'           => 'Binoculars',
@@ -131,6 +148,7 @@ return [
         'category'       => 'Tools',
         'price'          => 25,
         'stock_quantity' => 100,
+        'image_path'     => 'images/binoculars.jpg',
     ],
 
     // SUSTENANCE
@@ -140,6 +158,7 @@ return [
         'category'       => 'Sustenance',
         'price'          => 5,
         'stock_quantity' => 100,
+        'image_path'     => 'images/chocolate.jpg',
     ],
     [
         'name'           => 'Turon',
@@ -147,6 +166,7 @@ return [
         'category'       => 'Sustenance',
         'price'          => 5,
         'stock_quantity' => 100,
+        'image_path'     => 'images/turon.jpg',
     ],
     [
         'name'           => 'Chicken',
@@ -154,6 +174,7 @@ return [
         'category'       => 'Sustenance',
         'price'          => 25,
         'stock_quantity' => 100,
+        'image_path'     => 'images/chicken.jpg',
     ],
     [
         'name'           => 'Rice',
@@ -161,6 +182,7 @@ return [
         'category'       => 'Sustenance',
         'price'          => 25,
         'stock_quantity' => 100,
+        'image_path'     => 'images/rice.jpg',
     ],
     [
         'name'           => 'Water',
@@ -168,6 +190,7 @@ return [
         'category'       => 'Sustenance',
         'price'          => 10,
         'stock_quantity' => 100,
+        'image_path'     => 'images/water.jpg',
     ],
 
     // BUNDLE DATA
@@ -177,6 +200,7 @@ return [
         'category'       => 'Sustenance',
         'price'          => 150,
         'stock_quantity' => 100,
+        'image_path'     => 'images/beginner.jpg',
     ],
     [
         'name'           => 'Intermediate Bundle',
@@ -184,6 +208,7 @@ return [
         'category'       => 'Bundles',
         'price'          => 180,
         'stock_quantity' => 100,
+        'image_path'     => 'images/intermediate.jpg',
     ],
     [
         'name'           => 'Advanced Bundle',
@@ -191,5 +216,6 @@ return [
         'category'       => 'Bundles',
         'price'          => 300,
         'stock_quantity' => 100,
+        'image_path'     => 'images/advanced.jpg',
     ],
 ];
