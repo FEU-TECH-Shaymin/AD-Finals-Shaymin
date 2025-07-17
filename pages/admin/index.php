@@ -5,11 +5,13 @@ declare(strict_types=1);
 require_once LAYOUTS_PATH . "/main.layout.php";
 // $mongoCheckerResult = require_once HANDLERS_PATH . "/mongodbChecker.handler.php";
 // $postgresqlCheckerResult = require_once HANDLERS_PATH . "/postgreChecker.handler.php";
+require_once UTILS_PATH . "/dbConnection.util.php";
 
 // Fetch values from database
-$totalUsers = getTotalUsers();      // example function
-$totalProducts = getTotalProducts();
-$totalOrders = getTotalOrders();
+$totalUsers = getTotalUsers($pdo);
+$totalProducts = getTotalProducts($pdo);
+$totalOrders = getTotalOrders($pdo);
+
 
 // Call layout renderer
 renderMainLayout(
@@ -54,7 +56,18 @@ renderMainLayout(
         ]
     ]
 );
-// Simulated queries (replace with real queries)
-function getTotalUsers(): int { return 157; }
-function getTotalProducts(): int { return 56; }
-function getTotalOrders(): int { return 93; }
+
+function getTotalUsers(PDO $pdo): int {
+    $stmt = $pdo->query("SELECT COUNT(*) FROM public.users WHERE role = 'user'");
+    return (int) $stmt->fetchColumn();
+}
+
+function getTotalProducts(PDO $pdo): int {
+    $stmt = $pdo->query("SELECT COUNT(*) FROM public.products");
+    return (int) $stmt->fetchColumn();
+}
+
+function getTotalOrders(PDO $pdo): int {
+    $stmt = $pdo->query("SELECT COUNT(*) FROM public.orders");
+    return (int) $stmt->fetchColumn();
+}
