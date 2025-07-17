@@ -36,6 +36,7 @@ $seedMap = [
     'users' => '/users.staticData.php',
     'products' => '/products.staticData.php',
     'orders' => '/orders.staticData.php',
+    'order_items' => '/order_items.staticData.php', // ✅ NEW
     'transactions' => '/transactions.staticData.php',
 ];
 
@@ -76,14 +77,14 @@ foreach ($seedMap as $table => $file) {
                     ':category' => $p['category'],
                     ':price' => $p['price'],
                     ':stock_quantity' => $p['stock_quantity'],
-                    ':image_path' => $p['image_path'] ?? null, // fallback if missing
+                    ':image_path' => $p['image_path'] ?? null,
                 ]);
             }
             break;
 
         case 'orders':
             $stmt = $pdo->prepare("
-                INSERT INTO orders (order_id,user_id, order_date, total_amount, status)
+                INSERT INTO orders (order_id, user_id, order_date, total_amount, status)
                 VALUES (:order_id, :user_id, :order_date, :total_amount, :status)
             ");
             foreach ($data as $o) {
@@ -97,6 +98,21 @@ foreach ($seedMap as $table => $file) {
             }
             break;
 
+        case 'order_items':
+            $stmt = $pdo->prepare("
+                INSERT INTO order_items (item_id, order_id, product_id, quantity)
+                VALUES (:item_id, :order_id, :product_id, :quantity)
+            ");
+            foreach ($data as $item) {
+                $stmt->execute([
+                    ':item_id' => $item['item_id'],
+                    ':order_id' => $item['order_id'],
+                    ':product_id' => $item['product_id'],
+                    ':quantity' => $item['quantity'],
+                ]);
+            }
+            break;
+
         case 'transactions':
             $stmt = $pdo->prepare("
                 INSERT INTO transactions (transaction_id, user_id, order_id, transaction_date, currency, amount_paid, total_amount, status)
@@ -104,7 +120,7 @@ foreach ($seedMap as $table => $file) {
             ");
             foreach ($data as $t) {
                 $stmt->execute([
-                    'transaction_id' => $t['transaction_id'],
+                    ':transaction_id' => $t['transaction_id'],
                     ':user_id' => $t['user_id'],
                     ':order_id' => $t['order_id'],
                     ':transaction_date' => $t['transaction_date'],
