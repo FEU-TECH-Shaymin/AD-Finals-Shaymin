@@ -1,5 +1,5 @@
 <?php
-$pdo = require_once __DIR__ . '/../../utils/dbConnection.util.php';
+$pdo = require_once __DIR__ . '/../../utils/database.util.php';
 require_once __DIR__ . '/../../layouts/main.layout.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
