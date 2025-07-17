@@ -102,4 +102,23 @@ body {
   }
 }
 
+@media (max-width: 599px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
