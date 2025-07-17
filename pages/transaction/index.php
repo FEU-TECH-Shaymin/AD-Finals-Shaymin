@@ -11,7 +11,9 @@ renderMainLayout(
     function () {
         ?>
         <section class="transaction-section d-flex align-items-center" style="min-height: 100vh;">
-            
+            <div class="card p-4 shadow-lg" style="max-width: 800px; width: 100%;"class="card p-4 shadow-lg" style="max-width: 800px; width: 100%;">
+                
+            </div>
         </section>
         <?php
     },
