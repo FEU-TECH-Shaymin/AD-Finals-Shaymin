@@ -1,1 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Anton', sans-serif;
+  color: #fff;
+  background-color: #000;
+}
+
