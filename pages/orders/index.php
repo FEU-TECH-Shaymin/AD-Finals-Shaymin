@@ -1,42 +1,47 @@
 <?php
 declare(strict_types=1);
 
-// Use base project paths
-require_once realpath(__DIR__ . '/../../bootstrap.php');
-require_once UTILS_PATH . '/auth.util.php';
+require_once __DIR__ . '/../../bootstrap.php';
 require_once LAYOUTS_PATH . '/main.layout.php';
+require_once UTILS_PATH . '/auth.util.php';
 
 Auth::init();
 $user = Auth::user();
 
 renderMainLayout(function () use ($user) {
     if (!$user) {
-        echo "<p>Please log in to place an order.</p>";
+        echo "<div class='container py-5'><div class='alert alert-warning text-center'>Please log in to place an order.</div></div>";
         return;
     }
     ?>
-    <!-- CSS path based on public URL -->
+    <!-- Link to custom orders CSS -->
     <link rel="stylesheet" href="/pages/orders/assets/css/style.css">
 
-    <h2>Place an Order</h2>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2 class="text-center mb-4">Place an Order</h2>
+                <form action="/handlers/orders.handler.php" method="POST" class="p-4 bg-white shadow rounded">
+                    <div class="mb-3">
+                        <label for="total_amount" class="form-label">Total Amount (₱):</label>
+                        <input type="number" step="0.01" class="form-control" id="total_amount" name="total_amount" required>
+                    </div>
 
-    <form action="/handlers/submit_order.handler.php" method="POST">
-        <div>
-            <label for="total_amount">Total Amount (₱):</label>
-            <input type="number" step="0.01" name="total_amount" id="total_amount" required>
+                    <div class="mb-3">
+                        <label for="status" class="form-label">Status:</label>
+                        <select class="form-select" id="status" name="status" required>
+                            <option value="pending" selected>Pending</option>
+                            <option value="shipped">Shipped</option>
+                            <option value="delivered">Delivered</option>
+                        </select>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Submit Order</button>
+                    </div>
+                </form>
+            </div>
         </div>
-
-        <div>
-            <label for="status">Status:</label>
-            <select name="status" id="status">
-                <option value="pending" selected>Pending</option>
-                <option value="shipped">Shipped</option>
-                <option value="delivered">Delivered</option>
-            </select>
-        </div>
-
-        <button type="submit">Submit Order</button>
-    </form>
+    </div>
 <?php
 });
-?>
