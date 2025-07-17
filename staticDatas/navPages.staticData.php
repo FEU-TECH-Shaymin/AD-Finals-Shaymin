@@ -2,7 +2,7 @@
 return [
     // User-only
     ['label' => 'Dashboard', 'url' => '/pages/user/index.php', 'authOnly' => true, 'role' => 'user'],
-    ['label' => 'Order', 'url' => '/pages/orders/index.php', 'authOnly' => true, 'role' => 'user'],
+    ['label' => 'Order', 'url' => '/pages/transaction/index.php', 'authOnly' => true, 'role' => 'user'],
     
 
     // Admin-only
