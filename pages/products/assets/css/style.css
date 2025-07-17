@@ -108,7 +108,22 @@ body {
   }
 }
 
-
+/* ─────── PRODUCT CARD ─────── */
+.product-card {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(255, 0, 0, 0.6);
+  border-radius: 10px;
+  overflow: hidden;
+  min-height: 280px;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0;
+}
 
 
 
