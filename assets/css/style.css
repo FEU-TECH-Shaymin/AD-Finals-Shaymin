@@ -67,7 +67,7 @@
   }
   
   .nav-link:hover, .nav-link.active:hover {
-    color: #E8EDEA;
+    color: #212121;
   }
   
   .nav-link.dropdown-toggle {
@@ -104,12 +104,17 @@
     background-color: #E8EDEA;
   }
 
-  .offcanvas-body .nav-link{
-    color: #404040;
-  }
-
-  .offcanvas-body .nav-link:hover {
+  .offcanvas-nav-link:hover {
   color: #6F020D;
+}
+
+/* Reset default scrolled behavior for offcanvas nav links */
+.navbar.scrolled .offcanvas-nav-link {
+  color: #404040 !important;
+}
+
+.navbar.scrolled .offcanvas-nav-link:hover {
+  color: #6F020D !important;
 }
   
   @media (min-width: 991px) {
