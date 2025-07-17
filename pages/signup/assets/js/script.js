@@ -33,8 +33,13 @@ document.addEventListener("DOMContentLoaded", function () {
         const nameFields = ["first_name", "middle_name", "last_name"];
         nameFields.forEach(id => {
             const input = document.getElementById(id);
+
+            // Validate only letters and spaces
             if (!/^[a-zA-Z\s]+$/.test(input.value.trim())) {
                 invalidate(input, "Name must contain only letters.");
+            } else {
+                // Auto-capitalize first letter of each word
+                input.value = value.replace(/\b\w/g, c => c.toUpperCase());
             }
         });
 
