@@ -141,20 +141,20 @@ body {
 }
 
 .product-name {
-  font-size: 18px;
+  font-size: 20px;
   color: white;
   margin-bottom: 5px;
   text-shadow: 1px 1px 3px #e32636;
 }
 
 .product-desc {
-  font-size: 13px;
+  font-size: 16px;
   color: #ccc;
   margin-bottom: 5px;
 }
 
 .product-price {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   color: #e32636;
 }
