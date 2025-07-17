@@ -66,8 +66,8 @@ foreach ($seedMap as $table => $file) {
 
         case 'products':
             $stmt = $pdo->prepare("
-                INSERT INTO products (name, description, category, price, stock_quantity)
-                VALUES (:name, :description, :category, :price, :stock_quantity)
+                INSERT INTO products (name, description, category, price, stock_quantity, image_path)
+                VALUES (:name, :description, :category, :price, :stock_quantity, :image_path)
             ");
             foreach ($data as $p) {
                 $stmt->execute([
@@ -76,6 +76,7 @@ foreach ($seedMap as $table => $file) {
                     ':category' => $p['category'],
                     ':price' => $p['price'],
                     ':stock_quantity' => $p['stock_quantity'],
+                    ':image_path' => $p['image_path'] ?? null, // fallback if missing
                 ]);
             }
             break;
