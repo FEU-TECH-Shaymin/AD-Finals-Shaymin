@@ -2,77 +2,36 @@
 declare(strict_types=1);
 
 require_once BASE_PATH . '/bootstrap.php';
-require_once VENDOR_PATH . '/autoload.php';
-require_once UTILS_PATH . '/auth.util.php';
-require_once UTILS_PATH . '/envSetter.util.php';
 require_once UTILS_PATH . '/orders.util.php';
+require_once UTILS_PATH . '/auth.util.php';
 
 Auth::init();
+$user = Auth::user();
 
-$dsn = sprintf('pgsql:host=%s;port=%s;dbname=%s', $_ENV['PG_HOST'], $_ENV['PG_PORT'], $_ENV['PG_DB']);
-$pdo = new PDO($dsn, $_ENV['PG_USER'], $_ENV['PG_PASS'], [
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-]);
+if (!$user) {
+    header('Location: /pages/login/index.php');
+    exit;
+}
 
-$action = $_REQUEST['action'] ?? null;
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $totalAmount = $_POST['total_amount'] ?? null;
+    $status = $_POST['status'] ?? 'pending';
 
-// ✅ 1. User: Create Order
-if ($action === 'create' && $_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (!Auth::check()) {
-        http_response_code(401);
-        echo json_encode(['error' => 'Unauthorized']);
-        exit;
+    if (!is_numeric($totalAmount)) {
+        die('Invalid total amount.');
     }
 
-    $data = [
-        'user_id'      => $_SESSION['user']['id'],
-        'total_amount' => $_POST['total_amount'] ?? 0,
-        'status'       => $_POST['status'] ?? 'pending',
+    $order = [
+        'user_id' => $user['user_id'],
+        'total_amount' => (float) $totalAmount,
+        'status' => $status
     ];
 
-    echo json_encode(['success' => OrdersUtil::create($pdo, $data)]);
-    exit;
-}
+    $result = insertOrder($order);
 
-// ✅ 2. User: View Own Orders
-if ($action === 'getByUser') {
-    if (!Auth::check()) {
-        http_response_code(401);
-        echo json_encode(['error' => 'Unauthorized']);
-        exit;
+    if ($result['success']) {
+        header('Location: /pages/orders/index.php?success=1');
+    } else {
+        echo "Order failed: " . $result['message'];
     }
-
-    echo json_encode(OrdersUtil::getByUser($pdo, $_SESSION['user']['id']));
-    exit;
-}
-
-// ✅ 3. Admin: View All Orders
-if ($action === 'getAll') {
-    if (!Auth::check() || $_SESSION['user']['role'] !== 'admin') {
-        http_response_code(403);
-        echo json_encode(['error' => 'Admin access only']);
-        exit;
-    }
-
-    echo json_encode(OrdersUtil::getAll($pdo));
-    exit;
-}
-
-// ❌ Fallback for invalid action
-http_response_code(400);
-echo json_encode(['error' => 'Invalid or missing action']);
-
-// ✅ 4. Admin: Count Total Orders
-if ($action === 'count') {
-    if (!Auth::check() || $_SESSION['user']['role'] !== 'admin') {
-        http_response_code(403);
-        echo json_encode(['error' => 'Admin access only']);
-        exit;
-    }
-
-    $stmt = $pdo->query("SELECT COUNT(*) FROM orders");
-    $total = $stmt->fetchColumn();
-
-    echo json_encode(['total_orders' => (int)$total]);
-    exit;
 }
