@@ -38,6 +38,13 @@ $categories = [
     ["name" => "Radio", "desc" => "Communication device to receive emergency broadcasts and updates.", "price" => 25, "bg" => "images/radio.jpg"],
     ["name" => "Binoculars", "desc" => "Optical tool for scouting distant areas and spotting threats early.", "price" => 30, "bg" => "images/binoculars.jpg"],
   ],
+  "Sustenance" => [
+    ["name" => "Chocolate", "desc" => "High-energy food item that boosts morale and provides quick calories.", "price" => 5, "bg" => "images/chocolate.jpg"],
+    ["name" => "Turon", "desc" => "Sweet banana roll snack that offers a quick energy boost.", "price" => 5, "bg" => "images/turon.jpg"],
+    ["name" => "Chicken", "desc" => "Protein-rich meal ideal for restoring stamina.", "price" => 25, "bg" => "images/chicken.jpg"],
+    ["name" => "Rice", "desc" => "Carbohydrate staple providing long-lasting energy.", "price" => 25, "bg" => "images/rice.jpg"],
+    ["name" => "Water", "desc" => "Essential for hydration and survival.", "price" => 10, "bg" => "images/water.jpg"],
+  ],
 
 renderMainLayout(
     function () use ($keyword, $products) {
