@@ -90,6 +90,7 @@ return [
         'category'       => 'Medical',
         'price'          => 10,
         'stock_quantity' => 100,
+        'image_path'     => 'images/bandaid.jpg',
     ],
     [
         'name'           => 'Bandage',
@@ -97,6 +98,7 @@ return [
         'category'       => 'Medical',
         'price'          => 25,
         'stock_quantity' => 100,
+        'image_path'     => 'images/bandage.jpg',
     ],
     [
         'name'           => 'Healing Potion',
@@ -104,6 +106,7 @@ return [
         'category'       => 'Medical',
         'price'          => 50,
         'stock_quantity' => 100,
+        'image_path'     => 'images/healing potion.jpg',
     ],
 
     // TOOLS
