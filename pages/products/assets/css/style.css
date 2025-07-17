@@ -159,5 +159,18 @@ body {
   color: #e32636;
 }
 
+/* ─────── RESPONSIVE STYLES ─────── */
+@media (max-width: 1024px) {
+  .logo {
+    width: 260px;
+  }
 
+  .search {
+    width: 240px;
+  }
+
+  .category-title {
+    font-size: 28px;
+  }
+}
 
