@@ -17,7 +17,7 @@
 
 ![](https://visit-counter.vercel.app/counter.png?page=FEU-TECH-Shaymin/AD-Finals-Shaymin)
 
-| Student Number | WakaTime |
+| Student | WakaTime |
 |-|-|
 | Gagan | [![wakatime](https://wakatime.com/badge/user/443593d2-a49b-4deb-9e6c-bfa25506f1aa/project/d8ed5cda-cafb-47c5-908e-4ec4dffc1750.svg)](https://wakatime.com/badge/user/443593d2-a49b-4deb-9e6c-bfa25506f1aa/project/d8ed5cda-cafb-47c5-908e-4ec4dffc1750) |
 | Gonzales | [![wakatime](https://wakatime.com/badge/user/92714f91-5bd0-4e5f-ad0e-ceb54c8406d2/project/41ef207f-725d-4863-8046-bfb3f133a597.svg)](https://wakatime.com/badge/user/92714f91-5bd0-4e5f-ad0e-ceb54c8406d2/project/41ef207f-725d-4863-8046-bfb3f133a597) |
@@ -30,7 +30,6 @@
 <br />
 <br />
 
-<!-- TODO: If you want to add more layers for your readme -->
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -161,4 +160,3 @@ AD-ProjectName
 | Login/Signup Page | Provides a reference implementation of responsive login and signup forms with modern styling and structure. | <a href="https://codepen.io/BROOK_BK7/pen/VwjwRWr">Codepen</a> |
 | Glitch Effect | Used for the glitch animation effect for images or backgrounds in the landing page. | <a href="https://codepen.io/Diana-Moretti/pen/RNwyPOV">Codepen</a> |
 | Glitch Text Effect | Used to create animated text glitch effects for the landing page. | <a href="https://codepen.io/hoskinshozzy/pen/jKRqXv">Codepen</a> |
-| Sample Title | Sample purpose would be here like this and this is the example of what it is. | trykolang.com |
