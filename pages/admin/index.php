@@ -19,7 +19,7 @@ renderMainLayout(
         ?>
         <!-- Hero Section -->
         <section class="dashboard-wrapper">
-            <div class="container text-center text-light">
+            <div class="dashboard-container container text-center text-light">
                 <h6 class="dashboard-welcome">Welcome, Admin!</h6>
                 <div class="row justify-content-center g-4 mt-4">
                     <div class="col-md-3">
