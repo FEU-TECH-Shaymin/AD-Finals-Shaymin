@@ -44,3 +44,11 @@ body {
   outline: none;
   transition: all 0.3s ease;
 }
+
+.search-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  display: none;
+  filter: drop-shadow(0 0 2px red);
+}
