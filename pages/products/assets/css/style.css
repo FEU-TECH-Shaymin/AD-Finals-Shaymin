@@ -174,3 +174,55 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  .top-bar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .logo {
+    width: 240px;
+  }
+
+  .search {
+    display: none;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .search.show {
+    display: block;
+  }
+
+  .search-icon {
+    display: inline-block;
+  }
+
+  .search-section {
+    flex: 1;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  .icons {
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  .category-title {
+    font-size: 24px;
+  }
+
+  .product-name {
+    font-size: 16px;
+  }
+
+  .product-desc {
+    font-size: 12px;
+  }
+
+  .product-price {
+    font-size: 13px;
+  }
+}
