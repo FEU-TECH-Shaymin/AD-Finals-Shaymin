@@ -31,7 +31,7 @@ try {
     exit(1);
 }
 
-// 5) Dummy definitions: key = table, value = file
+// 5) Dummy definitions
 $seedMap = [
     'users' => '/users.staticData.php',
     'products' => '/products.staticData.php',
@@ -76,14 +76,14 @@ foreach ($seedMap as $table => $file) {
                     ':category' => $p['category'],
                     ':price' => $p['price'],
                     ':stock_quantity' => $p['stock_quantity'],
-                    ':image_path' => $p['image_path'] ?? null, // fallback if missing
+                    ':image_path' => $p['image_path'] ?? null,
                 ]);
             }
             break;
 
         case 'orders':
             $stmt = $pdo->prepare("
-                INSERT INTO orders (order_id,user_id, order_date, total_amount, status)
+                INSERT INTO orders (order_id, user_id, order_date, total_amount, status)
                 VALUES (:order_id, :user_id, :order_date, :total_amount, :status)
             ");
             foreach ($data as $o) {
@@ -104,7 +104,7 @@ foreach ($seedMap as $table => $file) {
             ");
             foreach ($data as $t) {
                 $stmt->execute([
-                    'transaction_id' => $t['transaction_id'],
+                    ':transaction_id' => $t['transaction_id'],
                     ':user_id' => $t['user_id'],
                     ':order_id' => $t['order_id'],
                     ':transaction_date' => $t['transaction_date'],
@@ -123,4 +123,39 @@ foreach ($seedMap as $table => $file) {
     echo "✅ Done seeding {$table}\n";
 }
 
+// 7) Generate dummy order_items
+echo "🌱 Seeding order_items…\n";
+
+// Fetch all orders and products
+$orderIds = $pdo->query("SELECT order_id FROM orders")->fetchAll(PDO::FETCH_COLUMN);
+$productIds = $pdo->query("SELECT product_id FROM products")->fetchAll(PDO::FETCH_COLUMN);
+
+// Prepare insert
+$orderItemStmt = $pdo->prepare("
+    INSERT INTO order_items (item_id, order_id, product_id, quantity)
+    VALUES (gen_random_uuid(), :order_id, :product_id, :quantity)
+");
+
+foreach ($orderIds as $orderId) {
+    $numItems = rand(1, 3); // 1 to 3 items per order
+
+    $selectedProducts = array_rand($productIds, min($numItems, count($productIds)));
+
+    if (!is_array($selectedProducts)) {
+        $selectedProducts = [$selectedProducts];
+    }
+
+    foreach ($selectedProducts as $index) {
+        $productId = $productIds[$index];
+        $quantity = rand(1, 5);
+
+        $orderItemStmt->execute([
+            ':order_id' => $orderId,
+            ':product_id' => $productId,
+            ':quantity' => $quantity,
+        ]);
+    }
+}
+
+echo "✅ Done seeding order_items\n";
 echo "🎉 PostgreSQL seeding complete!\n";
