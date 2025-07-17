@@ -1,62 +1,67 @@
-/* ====== User Section ====== */
-.admin-users-section {
-  position: relative;   /* Needed for ::before absolute positioning */
-  min-height: 100vh;
-  background: url(../img/aus-bg.jpg) no-repeat center center / cover;
-  background-attachment: fixed;
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;     /* Ensure ::before doesn't escape */
+.admin-container {
+    padding: 2rem;
+    font-family: 'Poppins', sans-serif;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
-.admin-users-section::before {
-  content: '';
-  position: absolute;
-  top: 0; 
-  left: 0;
-  width: 100%; 
-  height: 100%;
-  background: #1d1c1c5e;  /* Semi-transparent overlay */
-  z-index: 0;
+.admin-container h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
 }
 
-.aos-card {
-  background-color: #f4f8fd1a;
-  backdrop-filter: blur(3px);
-  border-radius: 1rem;
-  color: #E8EDEA;
+.glass-box {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    color: #000;
 }
 
-.aos-table{
-  background: transparent;
+.glass-box h2 {
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
 }
 
-.table-wrapper {
-  border-radius: 0.5rem;
-  overflow: hidden;
-  backdrop-filter: blur(3px);
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
 }
 
-.table-body-scroll {
-  max-height: 350px;
-  overflow-y: auto;
+.glass-box input,
+.glass-box select {
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    width: 100%;
 }
 
-.table-wrapper table {
-  width: 100%;
-  table-layout: fixed; /* Force equal column widths */
-  margin-bottom: 0;
+.glass-box button {
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 1rem;
 }
 
-.table-wrapper thead th {
-  background-color: #6F020D;
-  color: #E8EDEA;
-  padding: 20px;
+.glass-box table {
+    width: 100%;
+    margin-top: 1rem;
+    border-collapse: collapse;
 }
 
-.table-wrapper tbody td {
-  color: #0C0E19;
-  padding: 20px;
+.glass-box table th,
+.glass-box table td {
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    text-align: center;
 }
