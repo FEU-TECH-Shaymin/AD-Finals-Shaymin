@@ -1,5 +1,5 @@
 <?php
-$pdo = require_once __DIR__ . '/../../utils/database.util.php';
+$pdo = require __DIR__ . '/../../utils/database.util.php';
 require_once __DIR__ . '/../../layouts/main.layout.php';
 
 $foundUser = null; // ✅ Initialize before use
