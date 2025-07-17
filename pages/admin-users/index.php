@@ -97,6 +97,6 @@ renderMainLayout(function () use ($allUsers, $foundUser ?? null) {
 </section>
 <?php
 }, [
-    "css" => ["./assets/css/dashboard.css"],
+    "css" => ["./assets/css/style.css"],
     "js" => []
 ]);
