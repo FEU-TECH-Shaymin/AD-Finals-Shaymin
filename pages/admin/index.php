@@ -7,9 +7,10 @@ require_once LAYOUTS_PATH . "/main.layout.php";
 // $postgresqlCheckerResult = require_once HANDLERS_PATH . "/postgreChecker.handler.php";
 
 // Fetch values from database
-$totalUsers = getTotalUsers();      // example function
-$totalProducts = getTotalProducts();
-$totalOrders = getTotalOrders();
+$totalUsers = getTotalUsers($pdo);
+$totalProducts = getTotalProducts($pdo);
+$totalOrders = getTotalOrders($pdo);
+
 
 // Call layout renderer
 renderMainLayout(
