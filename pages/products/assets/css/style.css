@@ -72,7 +72,16 @@ body {
   transform: scale(1.2);
 }
 
-
+/* ─────── CATEGORY TITLE ─────── */
+.category-title {
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 32px;
+  color: #e32636;
+  text-shadow: 1px 1px 5px black;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
 
 
 
