@@ -25,22 +25,6 @@ renderMainLayout(
         <section class="all-categories-bg">
             <div class="top-bar">
 
-                <form method="GET" action="" class="search-section">
-                    <input 
-                        type="text" 
-                        class="search" 
-                        name="search" 
-                        placeholder="Search"
-                        value="<?= htmlspecialchars($keyword) ?>"
-                    >
-                    <button type="submit" class="search-btn">
-                        <img src="/images/search.png" class="search-icon" alt="Search">
-                    </button>
-                </form>
-
-                <div class="icons">
-                    <img src="/images/carttt.png" alt="Cart" class="icon-img">
-                </div>
             </div>
 
             <?php foreach ($categories as $category => $items): ?>
