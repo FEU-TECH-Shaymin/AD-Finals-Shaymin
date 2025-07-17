@@ -8,32 +8,18 @@ require_once UTILS_PATH . '/auth.util.php';
 // $mongoCheckerResult = require_once HANDLERS_PATH . "/mongodbChecker.handler.php";
 // $postgresqlCheckerResult = require_once HANDLERS_PATH . "/postgreChecker.handler.php";
 
-// Extended Dummy Data for testing
-$orders = [
-    ['order_id' => 1, 'user_id' => 101, 'total_amount' => 999.99, 'status' => 'pending', 'order_date' => '2024-07-01 10:30:00'],
-    ['order_id' => 2, 'user_id' => 102, 'total_amount' => 1499.50, 'status' => 'shipped', 'order_date' => '2024-07-02 14:45:00'],
-    ['order_id' => 3, 'user_id' => 103, 'total_amount' => 2000.00, 'status' => 'delivered', 'order_date' => '2024-07-03 09:15:00'],
-    ['order_id' => 4, 'user_id' => 104, 'total_amount' => 875.75, 'status' => 'pending', 'order_date' => '2024-07-04 11:20:00'],
-    ['order_id' => 5, 'user_id' => 105, 'total_amount' => 1320.40, 'status' => 'shipped', 'order_date' => '2024-07-05 13:55:00'],
-    ['order_id' => 6, 'user_id' => 106, 'total_amount' => 1575.00, 'status' => 'delivered', 'order_date' => '2024-07-06 08:40:00'],
-    ['order_id' => 7, 'user_id' => 107, 'total_amount' => 1100.00, 'status' => 'pending', 'order_date' => '2024-07-07 16:25:00'],
-    ['order_id' => 8, 'user_id' => 108, 'total_amount' => 980.50, 'status' => 'shipped', 'order_date' => '2024-07-08 12:10:00'],
-    ['order_id' => 9, 'user_id' => 109, 'total_amount' => 2100.99, 'status' => 'delivered', 'order_date' => '2024-07-09 09:50:00'],
-    ['order_id' => 10, 'user_id' => 110, 'total_amount' => 1235.35, 'status' => 'pending', 'order_date' => '2024-07-10 15:00:00'],
-    ['order_id' => 11, 'user_id' => 111, 'total_amount' => 1400.00, 'status' => 'shipped', 'order_date' => '2024-07-11 17:30:00'],
-    ['order_id' => 12, 'user_id' => 112, 'total_amount' => 1750.80, 'status' => 'delivered', 'order_date' => '2024-07-12 10:45:00'],
-    ['order_id' => 13, 'user_id' => 113, 'total_amount' => 890.25, 'status' => 'pending', 'order_date' => '2024-07-13 14:20:00'],
-    ['order_id' => 14, 'user_id' => 114, 'total_amount' => 1350.00, 'status' => 'shipped', 'order_date' => '2024-07-14 13:35:00'],
-    ['order_id' => 15, 'user_id' => 115, 'total_amount' => 1600.60, 'status' => 'delivered', 'order_date' => '2024-07-15 11:05:00'],
-    ['order_id' => 16, 'user_id' => 116, 'total_amount' => 995.99, 'status' => 'pending', 'order_date' => '2024-07-16 09:15:00'],
-    ['order_id' => 17, 'user_id' => 117, 'total_amount' => 1450.75, 'status' => 'shipped', 'order_date' => '2024-07-17 16:45:00'],
-    ['order_id' => 18, 'user_id' => 118, 'total_amount' => 1850.00, 'status' => 'delivered', 'order_date' => '2024-07-18 10:25:00'],
-    ['order_id' => 19, 'user_id' => 119, 'total_amount' => 1050.50, 'status' => 'pending', 'order_date' => '2024-07-19 12:55:00'],
-    ['order_id' => 20, 'user_id' => 120, 'total_amount' => 1500.00, 'status' => 'shipped', 'order_date' => '2024-07-20 14:35:00'],
-];
+$dsn = sprintf(
+    'pgsql:host=%s;port=%s;dbname=%s',
+    $_ENV['PG_HOST'],
+    $_ENV['PG_PORT'],
+    $_ENV['PG_DB']
+);
 
-// Optionally test error
-// $error = "Sample error message.";
+$pdo = new PDO($dsn, $_ENV['PG_USER'], $_ENV['PG_PASS'], [
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+]);
+
+$orders = OrdersUtil::getAll($pdo);
 
 // Call layout renderer
 renderMainLayout(
