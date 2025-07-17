@@ -161,4 +161,3 @@ AD-ProjectName
 | Login/Signup Page | Provides a reference implementation of responsive login and signup forms with modern styling and structure. | <a href="https://codepen.io/BROOK_BK7/pen/VwjwRWr">Codepen</a> |
 | Glitch Effect | Used for the glitch animation effect for images or backgrounds in the landing page. | <a href="https://codepen.io/Diana-Moretti/pen/RNwyPOV">Codepen</a> |
 | Glitch Text Effect | Used to create animated text glitch effects for the landing page. | <a href="https://codepen.io/hoskinshozzy/pen/jKRqXv">Codepen</a> |
-| Sample Title | Sample purpose would be here like this and this is the example of what it is. | trykolang.com |
