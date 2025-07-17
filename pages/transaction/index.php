@@ -46,6 +46,8 @@ renderMainLayout(
                                     <p><strong>Price:</strong> ₱1,299.00</p>
                                     <p class="total"><strong>Total:</strong> ₱1,299.00</p>
                                     <div class="buttons">
+                                        <button class="confirm" type="submit" form="form">Confirm Order</button>
+                                        <button class="cancel" type="button" onclick="window.location.href='index.php'">Cancel</button>
                                 </div>
                             </div>
                         </div>
