@@ -31,6 +31,13 @@ $categories = [
     ["name" => "Bandage", "desc" => "Basic medical supply used to stop bleeding and heal minor wounds.", "price" => 25, "bg" => "images/bandage.jpg"],
     ["name" => "Healing Potion", "desc" => "Restores health quickly and effectively during critical moments.", "price" => 50, "bg" => "images/healing potion.jpg"],
   ],
+  "Tools" => [
+    ["name" => "Compass", "desc" => "Navigation tool used to determine direction and assist in orienteering.", "price" => 10, "bg" => "images/compass.jpg"],
+    ["name" => "Flashlight", "desc" => "Portable light source essential for exploring dark areas.", "price" => 10, "bg" => "images/flashlight.jpg"],
+    ["name" => "Lighter", "desc" => "Compact fire-starting tool useful for survival and cooking.", "price" => 10, "bg" => "images/lighter.jpg"],
+    ["name" => "Radio", "desc" => "Communication device to receive emergency broadcasts and updates.", "price" => 25, "bg" => "images/radio.jpg"],
+    ["name" => "Binoculars", "desc" => "Optical tool for scouting distant areas and spotting threats early.", "price" => 30, "bg" => "images/binoculars.jpg"],
+  ],
 
 renderMainLayout(
     function () use ($keyword, $products) {
