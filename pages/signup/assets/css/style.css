@@ -85,3 +85,7 @@
 .signup-txt{
   color: #E8EDEA;
 }
+
+.invalid-feedback {
+    font-weight: bold;
+}
