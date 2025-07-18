@@ -1,69 +1,73 @@
-<?php 
+<?php
 declare(strict_types=1);
 
-// call the layout you want to use from layout folder
+require_once BASE_PATH . '/bootstrap.php';
 require_once LAYOUTS_PATH . "/main.layout.php";
-// $mongoCheckerResult = require_once HANDLERS_PATH . "/mongodbChecker.handler.php";
-// $postgresqlCheckerResult = require_once HANDLERS_PATH . "/postgreChecker.handler.php";
+require_once UTILS_PATH . '/auth.util.php';
+require_once UTILS_PATH . '/transactions.util.php';
 
-// Call layout renderer
-renderMainLayout(
-    function () {
-        ?>
-        <section class="transaction-section d-flex align-items-center" style="min-height: 100vh;">
-            <div class="card p-4 shadow-lg" style="max-width: 800px; width: 100%;"class="card p-4 shadow-lg" style="max-width: 800px; width: 100%;">
-                <h2 class="text-center transaction-txt">Transaction</h2>
-                <div class="checkout-content">
-                    <form class="checkout-form" id="form" action="submit_transaction.php" method="POST">
-                        <div class="row">
-                            <div class="col-12 col-sm-6">
-                                <div class="mb-3">
-                                    <label for="full_name" class="form-label">Full Name</label>
-                                    <input type="text" id="full_name" name="full_name" class="form-control" required>
-                                    <div class="invalid-feedback">Please enter your full name.</div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" id="email" name="email" class="form-control" required>
-                                    <div class="invalid-feedback">Please enter a valid email address.</div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="phoneNumber" class="form-label">Phone Number</label>
-                                    <input type="phoneNumber" id="phoneNumber" name="phoneNumber" class="form-control" required>
-                                    <div class="invalid-feedback">Please enter a valid phone number.</div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="address" class="form-label">Address</label>
-                                    <input type="address" id="address" name="address" class="form-control" required>
-                                    <div class="invalid-feedback">Please enter a valid address.</div>
-                                </div>
-                            </div>
+Auth::init();
+$user = Auth::user();
 
-                            <div class="col-12 col-sm-6">
-                                <div class="order-summary">
-                                    <h2>Order Summary</h2>
-                                    <p><strong>Product:</strong> Outlast Survival Kit</p>
-                                    <p><strong>Price:</strong> ₱1,299.00</p>
-                                    <p class="total"><strong>Total:</strong> ₱1,299.00</p>
-                                    <div class="buttons">
-                                        <button class="confirm" type="submit" form="form">Confirm Order</button>
-                                        <button class="cancel" type="button" onclick="window.location.href='index.php'">Cancel</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+renderMainLayout(function () use ($user) {
+    if (!$user) {
+        echo "<div class='container py-5'><div class='alert alert-danger'>You must be logged in to view transactions.</div></div>";
+        return;
+    }
+
+    $transactions = getTransactionsWithDetails($user['id']);
+    ?>
+
+    <div class="container py-5">
+        <h2 class="mb-4">My Transactions</h2>
+
+        <?php if (isset($_GET['confirmed'])): ?>
+            <div class="alert alert-success">Payment confirmed successfully.</div>
+        <?php endif; ?>
+
+        <?php if (empty($transactions)): ?>
+            <div class="alert alert-info">No transactions found.</div>
+        <?php else: ?>
+            <?php foreach ($transactions as $txn): ?>
+                <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <strong>Order ID: <?= htmlspecialchars($txn['order_id']) ?></strong>
+                        <span>Status:
+                            <?php if ($txn['status'] === 'paid'): ?>
+                                <span class="badge bg-success">Paid</span>
+                            <?php else: ?>
+                                <span class="badge bg-warning text-dark">Pending</span>
+                            <?php endif; ?>
+                        </span>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Date:</strong> <?= htmlspecialchars($txn['transaction_date']) ?></p>
+                        <p><strong>Total Amount:</strong> <img src="/assets/zombie-crystal.png" style="height: 20px;"> <?= htmlspecialchars($txn['total_amount']) ?></p>
+                        <p><strong>Amount Paid:</strong> <img src="/assets/zombie-crystal.png" style="height: 20px;"> <?= htmlspecialchars($txn['amount_paid']) ?></p>
+                        <p><strong>Change:</strong> <img src="/assets/zombie-crystal.png" style="height: 20px;"> <?= htmlspecialchars($txn['change']) ?></p>
+
+                        <hr>
+                        <h5>Products:</h5>
+                        <ul class="list-group">
+                            <?php foreach ($txn['products'] as $product): ?>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <?= htmlspecialchars($product['product_name']) ?> × <?= $product['quantity'] ?>
+                                    <span><img src="/assets/zombie-crystal.png" style="height: 16px;"> <?= htmlspecialchars($product['price'] * $product['quantity']) ?></span>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+
+                        <?php if ($txn['status'] === 'pending'): ?>
+                            <form action="/handlers/confirm.handler.php" method="POST" class="mt-3">
+                                <input type="hidden" name="transaction_id" value="<?= htmlspecialchars($txn['transaction_id']) ?>">
+                                <button type="submit" class="btn btn-success">Confirm Payment</button>
+                            </form>
+                        <?php endif; ?>
+                    </div>
                 </div>
-            </div>
-        </section>
-        <?php
-    },
-    [
-        "css" => [
-            "./assets/css/style.css"
-        ],
-        "js" => [
-            "./assets/js/script.js"
-        ]
-    ]
-);
-?>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
+
+<?php
+});
