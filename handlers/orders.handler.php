@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 require_once BASE_PATH . '/bootstrap.php';
 require_once UTILS_PATH . '/orders.util.php';
+require_once UTILS_PATH . '/transactions.util.php';
 require_once UTILS_PATH . '/auth.util.php';
 
 Auth::init();
@@ -29,11 +30,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $totalAmount = 0;
         $productData = [];
 
+        // Fetch product prices
         $placeholders = implode(',', array_fill(0, count($productIds), '?'));
         $stmt = $pdo->prepare("SELECT product_id, price FROM products WHERE product_id IN ($placeholders)");
         $stmt->execute($productIds);
         $prices = $stmt->fetchAll(PDO::FETCH_KEY_PAIR); // [product_id => price]
 
+        // Calculate total amount and prepare data
         foreach ($productIds as $index => $productId) {
             $productId = (string) $productId;
             $quantity = (int) $quantities[$index];
@@ -48,18 +51,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             throw new Exception("Invalid total amount.");
         }
 
+        // Insert order
         $orderStmt = $pdo->prepare("
             INSERT INTO orders (user_id, total_amount, status)
             VALUES (:user_id, :total_amount, 'pending')
             RETURNING order_id
         ");
         $orderStmt->execute([
-            ':user_id' => $user['id'], // ✅ fixed session key
+            ':user_id' => $user['id'],
             ':total_amount' => $totalAmount
         ]);
-
         $orderId = $orderStmt->fetchColumn();
 
+        // Insert order items
         $itemStmt = $pdo->prepare("
             INSERT INTO order_items (order_id, product_id, quantity)
             VALUES (:order_id, :product_id, :quantity)
@@ -73,8 +77,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ]);
         }
 
+        // ✅ Insert transaction with custom currency: Zombie Crystals
+        $transactionStmt = $pdo->prepare("
+            INSERT INTO transactions (
+                user_id, order_id, currency, amount_paid, total_amount, change, status, transaction_date
+            ) VALUES (
+                :user_id, :order_id, :currency, :amount_paid, :total_amount, :change, 'completed', NOW()
+            )
+        ");
+        $transactionStmt->execute([
+            ':user_id' => $user['id'],
+            ':order_id' => $orderId,
+            ':currency' => 'Zombie Crystal', // 🧟 Custom currency
+            ':amount_paid' => $totalAmount,
+            ':total_amount' => $totalAmount,
+            ':change' => 0
+        ]);
+
         $pdo->commit();
-        header('Location: /pages/orders/index.php?success=1');
+
+        // Redirect to transaction page
+        header('Location: /pages/user/transaction.php?success=1');
         exit;
     } catch (Throwable $e) {
         $pdo->rollBack();
