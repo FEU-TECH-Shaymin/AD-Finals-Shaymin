@@ -1,66 +1,88 @@
-<?php
+<?php 
 declare(strict_types=1);
 
-require_once BASE_PATH . '/bootstrap.php';
+require_once LAYOUTS_PATH . "/main.layout.php";
 require_once UTILS_PATH . '/auth.util.php';
 require_once UTILS_PATH . '/transactions.util.php';
-require_once LAYOUTS_PATH . '/main.layout.php';
 
 Auth::init();
 $user = Auth::user();
 
 if (!$user) {
-    header('Location: /pages/login/index.php');
+    echo "<div class='container text-center text-danger py-5'><h4>User not authenticated.</h4></div>";
     exit;
 }
 
-$transactions = getUserTransactions($user['id']);
+$transactions = getUserTransactions($user['user_id']);
 
-renderMainLayout(function () use ($transactions) {
+renderMainLayout(function () use ($transactions, $user) {
 ?>
-<div id="transaction-page" class="container py-4">
-    <h2 class="mb-4">Your Transactions</h2>
+<section class="transaction-section text-white py-5">
+    <div class="container">
+        <h2 class="text-center neon-title mb-4">Transaction History</h2>
 
-    <?php if (empty($transactions)): ?>
-        <p>No transactions yet.</p>
-    <?php else: ?>
-        <?php foreach ($transactions as $txn): ?>
-            <div class="card mb-4">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <strong>Transaction #<?= htmlspecialchars($txn['transaction_id']) ?></strong>
-                    <span class="badge badge-<?= $txn['status'] === 'completed' ? 'success' : 'warning' ?>">
-                        <?= ucfirst($txn['status']) ?>
-                    </span>
-                </div>
-                <div class="card-body">
-                    <p><strong>Date:</strong> <?= htmlspecialchars($txn['transaction_date']) ?></p>
-                    <p><strong>Currency:</strong> 
-                        <img class="currency-icon" src="/pages/transaction/assets/img/crystal.png" alt="Crystal">
-                        <?= htmlspecialchars($txn['currency']) ?>
-                    </p>
-                    <p><strong>Total Amount:</strong>
-                        <img class="currency-icon" src="/pages/transaction/assets/img/crystal.png" alt="Crystal">
-                        <?= htmlspecialchars($txn['total_amount']) ?>
-                    </p>
-                    <p><strong>Amount Paid:</strong>
-                        <img class="currency-icon" src="/pages/transaction/assets/img/crystal.png" alt="Crystal">
-                        <?= htmlspecialchars($txn['amount_paid']) ?>
-                    </p>
-                    <p><strong>Change:</strong>
-                        <img class="currency-icon" src="/pages/transaction/assets/img/crystal.png" alt="Crystal">
-                        <?= htmlspecialchars($txn['change']) ?>
-                    </p>
+        <?php if (empty($transactions)): ?>
+            <p class="text-center text-muted">No transactions yet.</p>
+        <?php else: ?>
+            <?php foreach ($transactions as $tx): ?>
+                <form 
+                    class="transaction-form neon-border mb-4 p-4 rounded"
+                    method="<?= $tx['status'] === 'pending' ? 'POST' : 'GET' ?>" 
+                    action="<?= $tx['status'] === 'pending' ? '/handlers/mark_completed.handler.php' : '#' ?>"
+                >
+                    <div class="form-group mb-3">
+                        <label>User</label>
+                        <input type="text" class="form-control readonly-input" 
+                            value="<?= htmlspecialchars($user['first_name'] . ' ' . $user['last_name']) ?>" readonly>
+                    </div>
 
-                    <?php if ($txn['status'] === 'pending'): ?>
-                        <form action="/handlers/confirm.handler.php" method="POST" class="mt-3">
-                            <input type="hidden" name="transaction_id" value="<?= htmlspecialchars($txn['transaction_id']) ?>">
-                            <button type="submit" class="btn btn-confirm">Confirm Payment</button>
-                        </form>
+                    <div class="form-group mb-3">
+                        <label>Date</label>
+                        <input type="text" class="form-control readonly-input" 
+                            value="<?= htmlspecialchars($tx['transaction_date']) ?>" readonly>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label>Currency</label>
+                        <input type="text" class="form-control readonly-input" 
+                            value="<?= htmlspecialchars($tx['currency']) ?>" readonly>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label>Amount Paid</label>
+                        <input type="text" class="form-control readonly-input" 
+                            value="<?= number_format((float)$tx['amount_paid'], 2) ?>" readonly>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label>Total Amount</label>
+                        <input type="text" class="form-control readonly-input" 
+                            value="<?= number_format((float)$tx['total_amount'], 2) ?>" readonly>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label>Change</label>
+                        <input type="text" class="form-control readonly-input" 
+                            value="<?= number_format((float)$tx['change'], 2) ?>" readonly>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label>Status</label>
+                        <input type="text" class="form-control readonly-input" 
+                            value="<?= ucfirst($tx['status']) ?>" readonly>
+                    </div>
+
+                    <?php if ($tx['status'] === 'pending'): ?>
+                        <input type="hidden" name="transaction_id" value="<?= $tx['transaction_id'] ?>">
+                        <button type="submit" class="pay-button mt-3">PAY</button>
                     <?php endif; ?>
-                </div>
-            </div>
-        <?php endforeach; ?>
-    <?php endif; ?>
-</div>
+                </form>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
+</section>
 <?php
-});
+}, [
+    "css" => ["./assets/css/style.css"],
+    "js" => []
+]);
