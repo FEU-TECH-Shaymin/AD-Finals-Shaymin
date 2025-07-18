@@ -1,86 +1,75 @@
-/* SCOPED to #transaction-page to avoid affecting global layout */
-#transaction-page {
-    background: #0f0f1a;
-    color: #f1f1f1;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    min-height: 100vh;
-}
-
-#transaction-page .card {
-    background: linear-gradient(145deg, #1a1a2e, #1f1f3d);
-    border: 1px solid #444;
-    border-radius: 20px;
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden;
+body {
+    background-color: #0d0d0d;
     color: #fff;
+    font-family: 'Orbitron', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-#transaction-page .card:hover {
-    transform: scale(1.015);
-    box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+.transaction-section {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #0d0d0d, #111);
+    padding-top: 60px;
+    padding-bottom: 60px;
 }
 
-#transaction-page .card-header {
-    background: rgba(255, 255, 255, 0.05);
-    font-weight: bold;
-    font-size: 1.1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+.neon-title {
+    font-size: 2rem;
+    color: #c770f0;
+    text-shadow: 0 0 10px #c770f0, 0 0 20px #a550d2;
 }
 
-#transaction-page .currency-icon {
-    height: 24px;
-    vertical-align: middle;
-    margin-right: 8px;
-    filter: drop-shadow(0 0 2px cyan);
-}
-
-#transaction-page .badge {
-    padding: 0.5em 0.75em;
+.transaction-form {
+    background-color: rgba(25, 25, 25, 0.9);
+    border: 2px solid #c770f0;
+    box-shadow: 0 0 10px #c770f0, 0 0 20px #a550d2;
+    padding: 20px;
     border-radius: 12px;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
 }
 
-#transaction-page .badge-success {
-    background: linear-gradient(45deg, #28a745, #42ffb3);
-    color: #000;
+.form-group {
+    margin-bottom: 1rem;
 }
 
-#transaction-page .badge-warning {
-    background: linear-gradient(45deg, #ffc107, #ffe773);
-    color: #000;
+.form-group label {
+    color: #a0a0a0;
+    font-weight: 500;
+    font-size: 0.9rem;
 }
 
-#transaction-page .btn-confirm {
-    background: linear-gradient(135deg, #00ffd5, #007cff);
+.readonly-input {
+    background-color: #1a1a1a;
+    border: 1px solid #444;
+    color: #fff;
+    font-size: 0.9rem;
+    padding: 8px 10px;
+    border-radius: 6px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.readonly-input:read-only {
+    background-color: #1a1a1a;
+    cursor: default;
+}
+
+.pay-button {
+    background-color: #c770f0;
     border: none;
-    color: #000;
+    color: #0d0d0d;
     font-weight: bold;
-    border-radius: 12px;
-    padding: 8px 16px;
-    transition: background 0.3s ease, transform 0.2s ease;
+    font-size: 1rem;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px #c770f0, 0 0 20px #a550d2;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-#transaction-page .btn-confirm:hover {
-    background: linear-gradient(135deg, #007cff, #00ffd5);
-    transform: scale(1.05);
-}
-
-#transaction-page .text-muted {
-    color: #aaa !important;
-}
-
-@media (max-width: 576px) {
-    #transaction-page .card-header,
-    #transaction-page .card-body p {
-        font-size: 0.95rem;
-    }
-
-    #transaction-page .btn-confirm {
-        font-size: 0.85rem;
-        padding: 6px 12px;
-    }
+.pay-button:hover {
+    background-color: #a550d2;
+    box-shadow: 0 0 12px #a550d2, 0 0 24px #c770f0;
+    color: #fff;
 }
