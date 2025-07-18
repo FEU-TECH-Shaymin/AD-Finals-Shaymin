@@ -27,43 +27,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $pdo->beginTransaction();
 
+        // ✅ Fetch product prices using your util
+        $productPrices = fetchProductPrices($productIds);
+
         $totalAmount = 0;
         $productData = [];
 
-        // Fetch product prices
-        $placeholders = implode(',', array_fill(0, count($productIds), '?'));
-        $stmt = $pdo->prepare("SELECT product_id, price FROM products WHERE product_id IN ($placeholders)");
-        $stmt->execute($productIds);
-        $prices = $stmt->fetchAll(PDO::FETCH_KEY_PAIR); // [product_id => price]
-
-        // Calculate total amount and prepare data
         foreach ($productIds as $index => $productId) {
             $productId = (string) $productId;
             $quantity = (int) $quantities[$index];
 
-            if ($quantity > 0 && isset($prices[$productId])) {
-                $totalAmount += $prices[$productId] * $quantity;
-                $productData[] = ['id' => $productId, 'quantity' => $quantity];
+            if ($quantity > 0 && isset($productPrices[$productId])) {
+                $totalAmount += $productPrices[$productId] * $quantity;
+                $productData[] = [
+                    'id' => $productId,
+                    'quantity' => $quantity
+                ];
             }
         }
 
-        if ($totalAmount <= 0) {
-            throw new Exception("Invalid total amount.");
+        if ($totalAmount <= 0 || empty($productData)) {
+            throw new Exception("Invalid total amount or no valid products.");
         }
 
-        // Insert order
-        $orderStmt = $pdo->prepare("
-            INSERT INTO orders (user_id, total_amount, status)
-            VALUES (:user_id, :total_amount, 'pending')
-            RETURNING order_id
-        ");
-        $orderStmt->execute([
-            ':user_id' => $user['id'],
-            ':total_amount' => $totalAmount
+        // ✅ Insert order using util
+        $orderResult = insertOrder([
+            'user_id' => $user['user_id'],
+            'total_amount' => $totalAmount,
+            'status' => 'pending'
         ]);
-        $orderId = $orderStmt->fetchColumn();
 
-        // Insert order items
+        if (!$orderResult['success']) {
+            throw new Exception("Failed to create order: " . $orderResult['message']);
+        }
+
+        $orderId = $orderResult['order_id'];
+
+        // ✅ Insert order items
         $itemStmt = $pdo->prepare("
             INSERT INTO order_items (order_id, product_id, quantity)
             VALUES (:order_id, :product_id, :quantity)
@@ -77,27 +77,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ]);
         }
 
-        // ✅ Insert transaction with custom currency: Zombie Crystals
+        // ✅ Insert transaction
         $transactionStmt = $pdo->prepare("
             INSERT INTO transactions (
-                user_id, order_id, currency, amount_paid, total_amount, change, status, transaction_date
+                user_id, order_id, currency, amount_paid, total_amount, status, transaction_date
             ) VALUES (
-                :user_id, :order_id, :currency, :amount_paid, :total_amount, :change, 'completed', NOW()
+                :user_id, :order_id, :currency, :amount_paid, :total_amount, 'completed', NOW()
             )
         ");
         $transactionStmt->execute([
-            ':user_id' => $user['id'],
+            ':user_id' => $user['user_id'],
             ':order_id' => $orderId,
-            ':currency' => 'Zombie Crystal', // 🧟 Custom currency
+            ':currency' => 'Zombie Crystal',
             ':amount_paid' => $totalAmount,
-            ':total_amount' => $totalAmount,
-            ':change' => 0
+            ':total_amount' => $totalAmount
         ]);
 
         $pdo->commit();
 
-        // Redirect to transaction page
-        header('Location: /pages/user/transaction.php?success=1');
+        header('Location: /pages/transaction/index.php?success=1');
         exit;
     } catch (Throwable $e) {
         $pdo->rollBack();
