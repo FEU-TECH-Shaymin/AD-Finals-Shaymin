@@ -44,13 +44,14 @@ class Auth
         }
 
         session_regenerate_id(true);
-        $_SESSION['user'] = [
-            'id'         => $user['user_id'],
-            'first_name' => $user['first_name'],
-            'last_name'  => $user['last_name'],
-            'username'   => $user['username'],
-            'role'       => $user['role'],
-        ];
+      $_SESSION['user'] = [
+    'user_id'    => $user['user_id'], // ✅ fixed key
+    'first_name' => $user['first_name'],
+    'last_name'  => $user['last_name'],
+    'username'   => $user['username'],
+    'role'       => $user['role'],
+];
+
 
         error_log("[Auth::login] Login successful for user_id={$user['user_id']}");
         return true;
