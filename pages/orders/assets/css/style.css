@@ -1,45 +1,80 @@
-body {
-    background-color: #1a1a1a;
-    font-family: 'Creepster', cursive, sans-serif;
-    color: #e2e2e2;
+/* ====== Order Section ====== */
+.orders-section{
+  background: url(../img/os-bg.jpg) no-repeat center center/cover;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1rem;
+  overflow: hidden;
+  position: relative;
 }
 
 .zombie-order-form {
-    background: url('/pages/orders/assets/images/zombie_bg.jpg') no-repeat center center fixed;
-    background-size: cover;
-    min-height: 100vh;
-    padding: 2rem;
+    background-color: #f4f8fd1a;
     backdrop-filter: blur(3px);
+    border-radius: 1rem;
+    color: #E8EDEA;
+    padding: 2.3rem 0.5rem;
 }
 
-.zombie-title {
-    color: #c7f10f;
-    text-shadow: 2px 2px #000;
-    font-size: 2.5rem;
+.order-form {
+    color: #E8EDEA;
+    gap: 12px;
 }
 
-.zombie-form {
-    background-color: rgba(0, 0, 0, 0.85);
-    border: 2px solid #280707;
-    padding: 2rem;
-    border-radius: 12px;
-    color: #fff;
-}
-
-.zombie-label {
-    color: #430b05;
+.os-label {
+    color: #E8EDEA;
     font-weight: bold;
+}
+
+.select-product{
+  gap: 0.3rem;
+}
+
+#addProductBtn{
+  background-color: #4c0711;
+  color: #E8EDEA;
+}
+
+#addProductBtn:hover{
+  background-color: #E8EDEA;
+  color: #4c0711;
+}
+
+.zombie-submit:disabled{
+  background-color: #4c0711;
 }
 
 .zombie-submit {
     background-color: #4c0711;
-    color: #000;
+    color: #e8e8e8;
     font-weight: bold;
     border: none;
 }
 
 .zombie-submit:hover {
-    background-color: #40d92f;
+    background-color: #E8EDEA;
+    color: #4c0711;
     transform: scale(1.05);
     transition: all 0.3s ease;
+}
+
+#orderTable td:nth-child(2) {
+  max-width: 100px;
+  padding: 2px 6px;
+  text-align: center;
+}
+
+#orderTable td:nth-child(5) {
+  width: 30px;
+  align-items: center;
+}
+
+#orderTable{
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #0C0E19;
+  background-color: #E8EDEA;
 }
