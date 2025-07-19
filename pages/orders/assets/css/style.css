@@ -1,0 +1,45 @@
+body {
+    background-color: #1a1a1a;
+    font-family: 'Creepster', cursive, sans-serif;
+    color: #e2e2e2;
+}
+
+.zombie-order-form {
+    background: url('/pages/orders/assets/images/zombie_bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    padding: 2rem;
+    backdrop-filter: blur(3px);
+}
+
+.zombie-title {
+    color: #c7f10f;
+    text-shadow: 2px 2px #000;
+    font-size: 2.5rem;
+}
+
+.zombie-form {
+    background-color: rgba(0, 0, 0, 0.85);
+    border: 2px solid #280707;
+    padding: 2rem;
+    border-radius: 12px;
+    color: #fff;
+}
+
+.zombie-label {
+    color: #430b05;
+    font-weight: bold;
+}
+
+.zombie-submit {
+    background-color: #4c0711;
+    color: #000;
+    font-weight: bold;
+    border: none;
+}
+
+.zombie-submit:hover {
+    background-color: #40d92f;
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
