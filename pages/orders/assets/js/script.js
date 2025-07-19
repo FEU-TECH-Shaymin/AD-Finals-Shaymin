@@ -1,122 +1,84 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const productData = JSON.parse(document.getElementById('productData').value || '[]');
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('orderForm');
     const productSelect = document.getElementById('product');
     const quantityInput = document.getElementById('quantity');
-    const addBtn = document.getElementById('addProductBtn');
-    const orderTableBody = document.querySelector('#orderTable tbody');
-    const totalInput = document.getElementById('total');
-    const moneyGivenInput = document.getElementById('money_given');
-    const changeInput = document.getElementById('change');
     const orderItemsInput = document.getElementById('orderItems');
+    const moneyGivenInput = document.getElementById('money_given');
+    const totalField = document.getElementById('total');
+    const changeField = document.getElementById('change');
     const submitBtn = document.getElementById('submitBtn');
-    const orderForm = document.getElementById('orderForm');
 
-    let orderItems = [];
+    const productsData = JSON.parse(form.getAttribute('data-products'));
+    let selectedItem = null;
 
-    function renderTable() {
-        const orderTableWrapper = document.getElementById('orderTableWrapper');
-        orderTableBody.innerHTML = '';
-        let grandTotal = 0;
-
-        // Remove old hidden inputs
-        document.querySelectorAll('.dynamic-order-input').forEach(el => el.remove());
-
-        if (orderItems.length === 0) {
-            orderTableWrapper.style.display = 'none';
-        } else {
-            orderTableWrapper.style.display = 'block';
-        }
-
-        orderItems.forEach((item, index) => {
-            const rowTotal = item.price * item.quantity;
-            grandTotal += rowTotal;
-
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${item.product_name}</td>
-                <td>
-                    <input type="number" class="form-control form-control-sm quantity-input" 
-                           data-index="${index}" min="1" value="${item.quantity}" />
-                </td>
-                <td>${item.price.toFixed(2)}</td>
-                <td class="row-total">${rowTotal.toFixed(2)}</td>
-                <td>
-                    <button class="btn btn-sm btn-danger remove-btn" data-index="${index}">X</button>
-                </td>
-            `;
-            orderTableBody.appendChild(row);
-
-            // Create hidden inputs for form submission
-            const hiddenProductId = document.createElement('input');
-            hiddenProductId.type = 'hidden';
-            hiddenProductId.name = 'product_id[]';
-            hiddenProductId.value = item.product_id;
-            hiddenProductId.classList.add('dynamic-order-input');
-            orderForm.appendChild(hiddenProductId);
-
-            const hiddenQty = document.createElement('input');
-            hiddenQty.type = 'hidden';
-            hiddenQty.name = 'quantity[]';
-            hiddenQty.value = item.quantity;
-            hiddenQty.classList.add('dynamic-order-input');
-            orderForm.appendChild(hiddenQty);
-        });
-
-        totalInput.value = grandTotal.toFixed(2);
-        orderItemsInput.value = JSON.stringify(orderItems);
-        updateChange();
-    }
-
-    function updateChange() {
-        const total = parseFloat(totalInput.value) || 0;
-        const money = parseFloat(moneyGivenInput.value) || 0;
-        const change = money - total;
-        changeInput.value = change >= 0 ? change.toFixed(2) : '0.00';
-        submitBtn.disabled = !(money >= total && total > 0);
-    }
-
-    addBtn.addEventListener('click', function () {
-        const selectedId = parseInt(productSelect.value);
-        const quantity = parseInt(quantityInput.value);
-
-        if (!selectedId || quantity < 1) return;
-
-        const product = productData.find(p => p.product_id === selectedId);
-        const existing = orderItems.find(item => item.product_id === selectedId);
-
-        if (existing) {
-            existing.quantity += quantity;
-        } else {
-            orderItems.push({ 
-                product_id: product.product_id, 
-                product_name: product.product_name, 
-                price: product.price, 
-                quantity 
-            });
-        }
-
-        renderTable();
-    });
-
-    orderTableBody.addEventListener('click', function (e) {
-        if (e.target.classList.contains('remove-btn')) {
-            const index = parseInt(e.target.dataset.index);
-            orderItems.splice(index, 1);
-            renderTable();
-        }
-    });
-
-    moneyGivenInput.addEventListener('input', updateChange);
-
-    orderTableBody.addEventListener('input', function (e) {
-        if (e.target.classList.contains('quantity-input')) {
-            const index = parseInt(e.target.dataset.index);
-            const newQty = parseInt(e.target.value);
-
-            if (newQty > 0) {
-                orderItems[index].quantity = newQty;
-                renderTable();
+    // Reset dropdown texts to original
+    function resetDropdownTexts() {
+        Array.from(productSelect.options).forEach(option => {
+            const original = productsData.find(p => p.product_id === option.value);
+            if (original) {
+                option.textContent = `${original.product_name} (${parseFloat(original.price).toFixed(2)} ZCRY)`;
             }
+        });
+    }
+
+    // Update selected option with quantity and total
+    function updateSelectedOption(productId, quantity) {
+        const product = productsData.find(p => p.product_id === productId);
+        if (!product) return;
+
+        const total = product.price * quantity;
+        const option = productSelect.querySelector(`option[value="${productId}"]`);
+        if (option) {
+            option.textContent = `${product.product_name} x${quantity} (${total.toFixed(2)} ZCRY)`;
         }
+    }
+
+    // Update total and change
+    function updateTotalAndChange() {
+        if (!selectedItem) {
+            totalField.value = '0.00';
+            changeField.value = '0.00';
+            submitBtn.disabled = true;
+            return;
+        }
+
+        const product = productsData.find(p => p.product_id === selectedItem.product_id);
+        if (!product) return;
+
+        const total = product.price * selectedItem.quantity;
+        totalField.value = total.toFixed(2);
+
+        const given = parseFloat(moneyGivenInput.value) || 0;
+        const change = given - total;
+        changeField.value = change >= 0 ? change.toFixed(2) : '0.00';
+
+        submitBtn.disabled = !(given >= total && selectedItem.quantity > 0);
+    }
+
+    productSelect.addEventListener('change', () => {
+        quantityInput.disabled = false;
+        quantityInput.value = 1; // reset to default
+        resetDropdownTexts();
     });
+
+    quantityInput.addEventListener('input', () => {
+        const productId = productSelect.value;
+        const quantity = parseInt(quantityInput.value, 10);
+
+        if (!productId || isNaN(quantity) || quantity <= 0) {
+            selectedItem = null;
+            orderItemsInput.value = '';
+            updateTotalAndChange();
+            return;
+        }
+
+        selectedItem = { product_id: productId, quantity };
+        orderItemsInput.value = JSON.stringify([selectedItem]);
+
+        resetDropdownTexts();
+        updateSelectedOption(productId, quantity);
+        updateTotalAndChange();
+    });
+
+    moneyGivenInput.addEventListener('input', updateTotalAndChange);
 });
