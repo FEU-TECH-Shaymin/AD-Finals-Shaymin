@@ -18,6 +18,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $productIds = $_POST['product_id'] ?? [];
     $quantities = $_POST['quantity'] ?? [];
 
+    // ✅ Ensure both are arrays
+    if (!is_array($productIds)) {
+        $productIds = [$productIds];
+    }
+    if (!is_array($quantities)) {
+        $quantities = [$quantities];
+    }
+
+    // ✅ Validate that both arrays are non-empty and same length
     if (empty($productIds) || empty($quantities) || count($productIds) !== count($quantities)) {
         die('Invalid form submission.');
     }
@@ -27,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $pdo->beginTransaction();
 
-        // ✅ Fetch product prices using your util
+        // ✅ Fetch product prices
         $productPrices = fetchProductPrices($productIds);
 
         $totalAmount = 0;
@@ -50,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             throw new Exception("Invalid total amount or no valid products.");
         }
 
-        // ✅ Insert order using util
+        // ✅ Insert order
         $orderResult = insertOrder([
             'user_id' => $user['user_id'],
             'total_amount' => $totalAmount,
