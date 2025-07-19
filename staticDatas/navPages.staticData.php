@@ -10,7 +10,6 @@ return [
     // Admin-only
     ['label' => 'Dashboard', 'url' => '/pages/admin/index.php', 'authOnly' => true, 'role' => 'admin'],
     ['label' => 'Manage Users', 'url' => '/pages/admin-users/index.php', 'authOnly' => true, 'role' => 'admin'],
-    ['label' => 'Manage Orders', 'url' => '/pages/admin-orders/index.php', 'authOnly' => true, 'role' => 'admin'],
 
     // Public
     ['label' => 'Home', 'url' => '/index.php', 'guestOnly' => true],
