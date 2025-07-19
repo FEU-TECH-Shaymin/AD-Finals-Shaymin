@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const productData = JSON.parse(document.getElementById('productData').value || '[]');
     const productSelect = document.getElementById('product');
+    const priceInput = document.getElementById('price');
     const quantityInput = document.getElementById('quantity');
     const addBtn = document.getElementById('addProductBtn');
     const orderTableBody = document.querySelector('#orderTable tbody');
@@ -55,6 +56,13 @@ document.addEventListener('DOMContentLoaded', function () {
         changeInput.value = change >= 0 ? change.toFixed(2) : '0.00';
         submitBtn.disabled = !(money >= total && total > 0);
     }
+
+    productSelect.addEventListener('change', function () {
+        const selected = productData.find(p => p.product_id == this.value);
+        if (selected) {
+            priceInput.value = selected.price.toFixed(2);
+        }
+    });
 
     addBtn.addEventListener('click', function () {
         const selectedId = parseInt(productSelect.value);
