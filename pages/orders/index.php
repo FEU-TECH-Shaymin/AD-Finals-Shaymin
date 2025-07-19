@@ -105,7 +105,7 @@ renderMainLayout(function () use ($user) {
             "./assets/css/style.css"
         ],
         "js" => [
-            "./assets/js/script.js"
+            "/pages/orders/assets/js/script.js"
         ]
     ]
 );
