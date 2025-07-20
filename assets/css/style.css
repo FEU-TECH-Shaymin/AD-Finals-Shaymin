@@ -605,3 +605,47 @@
     transition-delay: calc(var(--d) / 8);
   }
 }
+
+/* ====== ZCRY Section ====== */
+.zcry-section {
+  background-color: #342222;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.zcry-container{
+  --bs-gutter-x: 0;
+}
+
+.zcry-col {
+  padding: 0;
+}
+
+.zcry-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.zcry-text {
+  color: #E8EDEA;
+  padding: 2rem;
+  max-width: 600px;
+  align-items: center;
+  justify-content: center;
+}
+
+.zcry-txt{
+  width: 92%;
+  margin: 0 auto 1rem auto;
+  display: block; 
+}
+
+.zcry-text h5 {
+  font-weight: normal;
+  line-height: 1.6;
+  font-size: 1.5rem;
+  margin: 0 2rem;
+}
