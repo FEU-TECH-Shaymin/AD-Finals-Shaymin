@@ -5,6 +5,14 @@ declare(strict_types=1);
 require_once LAYOUTS_PATH . "/main.layout.php";
 require_once UTILS_PATH . "/products.util.php";
 
+$categoryIcons = [
+  'Weapons' => 'fa-solid fa-gun',
+  'Medical' => 'fa-solid fa-kit-medical',
+  'Tools' => 'fa-solid fa-binoculars',
+  'Sustenance' => 'fa-solid fa-apple-whole',
+  'Bundles' => 'fa-solid fa-suitcase',
+];
+
 // Prepare search keyword and product list
 $keyword = trim($_GET['search'] ?? '');
 $products = $keyword
@@ -22,13 +30,26 @@ foreach ($products as $product) {
 renderMainLayout(
     function () use ($keyword, $categories) {
         ?>
-        <section class="all-categories-bg">
-            <div class="top-bar">
-
+        <section class="products-section">
+            <div class="category-nav d-flex justify-content-between align-items-center flex-wrap mb-4">
+                <div class="category-heading mb-2 mb-md-0">
+                    <h2 class="text-white m-0">Products</h2>
+                </div>
+                <div class="category-links d-flex flex-wrap justify-content-end gap-2">
+                    <?php foreach ($categories as $category => $_): ?>
+                        <a href="#<?= htmlspecialchars(strtolower(str_replace(' ', '-', $category))) ?>" class="category-link">
+                            <i class="<?= $categoryIcons[$category] ?? 'lni lni-tag' ?> me-1"></i> <?= htmlspecialchars($category) ?>
+                        </a>
+                    <?php endforeach; ?>
+                </div>
             </div>
 
+
+
             <?php foreach ($categories as $category => $items): ?>
-                <h2 class="category-title"><?= htmlspecialchars($category) ?></h2>
+                <h2 id="<?= htmlspecialchars(strtolower(str_replace(' ', '-', $category))) ?>" class="category-title">
+                    <?= htmlspecialchars($category) ?>
+                </h2>
                 <div class="product-grid">
                     <?php foreach ($items as $product): 
                         // Handle image path with fallback if file doesn't exist
@@ -38,18 +59,20 @@ renderMainLayout(
                         $finalFilename = file_exists($absolutePath) ? $imageFilename : 'default.png';
                         $bgPath = $imageDir . rawurlencode($finalFilename);
                     ?>
-                        <div 
-                            class="product-card"
-                            style="background-image: url('<?= htmlspecialchars($bgPath) ?>');"
-                        >
+                        <div class="product-card">
+                            <div 
+                                class="product-image"
+                                style="background-image: url('<?= htmlspecialchars($bgPath) ?>');"
+                            ></div>
                             <div class="product-info">
                                 <div class="product-name"><?= htmlspecialchars($product['name'] ?? '') ?></div>
                                 <div class="product-desc"><?= htmlspecialchars($product['description'] ?? '') ?></div>
                                 <div class="product-price">
-                                    <?= htmlspecialchars($product['price'] ?? '0.00') ?> zombie crystals
+                                <?= htmlspecialchars((string)($product['price'] ?? '0.00')) ?> zombie crystals
                                 </div>
                             </div>
-                        </div>
+                            </div>
+
                     <?php endforeach; ?>
                 </div>
             <?php endforeach; ?>
