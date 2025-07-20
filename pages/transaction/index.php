@@ -43,6 +43,11 @@ renderMainLayout(function () use ($transactions, $user) {
                     </div>
 
                     <div class="form-group mb-3">
+                        <label>Products</label>
+                        <textarea class="form-control readonly-input" rows="2" readonly><?= htmlspecialchars($tx['products_summary'] ?? 'N/A') ?></textarea>
+                    </div>
+
+                    <div class="form-group mb-3">
                         <label>Currency</label>
                         <input type="text" class="form-control readonly-input" 
                             value="<?= htmlspecialchars($tx['currency']) ?>" readonly>
