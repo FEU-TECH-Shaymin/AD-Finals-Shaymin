@@ -29,7 +29,6 @@ function insertOrder(array $data): array {
     try {
         $pdo = connectOrdersDB();
 
-        // Use RETURNING to safely get UUID even if primary key is not SERIAL
         $stmt = $pdo->prepare("
             INSERT INTO orders (user_id, total_amount, status)
             VALUES (:user_id, :total_amount, :status)
@@ -88,6 +87,24 @@ function fetchProductPrices(array $productIds): array {
         $stmt->execute($productIds);
 
         return $stmt->fetchAll(PDO::FETCH_KEY_PAIR); // [product_id => price]
+    } catch (PDOException $e) {
+        return [];
+    }
+}
+
+/**
+ * Fetch all orders for admin view
+ */
+function fetchAllOrders(): array {
+    try {
+        $pdo = connectOrdersDB();
+        $stmt = $pdo->query("
+            SELECT orders.*, users.username
+            FROM orders
+            JOIN users ON orders.user_id = users.user_id
+            ORDER BY orders.created_at DESC
+        ");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         return [];
     }
