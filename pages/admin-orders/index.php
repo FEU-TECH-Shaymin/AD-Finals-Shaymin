@@ -19,14 +19,14 @@ renderMainLayout(function () use ($transactions, $user) {
 ?>
 <section class="aos-section text-white py-5">
     <div class="container">
-        <h2 class="text-center neon-title mb-4">Orders List</h2>
+        <h2 class="text-center aos-title mb-4">Orders List</h2>
 
         <?php if (empty($transactions)): ?>
             <p class="text-center text-muted">No orders yet.</p>
         <?php else: ?>
             <?php foreach ($transactions as $tx): ?>
                 <form 
-                    class="transaction-form neon-border mb-4 p-4 rounded"
+                    class="aos-form mb-4 p-4 rounded"
                     method="<?= $tx['status'] === 'pending' ? 'POST' : 'GET' ?>" 
                     action="<?= $tx['status'] === 'pending' ? '/handlers/mark_completed.handler.php' : '#' ?>"
                 >
