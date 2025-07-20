@@ -15,10 +15,24 @@ if (!$user) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $productIds = $_POST['product_id'] ?? [];
-    $quantities = $_POST['quantity'] ?? [];
+    $orderItemsRaw = $_POST['order_items'] ?? '';
+    $orderItems = json_decode($orderItemsRaw, true);
 
-    // ✅ Ensure both are arrays
+    if (!is_array($orderItems) || empty($orderItems)) {
+        die('Invalid or missing order items.');
+    }
+
+    $productIds = [];
+    $quantities = [];
+
+    foreach ($orderItems as $item) {
+        if (!isset($item['product_id'], $item['quantity'])) {
+            die('Invalid item structure.');
+        }
+        $productIds[] = $item['product_id'];
+        $quantities[] = $item['quantity'];
+    }
+
     if (!is_array($productIds)) {
         $productIds = [$productIds];
     }
@@ -26,7 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $quantities = [$quantities];
     }
 
-    // ✅ Validate that both arrays are non-empty and same length
     if (empty($productIds) || empty($quantities) || count($productIds) !== count($quantities)) {
         die('Invalid form submission.');
     }
@@ -38,6 +51,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // ✅ Fetch product prices
         $productPrices = fetchProductPrices($productIds);
+
+        if (count($productPrices) !== count($productIds)) {
+            throw new Exception("One or more selected products do not exist.");
+        }
 
         $totalAmount = 0;
         $productData = [];
@@ -86,6 +103,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ]);
         }
 
+        // ✅ Get amount paid from POST
+        $amountPaid = isset($_POST['amount_paid']) ? floatval($_POST['amount_paid']) : 0;
+
+        // ✅ Compute change
+        $change = $amountPaid - $totalAmount;
+
         // ✅ Insert transaction
         $transactionStmt = $pdo->prepare("
             INSERT INTO transactions (
@@ -98,8 +121,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':user_id' => $user['user_id'],
             ':order_id' => $orderId,
             ':currency' => 'Zombie Crystal',
-            ':amount_paid' => $totalAmount,
-            ':total_amount' => $totalAmount
+            ':amount_paid' => $amountPaid,
+            ':total_amount' => $totalAmount,
         ]);
 
         $pdo->commit();
