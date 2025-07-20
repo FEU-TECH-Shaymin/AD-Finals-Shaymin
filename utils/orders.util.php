@@ -1,44 +1,111 @@
 <?php
 declare(strict_types=1);
 
-class OrdersUtil
-{
-    // ✅ Create a new order (User Only)
-    public static function create(PDO $pdo, array $data): bool
-    {
-        $sql = "
-            INSERT INTO public.orders (
-                user_id,
-                total_amount,
-                status
-            ) VALUES (
-                :user_id,
-                :total_amount,
-                :status
-            )
-        ";
+require_once BASE_PATH . '/bootstrap.php';
 
-        $stmt = $pdo->prepare($sql);
+$dotenv = Dotenv\Dotenv::createImmutable(BASE_PATH);
+$dotenv->load();
 
-        return $stmt->execute([
-            ':user_id'      => $data['user_id'],
+/**
+ * Standalone PostgreSQL connection
+ */
+function connectOrdersDB(): PDO {
+    $dsn = sprintf(
+        "pgsql:host=%s;port=%s;dbname=%s",
+        $_ENV['PG_HOST'],
+        $_ENV['PG_PORT'],
+        $_ENV['PG_DB']
+    );
+
+    return new PDO($dsn, $_ENV['PG_USER'], $_ENV['PG_PASS'], [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+    ]);
+}
+
+/**
+ * Insert order into the orders table and return the order_id
+ */
+function insertOrder(array $data): array {
+    try {
+        $pdo = connectOrdersDB();
+
+        $stmt = $pdo->prepare("
+            INSERT INTO orders (user_id, total_amount, status)
+            VALUES (:user_id, :total_amount, :status)
+            RETURNING order_id
+        ");
+
+        $stmt->execute([
+            ':user_id' => $data['user_id'],
             ':total_amount' => $data['total_amount'],
-            ':status'       => $data['status'] ?? 'pending',
+            ':status' => $data['status']
         ]);
-    }
 
-    // ✅ Get all orders for a specific user (User Only)
-    public static function getByUser(PDO $pdo, string $userId): array
-    {
-        $stmt = $pdo->prepare("SELECT * FROM public.orders WHERE user_id = :user_id ORDER BY order_date DESC");
-        $stmt->execute([':user_id' => $userId]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+        $orderId = $stmt->fetchColumn();
 
-    // ✅ Admin: Get all orders in the system (Admin Only)
-    public static function getAll(PDO $pdo): array
-    {
-        $stmt = $pdo->query("SELECT * FROM public.orders ORDER BY order_date DESC");
+        return ['success' => true, 'order_id' => $orderId];
+    } catch (PDOException $e) {
+        return [
+            'success' => false,
+            'message' => $e->getMessage()
+        ];
+    }
+}
+
+/**
+ * Fetch all available products with stock > 0
+ */
+function fetchAllProducts(): array {
+    try {
+        $pdo = connectOrdersDB();
+        $stmt = $pdo->query("
+            SELECT product_id, name, price, stock_quantity
+            FROM products
+            WHERE stock_quantity > 0
+            ORDER BY name
+        ");
+
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        return [];
+    }
+}
+
+/**
+ * Fetch prices for multiple products using their IDs
+ */
+function fetchProductPrices(array $productIds): array {
+    if (empty($productIds)) return [];
+
+    try {
+        $pdo = connectOrdersDB();
+        $placeholders = implode(',', array_fill(0, count($productIds), '?'));
+        $stmt = $pdo->prepare("
+            SELECT product_id, price FROM products
+            WHERE product_id IN ($placeholders)
+        ");
+        $stmt->execute($productIds);
+
+        return $stmt->fetchAll(PDO::FETCH_KEY_PAIR); // [product_id => price]
+    } catch (PDOException $e) {
+        return [];
+    }
+}
+
+/**
+ * Fetch all orders for admin view
+ */
+function fetchAllOrders(): array {
+    try {
+        $pdo = connectOrdersDB();
+        $stmt = $pdo->query("
+            SELECT orders.*, users.username
+            FROM orders
+            JOIN users ON orders.user_id = users.user_id
+            ORDER BY orders.created_at DESC
+        ");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        return [];
     }
 }
