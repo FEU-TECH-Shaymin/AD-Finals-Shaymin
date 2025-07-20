@@ -3,42 +3,67 @@ $pdo = require __DIR__ . '/../../utils/database.util.php';
 require_once __DIR__ . '/../../layouts/main.layout.php';
 
 $foundUser = null;
-$allUsers = []; // default to empty array
+$allUsers = [];
+$statusMessage = ''; // Status message variable
+$showUsersTable = false; // Toggle users table display
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['create'])) {
-        $stmt = $pdo->prepare("INSERT INTO users (role, first_name, middle_name, last_name, username, password) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->execute([
-            $_POST['role'], $_POST['first_name'], $_POST['middle_name'],
-            $_POST['last_name'], $_POST['username'], password_hash($_POST['password'], PASSWORD_DEFAULT)
-        ]);
+        // Check if username already exists
+        $checkStmt = $pdo->prepare("SELECT COUNT(*) FROM users WHERE username = ?");
+        $checkStmt->execute([$_POST['username']]);
+        $userExists = $checkStmt->fetchColumn() > 0;
+
+        if ($userExists) {
+            $statusMessage = 'Username already exists. Please choose a different one.';
+        } else {
+            $stmt = $pdo->prepare("INSERT INTO users (role, first_name, middle_name, last_name, username, password) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->execute([
+                $_POST['role'], $_POST['first_name'], $_POST['middle_name'],
+                $_POST['last_name'], $_POST['username'], password_hash($_POST['password'], PASSWORD_DEFAULT)
+            ]);
+            $statusMessage = 'User added successfully.';
+        }
     }
 
     if (isset($_POST['find'])) {
         $foundStmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
         $foundStmt->execute([$_POST['find_username']]);
         $foundUser = $foundStmt->fetch(PDO::FETCH_ASSOC);
+        $statusMessage = $foundUser ? 'User found.' : 'User not found.';
     }
 
     if (isset($_POST['update'])) {
         $stmt = $pdo->prepare("UPDATE users SET username = ? WHERE username = ?");
         $stmt->execute([$_POST['new_username'], $_POST['old_username']]);
+        $statusMessage = 'Username updated.';
     }
 
     if (isset($_POST['delete'])) {
         $stmt = $pdo->prepare("DELETE FROM users WHERE username = ?");
         $stmt->execute([$_POST['delete_username']]);
+        $statusMessage = 'User deleted.';
     }
 
     if (isset($_POST['see'])) {
-        $allUsers = $pdo->query("SELECT * FROM users")->fetchAll(PDO::FETCH_ASSOC);
+        if (!empty($allUsers)) {
+            $allUsers = [];
+            $statusMessage = '👥 Users table hidden.';
+        } else {
+            $allUsers = $pdo->query("SELECT * FROM users")->fetchAll(PDO::FETCH_ASSOC);
+            $statusMessage = count($allUsers) > 0 ? 'Users loaded.' : 'No users found.';
+        }
     }
 }
 
-renderMainLayout(function () use ($allUsers, $foundUser) {
+renderMainLayout(function () use ($allUsers, $foundUser, $statusMessage) {
 ?>
     <section class="admin-container">
         <h1>User Administration</h1>
+
+        <?php if (!empty($statusMessage)): ?>
+            <p class="status-message"> <?= htmlspecialchars($statusMessage) ?> </p>
+        <?php endif ?>
 
         <form method="POST" class="glass-box">
             <h2>Create Users</h2>
@@ -82,9 +107,13 @@ renderMainLayout(function () use ($allUsers, $foundUser) {
             <h2>Find User by Username</h2>
             <input type="text" name="find_username" placeholder="Username">
             <button name="find">Find</button>
+            <p>
             <?php if ($foundUser): ?>
-                <p>Found: <?= htmlspecialchars($foundUser['first_name'] . ' ' . $foundUser['last_name']) ?> (<?= htmlspecialchars($foundUser['role']) ?>)</p>
+                Found: <?= htmlspecialchars($foundUser['first_name'] . ' ' . $foundUser['last_name']) ?> (<?= htmlspecialchars($foundUser['role']) ?>)
+            <?php elseif(isset($_POST['find'])): ?>
+                User not found.
             <?php endif ?>
+            </p>
         </form>
 
         <form method="POST" class="glass-box">
