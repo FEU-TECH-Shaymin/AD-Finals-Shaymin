@@ -60,7 +60,8 @@ renderMainLayout(
             "./assets/css/style.css"
         ],
         "js" => [
-            "./assets/js/script.js"
+            "./assets/js/script.js",
+            "/pages/user/assets/js/script.js"
         ]
     ]
 );
