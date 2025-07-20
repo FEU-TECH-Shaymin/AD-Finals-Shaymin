@@ -1,100 +1,92 @@
 <?php 
 declare(strict_types=1);
 
-// call the layout you want to use from layout folder
 require_once LAYOUTS_PATH . "/main.layout.php";
-require_once UTILS_PATH . '/orders.util.php';
 require_once UTILS_PATH . '/auth.util.php';
-// $mongoCheckerResult = require_once HANDLERS_PATH . "/mongodbChecker.handler.php";
-// $postgresqlCheckerResult = require_once HANDLERS_PATH . "/postgreChecker.handler.php";
+require_once UTILS_PATH . '/transactions.util.php';
 
-$dsn = sprintf(
-    'pgsql:host=%s;port=%s;dbname=%s',
-    $_ENV['PG_HOST'],
-    $_ENV['PG_PORT'],
-    $_ENV['PG_DB']
-);
+Auth::init();
+$user = Auth::user();
 
-$pdo = new PDO($dsn, $_ENV['PG_USER'], $_ENV['PG_PASS'], [
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-]);
+if (!$user) {
+    echo "<div class='container text-center text-danger py-5'><h4>User not authenticated.</h4></div>";
+    exit;
+}
 
-$orders = OrdersUtil::getAll($pdo);
+$transactions = getAllTransactions();
 
-// Call layout renderer
-renderMainLayout(
-    function () {
-        ?>
-        <!-- Admin Order Section -->
-        <section class="admin-orders-section">
-        <div class="card p-4 shadow-lg aos-card" style="max-width: 900px; width: 100%;">
-            <h2 class="text-center signup-txt mb-4">All Orders</h2>
-
-            <?php if (!empty($error)): ?>
-            <div class="alert alert-danger" role="alert">
-                <?= htmlspecialchars($error) ?>
-            </div>
-            <?php endif; ?>
-
-            <?php if (empty($orders)): ?>
-            <p class="text-center">No orders found.</p>
-            <?php else: ?>
-            <div class="table-wrapper aos-table">
-        <table class="table table-hover table-sm mb-0">
-        <colgroup>
-            <col style="width: 15%;">
-            <col style="width: 15%;">
-            <col style="width: 20%;">
-            <col style="width: 20%;">
-            <col style="width: 30%;">
-        </colgroup>
-        <thead class="table-dark">
-            <tr>
-            <th>Order ID</th>
-            <th>User ID</th>
-            <th>Total Amount</th>
-            <th>Status</th>
-            <th>Order Date</th>
-            </tr>
-        </thead>
-        </table>
-
-        <div class="table-body-scroll">
-        <table class="table table-hover table-sm mb-0">
-            <colgroup>
-            <col style="width: 15%;">
-            <col style="width: 15%;">
-            <col style="width: 20%;">
-            <col style="width: 20%;">
-            <col style="width: 30%;">
-            </colgroup>
-            <tbody>
-            <?php foreach ($orders as $o): ?>
-                <tr>
-                <td><?= htmlspecialchars($o['order_id']) ?></td>
-                <td><?= htmlspecialchars($o['user_id']) ?></td>
-                <td><?= number_format((float)$o['total_amount'], 2) ?></td>
-                <td><?= htmlspecialchars($o['status']) ?></td>
-                <td><?= htmlspecialchars($o['order_date']) ?></td>
-                </tr>
-            <?php endforeach; ?>
-            </tbody>
-        </table>
-        </div>
-        </div>
-        </div>
-            <?php endif; ?>
-        </div>
-        </section>
-        <?php
-    },
-    [
-        "css" => [
-            "./assets/css/style.css"
-        ],
-        "js" => [
-            "./assets/js/script.js"
-        ]
-    ]
-);
+renderMainLayout(function () use ($transactions, $user) {
 ?>
+<section class="aos-section text-white py-5">
+    <div class="container">
+        <h2 class="text-center neon-title mb-4">Orders List</h2>
+
+        <?php if (empty($transactions)): ?>
+            <p class="text-center text-muted">No orders yet.</p>
+        <?php else: ?>
+            <?php foreach ($transactions as $tx): ?>
+                <form 
+                    class="transaction-form neon-border mb-4 p-4 rounded"
+                    method="<?= $tx['status'] === 'pending' ? 'POST' : 'GET' ?>" 
+                    action="<?= $tx['status'] === 'pending' ? '/handlers/mark_completed.handler.php' : '#' ?>"
+                >
+                    <div class="form-group mb-3">
+                        <label>User</label>
+                        <input type="text" class="form-control readonly-input" 
+                            value="<?= htmlspecialchars($tx['first_name'] . ' ' . $tx['last_name']) ?>" readonly>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label>Date</label>
+                        <input type="text" class="form-control readonly-input" 
+                            value="<?= htmlspecialchars($tx['transaction_date']) ?>" readonly>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label>Products</label>
+                        <textarea class="form-control readonly-input" rows="2" readonly><?= htmlspecialchars($tx['products_summary'] ?? 'N/A') ?></textarea>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label>Currency</label>
+                        <input type="text" class="form-control readonly-input" 
+                            value="<?= htmlspecialchars($tx['currency']) ?>" readonly>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label>Amount Paid</label>
+                        <input type="text" class="form-control readonly-input" 
+                            value="<?= number_format((float)$tx['amount_paid'], 2) ?>" readonly>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label>Total Amount</label>
+                        <input type="text" class="form-control readonly-input" 
+                            value="<?= number_format((float)$tx['total_amount'], 2) ?>" readonly>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label>Change</label>
+                        <input type="text" class="form-control readonly-input" 
+                            value="<?= number_format((float)$tx['change'], 2) ?>" readonly>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label>Status</label>
+                        <input type="text" class="form-control readonly-input" 
+                            value="<?= ucfirst($tx['status']) ?>" readonly>
+                    </div>
+
+                    <?php if ($tx['status'] === 'pending'): ?>
+                        <input type="hidden" name="transaction_id" value="<?= $tx['transaction_id'] ?>">
+                    <?php endif; ?>
+                </form>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
+</section>
+<?php
+}, [
+    "css" => ["./assets/css/style.css"],
+    "js" => []
+]);
