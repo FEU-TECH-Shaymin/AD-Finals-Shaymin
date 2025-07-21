@@ -38,6 +38,7 @@ $modelFiles = [
     'orders.model.sql',
     'products.model.sql',
     'transactions.model.sql',
+    'orderItems.model.sql',
 ];
 
 foreach ($modelFiles as $modelFile) {
