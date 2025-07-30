@@ -5,14 +5,6 @@ declare(strict_types=1);
 require_once LAYOUTS_PATH . "/main.layout.php";
 require_once UTILS_PATH . "/products.util.php";
 
-$categoryIcons = [
-  'Weapons' => 'fa-solid fa-gun',
-  'Medical' => 'fa-solid fa-kit-medical',
-  'Tools' => 'fa-solid fa-binoculars',
-  'Sustenance' => 'fa-solid fa-apple-whole',
-  'Bundles' => 'fa-solid fa-suitcase',
-];
-
 // Prepare search keyword and product list
 $keyword = trim($_GET['search'] ?? '');
 $products = $keyword
@@ -38,7 +30,7 @@ renderMainLayout(
                 <div class="category-links d-flex flex-wrap justify-content-end gap-2">
                     <?php foreach ($categories as $category => $_): ?>
                         <a href="#<?= htmlspecialchars(strtolower(str_replace(' ', '-', $category))) ?>" class="category-link">
-                            <i class="<?= $categoryIcons[$category] ?? 'lni lni-tag' ?> me-1"></i> <?= htmlspecialchars($category) ?>
+                            <?= htmlspecialchars($category) ?>
                         </a>
                     <?php endforeach; ?>
                 </div>
