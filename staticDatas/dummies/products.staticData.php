@@ -197,7 +197,7 @@ return [
     [
         'name' => 'Beginner\'s Bundle',
         'description' => 'Includes 3 weapons, 2 medical items, and 2 sustenance supplies — perfect for new survivors.',
-        'category' => 'Sustenance',
+        'category' => 'Bundles',
         'price' => 150,
         'stock_quantity' => 100,
         'image_path' => 'beginner.jpg',
