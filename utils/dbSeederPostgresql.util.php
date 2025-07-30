@@ -47,10 +47,12 @@ foreach ($seedMap as $table => $file) {
 
     switch ($table) {
         case 'users':
-            $stmt = $pdo->prepare("
-                INSERT INTO users (user_id, first_name, middle_name, last_name, password, username, role)
-                VALUES (:user_id, :first_name, :middle_name, :last_name, :password, :username, :role)
-            ");
+           $stmt = $pdo->prepare("
+    INSERT INTO users (user_id, first_name, middle_name, last_name, password, username, role)
+    VALUES (:user_id, :first_name, :middle_name, :last_name, :password, :username, :role)
+    ON CONFLICT (user_id) DO NOTHING
+");
+
             foreach ($data as $u) {
                 $stmt->execute([
                     ':user_id' => $u['user_id'],
@@ -82,10 +84,12 @@ foreach ($seedMap as $table => $file) {
             break;
 
         case 'orders':
-            $stmt = $pdo->prepare("
-                INSERT INTO orders (order_id, user_id, order_date, total_amount, status)
-                VALUES (:order_id, :user_id, :order_date, :total_amount, :status)
-            ");
+           $stmt = $pdo->prepare("
+    INSERT INTO orders (order_id, user_id, order_date, total_amount, status)
+    VALUES (:order_id, :user_id, :order_date, :total_amount, :status)
+    ON CONFLICT (order_id) DO NOTHING
+");
+
             foreach ($data as $o) {
                 $stmt->execute([
                     ':order_id' => $o['order_id'],
@@ -98,10 +102,12 @@ foreach ($seedMap as $table => $file) {
             break;
 
         case 'transactions':
-            $stmt = $pdo->prepare("
-                INSERT INTO transactions (transaction_id, user_id, order_id, transaction_date, currency, amount_paid, total_amount, status)
-                VALUES (:transaction_id, :user_id, :order_id, :transaction_date, :currency, :amount_paid, :total_amount, :status)
-            ");
+          $stmt = $pdo->prepare("
+    INSERT INTO transactions (transaction_id, user_id, order_id, transaction_date, currency, amount_paid, total_amount, status)
+    VALUES (:transaction_id, :user_id, :order_id, :transaction_date, :currency, :amount_paid, :total_amount, :status)
+    ON CONFLICT (transaction_id) DO NOTHING
+");
+
             foreach ($data as $t) {
                 $stmt->execute([
                     ':transaction_id' => $t['transaction_id'],
