@@ -31,7 +31,8 @@ renderMainLayout(
                         <div class="team-card glass-card">
                             <img src="assets/img/AlexaGagan.png" alt="Alexa Gagan" class="team-img">
                             <h5>Alexa Gagan</h5>
-                            <p class="role">Vision Weaver</p>
+                            <p class="role">Frontend</p>
+                            <p class="role">Designer</p>
                             <p class="year">2nd Year - BSITWMA</p>
                         </div>
                     </div>
@@ -39,7 +40,9 @@ renderMainLayout(
                         <div class="team-card glass-card">
                             <img src="assets/img/michaela.jpg" alt="Michaela Gonzales" class="team-img">
                             <h5>Michaela Gonzales</h5>
-                            <p class="role">The Archivist</p>
+                            <p class="role">QA</p>
+                            <p class="role">Backend</p>
+                            <p class="role">Database</p>
                             <p class="year">2nd Year - BSITWMA</p>
                         </div>
                     </div>
@@ -47,7 +50,9 @@ renderMainLayout(
                         <div class="team-card glass-card">
                             <img src="assets/img/shane.jpg" alt="Shane Oxina" class="team-img">
                             <h5>Shane Oxina</h5>
-                            <p class="role">The Pathfinder</p>
+                            <p class="role">QA</p>
+                            <p class="role">Frontend</p>
+                            <p class="role">Designer</p>
                             <p class="year">2nd Year - BSITWMA</p>
                         </div>
                     </div>
@@ -55,7 +60,8 @@ renderMainLayout(
                         <div class="team-card glass-card">
                             <img src="assets/img/querviemanrique.jpg" alt="Quervie Manrique" class="team-img">
                             <h5>Quervie Manrique</h5>
-                            <p class="role">Forge-Master</p>
+                            <p class="role">Backend</p>
+                            <p class="role">Database</p>
                             <p class="year">2nd Year - BSITWMA</p>
                         </div>
                     </div>
@@ -63,7 +69,7 @@ renderMainLayout(
                         <div class="team-card glass-card">
                             <img src="assets/img/nicole.png" alt="Nicole Rivera" class="team-img">
                             <h5>Nicole Rivera</h5>
-                            <p class="role">Relic Painter</p>
+                            <p class="role">Designer</p>
                             <p class="year">2nd Year - BSITWMA</p>
                         </div>
                     </div>
